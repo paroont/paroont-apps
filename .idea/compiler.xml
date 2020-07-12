@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rsa-core-mw" />
+        <module name="rsa-realty-db" />
+        <module name="rsa-core-shared" />
+        <module name="rsa-core-db" />
+        <module name="rsa-realty-shared" />
+        <module name="rsa-realty-mw" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rsa-common" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

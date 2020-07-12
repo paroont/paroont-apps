@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.rsatech</groupId>
+    <artifactId>rsa-app</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <modules>
+        <module>rsa-core-shared</module>
+        <module>rsa-core-mw</module>
+        <module>rsa-core-db</module>
+        <module>rsa-realty-shared</module>
+        <module>rsa-realty-mw</module>
+        <module>rsa-realty-db</module>
+    </modules>
+
+
+</project>
