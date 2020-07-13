@@ -16,6 +16,8 @@
         <module>rsa-realty-mw</module>
         <module>rsa-realty-db</module>
     </modules>
-
+    <properties>
+        <rsa.app.version>1.0</rsa.app.version>
+    </properties>
 
 </project>
