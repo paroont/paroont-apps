@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rsa-realty-db</artifactId>
+    <artifactId>rsa-realty-core-db</artifactId>
 
 
 </project>

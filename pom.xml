@@ -12,12 +12,19 @@
         <module>rsa-core-shared</module>
         <module>rsa-core-mw</module>
         <module>rsa-core-db</module>
-        <module>rsa-realty-shared</module>
-        <module>rsa-realty-mw</module>
-        <module>rsa-realty-db</module>
+        <module>rsa-realty-core-shared</module>
+        <module>rsa-realty-core-mw</module>
+        <module>rsa-realty-core-db</module>
+        <module>rsa-realty-web-mw</module>
+        <module>rsa-realty-web-shared</module>
     </modules>
     <properties>
         <rsa.app.version>1.0</rsa.app.version>
+        <java.version>1.8</java.version>
+        <org.springframework.boot.version>2.2.8.RELEASE</org.springframework.boot.version>
+        <org.springframework.version>5.2.7.RELEASE</org.springframework.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>

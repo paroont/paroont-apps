@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="rsa-core-mw" />
-        <module name="rsa-realty-db" />
+        <module name="rsa-realty-web-mw" />
+        <module name="rsa-realty-core-shared" />
+        <module name="rsa-realty-core-db" />
         <module name="rsa-core-shared" />
         <module name="rsa-core-db" />
-        <module name="rsa-realty-shared" />
-        <module name="rsa-realty-mw" />
+        <module name="rsa-realty-core-mw" />
+        <module name="rsa-realty-web-shared" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

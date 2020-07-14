@@ -20,7 +20,7 @@ public class CoreResponse implements CoreDto {
     }
 
     public boolean status() {
-        return (boolean) response(RESPONSE_STATUS);
+        return (Boolean) response(RESPONSE_STATUS);
     }
 
     public void addStatus(boolean status) {
