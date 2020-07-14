@@ -1,7 +1,9 @@
+/.idea/
 /rsa-core-shared/target/
 /rsa-core-db/target/
 /rsa-core-mw/target/
-/rsa-realty-db/target/
-/rsa-realty-mw/target/
-/rsa-realty-shared/target/
-/.idea/
+/rsa-realty-core-db/target/
+/rsa-realty-core-mw/target/
+/rsa-realty-core-shared/target/
+/rsa-realty-web-mw/target/
+/rsa-realty-web-shared/target/
