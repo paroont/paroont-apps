@@ -4,5 +4,5 @@ import com.rsatech.core.db.constant.common.CoreDbConst;
 
 import java.io.Serializable;
 
-public interface CoreDo extends Serializable, CoreDbConst {
+public interface CoreDo extends Serializable {
 }

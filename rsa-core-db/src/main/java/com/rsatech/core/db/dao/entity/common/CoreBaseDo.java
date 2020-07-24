@@ -3,7 +3,7 @@ package com.rsatech.core.db.dao.entity.common;
 import java.sql.Timestamp;
 
 public class CoreBaseDo implements CoreDo {
-    protected boolean active = true;
+    protected int statusId;
 
     protected String createdBy;
     protected Timestamp createdTs;
@@ -11,12 +11,12 @@ public class CoreBaseDo implements CoreDo {
     protected String updatedBy;
     protected Timestamp updatedTs;
 
-    public boolean isActive() {
-        return active;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     public String getCreatedBy() {

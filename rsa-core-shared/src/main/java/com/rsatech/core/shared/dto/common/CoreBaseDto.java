@@ -3,7 +3,7 @@ package com.rsatech.core.shared.dto.common;
 import java.sql.Timestamp;
 
 public class CoreBaseDto  implements CoreDto{
-    protected boolean active = true;
+    protected int statusId;
 
     protected String createdBy;
     protected Timestamp createdTs;
@@ -11,12 +11,12 @@ public class CoreBaseDto  implements CoreDto{
     protected String updatedBy;
     protected Timestamp updatedTs;
 
-    public boolean isActive() {
-        return active;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     public String getCreatedBy() {

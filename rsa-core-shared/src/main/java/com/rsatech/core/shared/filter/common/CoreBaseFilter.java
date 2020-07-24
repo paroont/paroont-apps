@@ -7,17 +7,12 @@ public class CoreBaseFilter  implements CoreFilter {
     protected long userId;
     protected String loginId;
 
-    protected Boolean active;
+    protected int statusId;
+
+    protected boolean pagination = true;
     protected int pageNo = 1;
     protected int pageSize = 25;
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
 
     public int getPageNo() {
         return pageNo;
@@ -51,5 +46,19 @@ public class CoreBaseFilter  implements CoreFilter {
         this.loginId = loginId;
     }
 
+    public int getStatusId() {
+        return statusId;
+    }
 
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
+    public boolean isPagination() {
+        return pagination;
+    }
+
+    public void setPagination(boolean pagination) {
+        this.pagination = pagination;
+    }
 }

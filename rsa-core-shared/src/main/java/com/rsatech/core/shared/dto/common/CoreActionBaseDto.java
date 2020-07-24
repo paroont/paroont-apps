@@ -1,12 +1,16 @@
-package com.rsatech.core.shared.dto.action;
+package com.rsatech.core.shared.dto.common;
 
 import com.rsatech.core.shared.dto.common.CoreDto;
 
-public class CoreActionDto  implements CoreDto {
+import java.sql.Timestamp;
+
+public class CoreActionBaseDto implements CoreActionDto {
     protected long userId;
     protected String loginId;
 
-    protected long actionId;
+    protected int actionId;
+    protected String actionTitle;
+    protected Timestamp actionTs;
 
     protected int appId;
     protected int moduleId;
@@ -29,11 +33,11 @@ public class CoreActionDto  implements CoreDto {
         this.loginId = loginId;
     }
 
-    public long getActionId() {
+    public int getActionId() {
         return actionId;
     }
 
-    public void setActionId(long actionId) {
+    public void setActionId(int actionId) {
         this.actionId = actionId;
     }
 
@@ -59,5 +63,21 @@ public class CoreActionDto  implements CoreDto {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public Timestamp getActionTs() {
+        return actionTs;
+    }
+
+    public void setActionTs(Timestamp actionTs) {
+        this.actionTs = actionTs;
+    }
+
+    public String getActionTitle() {
+        return actionTitle;
+    }
+
+    public void setActionTitle(String actionTitle) {
+        this.actionTitle = actionTitle;
     }
 }

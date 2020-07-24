@@ -11,5 +11,12 @@
 
     <artifactId>rsa-realty-core-shared</artifactId>
 
-
+<dependencies>
+    <!-- RSA Project Dependencies -->
+    <dependency>
+        <groupId>com.rsatech</groupId>
+        <artifactId>rsa-core-shared</artifactId>
+        <version>${rsa.app.version}</version>
+    </dependency>
+</dependencies>
 </project>
