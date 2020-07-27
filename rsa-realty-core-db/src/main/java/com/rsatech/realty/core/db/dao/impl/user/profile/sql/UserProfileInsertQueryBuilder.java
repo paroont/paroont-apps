@@ -1,13 +1,16 @@
 package com.rsatech.realty.core.db.dao.impl.user.profile.sql;
 
 import com.rsatech.core.db.dao.entity.common.CoreAuditDo;
-import com.rsatech.core.db.dao.entity.user.UserProfileBaseDo;
-import com.rsatech.core.db.dao.impl.common.sql.CoreInsertQueryBuilder;
-import com.rsatech.core.shared.dto.common.CoreActionBaseDto;
+import com.rsatech.core.db.dao.impl.user.profile.sql.company.CompanyProfileBaseInsertQueryBuilder;
+import com.rsatech.realty.core.db.dao.entity.user.UserProfileDo;
+import com.rsatech.realty.core.shared.dto.user.UserActionDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserProfileInsertQueryBuilder extends CoreInsertQueryBuilder<UserProfileBaseDo, CoreAuditDo, CoreActionBaseDto> {
+import static com.rsatech.realty.core.db.constant.user.UserProfileDbConst.DB_REALTY_USER_PROFILE_COLUMN_RERA_ID;
+import static com.rsatech.realty.core.db.constant.user.UserProfileDbConst.DB_REALTY_USER_PROFILE_INSERT;
+
+public class UserProfileInsertQueryBuilder extends CompanyProfileBaseInsertQueryBuilder<UserProfileDo, CoreAuditDo, UserActionDto> {
     private static final Logger logger = LoggerFactory.getLogger(UserProfileInsertQueryBuilder.class);
 
 
@@ -17,10 +20,14 @@ public class UserProfileInsertQueryBuilder extends CoreInsertQueryBuilder<UserPr
 
     @Override
     protected void buildInsertQuery() {
-        query.append("INSERT INTO USER_PROFILE (USER_ID, UPDATED_BY, UPDATED_TS) VALUES (:USER_ID, :UPDATED_BY, :UPDATED_TS)");
-        queryParams.addValue(DB_COMMON_COLUMN_USER_ID, data.getUserId());
+        super.buildInsertQuery();
+        queryParams.addValue(DB_REALTY_USER_PROFILE_COLUMN_RERA_ID, data.getReraId());
 
     }
 
+
+    protected void buildInsertClause() {
+        query.append(DB_REALTY_USER_PROFILE_INSERT);
+    }
 
 }

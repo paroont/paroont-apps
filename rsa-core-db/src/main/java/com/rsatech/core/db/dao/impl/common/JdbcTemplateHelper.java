@@ -13,6 +13,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 
@@ -53,7 +54,7 @@ public class JdbcTemplateHelper {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int insertCount =  jdbcTemplate.update(sql, paramSource, keyHolder);
         response.addDmlCount(insertCount);
-        long key = (Long) Objects.requireNonNull(keyHolder.getKey());
+        long key = ((BigInteger) Objects.requireNonNull(keyHolder.getKey())).longValue();
         response.addGeneratedId(key);
         logger.info("INSERT_COUNT: {}, KEY: {}", insertCount, key);
         return response;

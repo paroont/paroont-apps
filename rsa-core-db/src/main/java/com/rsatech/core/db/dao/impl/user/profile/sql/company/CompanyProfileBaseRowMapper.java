@@ -6,7 +6,7 @@ import com.rsatech.core.db.dao.impl.user.profile.sql.common.UserProfileBaseRowMa
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class BaseCompanyProfileRowMapper<T extends CompanyProfileDo> extends UserProfileBaseRowMapper<T> {
+public abstract class CompanyProfileBaseRowMapper<T extends CompanyProfileDo> extends UserProfileBaseRowMapper<T> {
 
     @Override
     protected void mapData(T data, ResultSet rs, int rowNum) throws SQLException {

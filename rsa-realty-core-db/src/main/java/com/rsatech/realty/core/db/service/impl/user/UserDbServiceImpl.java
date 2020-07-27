@@ -4,7 +4,6 @@ import com.rsatech.realty.core.db.dao.dao.user.UserProfileDao;
 import com.rsatech.realty.core.db.dao.entity.user.UserProfileDo;
 import com.rsatech.realty.core.db.service.impl.common.RealtyDbServiceImpl;
 import com.rsatech.realty.core.db.service.service.user.UserDbService;
-import com.rsatech.realty.core.shared.dto.common.RealtyActionDto;
 import com.rsatech.realty.core.shared.dto.user.UserActionDto;
 import com.rsatech.realty.core.shared.dto.user.UserProfileDto;
 import com.rsatech.realty.core.shared.filter.user.UserProfileFilter;
@@ -13,19 +12,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class UserDbServiceImpl extends RealtyDbServiceImpl implements UserDbService {
     private static final Logger logger = LoggerFactory.getLogger(UserDbServiceImpl.class);
 
-@Autowired
-private  UserProfileDao userProfileDao;
+    @Autowired
+    private UserProfileDao userProfileDao;
+
     public List<UserProfileDto> findAllUserProfiles(UserProfileFilter filter) {
         logger.info("Begin - findAllUserProfiles.");
         List<UserProfileDto> dtos = UserProfileMapper.INSTANCE.toDtos(userProfileDao.findAll(filter));
@@ -44,12 +42,13 @@ private  UserProfileDao userProfileDao;
     public long saveUserProfile(UserProfileDto dto, UserActionDto action) {
         Long userId = dto.getUserId();
         logger.info("Begin - saveUserProfile. USER_ID:{}", userId);
-        UserProfileDo userDo =  UserProfileMapper.INSTANCE.toDo(dto);
+        UserProfileDo userDo = UserProfileMapper.INSTANCE.toDo(dto);
         action.setActionTs(new Timestamp(new Date().getTime()));
-        userId =  userProfileDao.save(userDo, action);
+        userId = userProfileDao.save(userDo, action);
         logger.info("End - saveUserProfile. USER_ID:{}", userId);
         return userId;
     }
+
     @Lookup
     private UserProfileDao createUserProfileDao() {
         //TODO fix issue for null

@@ -1,14 +1,14 @@
 package com.rsatech.realty.core.db.dao.impl.user.profile.sql;
 
-import com.rsatech.core.db.dao.impl.user.profile.sql.company.BaseCompanyProfileRowMapper;
+import com.rsatech.core.db.dao.impl.user.profile.sql.company.CompanyProfileBaseRowMapper;
 import com.rsatech.realty.core.db.dao.entity.user.UserProfileDo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.rsatech.realty.core.db.constant.user.RealtyProfileDbConst.DB_REALTY_USER_PROFILE_COLUMN_RERA_ID;
+import static com.rsatech.realty.core.db.constant.user.UserProfileDbConst.DB_REALTY_USER_PROFILE_COLUMN_RERA_ID;
 
-public class UserProfileRowMapper extends BaseCompanyProfileRowMapper<UserProfileDo> {
+public class UserProfileRowMapper extends CompanyProfileBaseRowMapper<UserProfileDo> {
     @Override
     protected UserProfileDo createData() {
         return new UserProfileDo();

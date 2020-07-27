@@ -108,7 +108,7 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
         queryBuilder.setData(data);
         queryBuilder.setAction(action);
         queryBuilder.build();
-        DbCoreResponse response = jdbcTemplateHelper.save(queryBuilder.takeSql(), queryBuilder.getQueryParams());
+        DbCoreResponse response = jdbcTemplateHelper.insertAndGetKey(queryBuilder.takeSql(), queryBuilder.getQueryParams());
         logger.info("End - insert. USER_ID:{}, INSERT_COUNT:{}", response.generatedId(), response.dmlCount());
         return response;
     }
