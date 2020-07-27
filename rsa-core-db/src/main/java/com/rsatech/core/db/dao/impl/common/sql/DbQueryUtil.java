@@ -54,4 +54,9 @@ public class DbQueryUtil implements CoreDbConst {
     {
         return createNamedParam(colName, LogicalOperatorEnum.OR, ComparisonOperatorEnum.NOT_EQUAL_TO);
     }
+
+    public static String createUpdateNamedParam(String colName)
+    {
+        return ", " +  colName + " " + ComparisonOperatorEnum.EQUAL_TO.getKey() +  " " + createNamedParam(colName);
+    }
 }

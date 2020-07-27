@@ -1,10 +1,9 @@
 package com.rsatech.core.db.dao.impl.common;
 
 import com.rsatech.core.db.constant.common.CoreDbConst;
-import com.rsatech.core.db.dao.common.CoreDao;
+import com.rsatech.core.db.dao.dao.common.CoreDao;
 import com.rsatech.core.db.dao.entity.common.CoreAuditDo;
 import com.rsatech.core.db.dao.entity.common.CoreDo;
-import com.rsatech.core.shared.dto.common.CoreActionBaseDto;
 import com.rsatech.core.shared.dto.common.CoreActionDto;
 import com.rsatech.core.shared.filter.common.CoreFilter;
 import org.springframework.beans.factory.annotation.Autowired;

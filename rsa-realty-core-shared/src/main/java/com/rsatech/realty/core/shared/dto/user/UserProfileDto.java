@@ -1,34 +1,17 @@
 package com.rsatech.realty.core.shared.dto.user;
 
-import com.rsatech.realty.core.shared.dto.common.RealtyBaseDto;
+import com.rsatech.core.shared.dto.user.CompanyProfileDto;
+import com.rsatech.realty.core.shared.dto.common.RealtyDto;
 
-public class UserProfileDto extends RealtyBaseDto {
-    protected String firstName;
-    protected String lastName;
+public class UserProfileDto extends CompanyProfileDto implements RealtyDto {
 
-    public UserProfileDto()
-    {
+    protected String reraId;
 
+    public String getReraId() {
+        return reraId;
     }
 
-    public UserProfileDto(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setReraId(String reraId) {
+        this.reraId = reraId;
     }
 }

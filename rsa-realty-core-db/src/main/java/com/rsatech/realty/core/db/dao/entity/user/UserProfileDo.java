@@ -1,25 +1,17 @@
 package com.rsatech.realty.core.db.dao.entity.user;
 
-import com.rsatech.realty.core.db.dao.entity.common.RealtyBaseDo;
+import com.rsatech.core.db.dao.entity.user.CompanyProfileDo;
+import com.rsatech.realty.core.db.dao.entity.common.RealtyDo;
 
-public class UserProfileDo extends RealtyBaseDo {
+public class UserProfileDo extends CompanyProfileDo implements RealtyDo {
 
-    protected String firstName;
-    protected String lastName;
+    protected String reraId;
 
-    public String getFirstName() {
-        return firstName;
+    public String getReraId() {
+        return reraId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setReraId(String reraId) {
+        this.reraId = reraId;
     }
 }

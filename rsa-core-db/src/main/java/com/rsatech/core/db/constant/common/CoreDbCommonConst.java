@@ -12,4 +12,8 @@ public interface CoreDbCommonConst extends CoreDbCommonParamConst, CoreDbCommonC
     String DB_CONN_PASSWORD = "password";
 
 
+    String DB_RESPONSE_STATUS = "status";
+    String DB_RESPONSE_DML_COUNT = "dmlCount";
+    String DB_RESPONSE_GENERATED_ID = "generatedId";
+
 }

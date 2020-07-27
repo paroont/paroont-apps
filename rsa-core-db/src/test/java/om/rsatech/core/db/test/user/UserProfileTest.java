@@ -1,12 +1,12 @@
 package om.rsatech.core.db.test.user;
 
-import com.rsatech.core.db.dao.entity.user.UserDo;
-import com.rsatech.core.db.dao.impl.user.sql.UserDeleteQueryBuilder;
-import com.rsatech.core.db.dao.impl.user.sql.UserInsertQueryBuilder;
-import com.rsatech.core.db.dao.impl.user.sql.UserSelectQueryBuilder;
-import com.rsatech.core.db.dao.impl.user.sql.UserUpdateQueryBuilder;
+import com.rsatech.core.db.dao.entity.user.UserProfileBaseDo;
+import com.rsatech.core.db.dao.impl.user.profile.sql.UserDeleteQueryBuilder;
+import com.rsatech.core.db.dao.impl.user.profile.sql.UserInsertQueryBuilder;
+import com.rsatech.core.db.dao.impl.user.profile.sql.UserSelectQueryBuilder;
+import com.rsatech.core.db.dao.impl.user.profile.sql.UserUpdateQueryBuilder;
 import com.rsatech.core.shared.dto.common.CoreActionBaseDto;
-import com.rsatech.core.shared.filter.user.UserFilter;
+import com.rsatech.core.shared.filter.user.BaseProfileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +25,7 @@ public class UserProfileTest {
 
     public void testSelect()
     {
-        UserFilter filter = new UserFilter();
+        BaseProfileFilter filter = new BaseProfileFilter();
         filter.setUserId(66);
         filter.setLoginId("9819440106");
         UserSelectQueryBuilder queryBuilder = new UserSelectQueryBuilder();
@@ -36,15 +36,15 @@ public class UserProfileTest {
 
     public void testUpdate()
     {
-        UserFilter filter = new UserFilter();
+        BaseProfileFilter filter = new BaseProfileFilter();
         filter.setUserId(66);
         filter.setLoginId("9819440106");
 
-        UserDo data = new UserDo();
+        UserProfileBaseDo data = new UserProfileBaseDo();
         data.setUserId(66);
         data.setFirstName("TEst");
 
-        UserDo oldData = new UserDo();
+        UserProfileBaseDo oldData = new UserProfileBaseDo();
         oldData.setUserId(66);
         oldData.setFirstName("TEstr");
 
@@ -68,7 +68,7 @@ public class UserProfileTest {
     {
 
 
-        UserDo data = new UserDo();
+        UserProfileBaseDo data = new UserProfileBaseDo();
         data.setUserId(66);
         data.setFirstName("TEst");
 
@@ -91,7 +91,7 @@ public class UserProfileTest {
     {
 
 
-        UserDo data = new UserDo();
+        UserProfileBaseDo data = new UserProfileBaseDo();
         data.setUserId(66);
         data.setFirstName("TEst");
 

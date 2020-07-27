@@ -4,7 +4,6 @@ import com.rsatech.core.db.constant.common.CoreDbConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 public abstract class CoreBaseQueryBuilder implements CoreQueryBuilder, CoreDbConst {
     private static final Logger logger = LoggerFactory.getLogger(CoreBaseQueryBuilder.class);

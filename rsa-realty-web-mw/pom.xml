@@ -16,7 +16,6 @@
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!-- RSA Project Dependencies -->
 
     <!-- RSA Project Dependencies -->
     <!-- RSA DB -->

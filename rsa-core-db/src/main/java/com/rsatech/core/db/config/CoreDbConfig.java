@@ -3,7 +3,6 @@ package com.rsatech.core.db.config;
 import com.rsatech.core.db.constant.common.CoreDbConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -36,9 +35,6 @@ public class CoreDbConfig implements CoreDbConst {
     private String connPropertyValue(String prosName) {
         return connPropertyValue(DB_CONN_NAME_DEFAULT, prosName);
     }
-
-
-
 
 
 }

@@ -40,7 +40,15 @@ public class CoreResponse implements CoreDto {
         return response(RESPONSE_DATA);
     }
 
-    public void addData(String data) {
+    public void addData(Object data) {
         addResponse(RESPONSE_DATA, data);
+    }
+
+    public Map<String, Object> getResMap() {
+        return resMap;
+    }
+
+    public void setResMap(Map<String, Object> resMap) {
+        this.resMap = resMap;
     }
 }

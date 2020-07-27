@@ -15,6 +15,7 @@ public abstract class CoreSelectQueryBuilder<F extends CoreFilter> extends CoreB
         buildSelectQuery();
         buildWhereQuery();
         buildOrderByQuery();
+        // LIMIT 0, 200
         logSqlAndParams();
         return query.toString();
     }

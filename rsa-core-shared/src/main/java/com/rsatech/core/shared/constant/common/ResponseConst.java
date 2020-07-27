@@ -4,4 +4,5 @@ public interface ResponseConst {
     String RESPONSE_STATUS = "status";
     String RESPONSE_MESSAGE = "message";
     String RESPONSE_DATA = "data";
+    String RESPONSE_USER_ID = "userId";
 }
