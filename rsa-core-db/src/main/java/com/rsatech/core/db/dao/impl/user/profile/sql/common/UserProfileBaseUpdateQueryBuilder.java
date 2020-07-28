@@ -13,6 +13,8 @@ public abstract class UserProfileBaseUpdateQueryBuilder<D extends UserProfileBas
 
     public UserProfileBaseUpdateQueryBuilder() {
 
+
+
     }
 
 
