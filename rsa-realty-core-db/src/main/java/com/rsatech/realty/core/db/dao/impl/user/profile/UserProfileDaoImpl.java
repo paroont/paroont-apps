@@ -1,7 +1,6 @@
 package com.rsatech.realty.core.db.dao.impl.user.profile;
 
 import com.rsatech.core.db.dao.common.DbCoreResponse;
-import com.rsatech.core.db.dao.impl.common.sql.CoreDmlQueryBuilder;
 import com.rsatech.core.db.exception.common.RecordNotFoundException;
 import com.rsatech.realty.core.db.dao.dao.user.UserProfileDao;
 import com.rsatech.realty.core.db.dao.entity.user.UserProfileAuditDo;
@@ -11,7 +10,6 @@ import com.rsatech.realty.core.db.dao.impl.user.profile.sql.UserProfileInsertQue
 import com.rsatech.realty.core.db.dao.impl.user.profile.sql.UserProfileRowMapper;
 import com.rsatech.realty.core.db.dao.impl.user.profile.sql.UserProfileSelectQueryBuilder;
 import com.rsatech.realty.core.db.dao.impl.user.profile.sql.UserProfileUpdateQueryBuilder;
-import com.rsatech.realty.core.shared.dto.common.RealtyActionDto;
 import com.rsatech.realty.core.shared.dto.user.UserActionDto;
 import com.rsatech.realty.core.shared.filter.user.UserProfileFilter;
 import org.slf4j.Logger;
@@ -59,7 +57,7 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
         logger.info("Begin - fetchById. USER_ID:{}", id);
         UserProfileDo data = findById(id);
         if (null == data) {
-            throw new RecordNotFoundException("User profile doesn't exist.");
+            throw new RecordNotFoundException("User profile doesn't exist for USER_ID:" + id);
         }
         logger.info("End - fetchById. USER_ID:{}", id);
         return data;
@@ -75,10 +73,10 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
 
         if (userId > 0) {
             logger.info("Updating user profile for USER_ID:{}.", userId);
-            response =   update( data,  action);
+            response = update(data, action);
         } else {
             logger.info("Creating new User profile.");
-            response =   insert( data,  action);
+            response = insert(data, action);
             userId = response.generatedId();
         }
         logger.info("End - save. USER_ID:{}", userId);
@@ -86,9 +84,7 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
     }
 
 
-
-    private DbCoreResponse update(UserProfileDo data, UserActionDto action)
-    {
+    private DbCoreResponse update(UserProfileDo data, UserActionDto action) {
         long userId = data.getUserId();
         logger.info("Begin - update. USER_ID:{}", userId);
         UserProfileUpdateQueryBuilder queryBuilder = new UserProfileUpdateQueryBuilder();
@@ -96,13 +92,12 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
         queryBuilder.setOldData(fetchById(userId));
         queryBuilder.setAction(action);
         queryBuilder.build();
-        DbCoreResponse response =   jdbcTemplateHelper.save(queryBuilder.takeSql(), queryBuilder.getQueryParams());
+        DbCoreResponse response = jdbcTemplateHelper.save(queryBuilder.takeSql(), queryBuilder.getQueryParams());
         logger.info("End - update. USER_ID:{}, UPDATE_COUNT:{}", userId, response.dmlCount());
         return response;
     }
 
-    private DbCoreResponse insert(UserProfileDo data, UserActionDto action)
-    {
+    private DbCoreResponse insert(UserProfileDo data, UserActionDto action) {
         logger.info("Begin - insert.");
         UserProfileInsertQueryBuilder queryBuilder = new UserProfileInsertQueryBuilder();
         queryBuilder.setData(data);
@@ -116,7 +111,7 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteById(Long aLong, UserActionDto action) {
-
+        throw new UnsupportedOperationException();
     }
 
 }

@@ -21,8 +21,6 @@ public abstract class UserProfileBaseRowMapper<T extends UserProfileBaseDo> exte
         data.setEmailId2(rs.getString(DB_COMMON_COLUMN_EMAIL_ID_2));
         data.setEmailId3(rs.getString(DB_COMMON_COLUMN_EMAIL_ID_3));
 
-        data.setStatusId(rs.getInt(DB_COMMON_COLUMN_STATUS_ID));
-        data.setStatusTitle(rs.getString(DB_COMMON_COLUMN_STATUS_TITLE));
 
         data.setProfileTypeId(rs.getInt(DB_COMMON_USER_PROFILE_COLUMN_PROFILE_TYPE_ID));
         data.setProfileTypeTitle(rs.getString(DB_COMMON_USER_PROFILE_COLUMN_PROFILE_TYPE_TITLE));
@@ -56,6 +54,7 @@ public abstract class UserProfileBaseRowMapper<T extends UserProfileBaseDo> exte
         data.setIncomeRangeId(rs.getInt(DB_COMMON_USER_PROFILE_COLUMN_INCOME_RANGE_ID));
         data.setIncomeRangeTitle(rs.getString(DB_COMMON_USER_PROFILE_COLUMN_INCOME_RANGE_TITLE));
 
+        mapStatusData(data,rs);
         mapCreatedData(data, rs);
         mapUpdatedData(data, rs);
 

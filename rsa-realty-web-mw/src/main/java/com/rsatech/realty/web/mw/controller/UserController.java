@@ -3,6 +3,7 @@ package com.rsatech.realty.web.mw.controller;
 import com.rsatech.core.shared.dto.common.CoreResponse;
 import com.rsatech.realty.core.shared.dto.user.UserActionDto;
 import com.rsatech.realty.core.shared.dto.user.UserProfileDto;
+import com.rsatech.realty.core.shared.service.common.RealtyAllService;
 import com.rsatech.realty.core.shared.service.user.UserService;
 import com.rsatech.realty.web.mw.constant.common.WebMwConst;
 import org.slf4j.Logger;
@@ -17,8 +18,10 @@ import java.util.Map;
 public class UserController implements WebMwConst {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+
+
     @Autowired
-    UserService userService;
+    RealtyAllService realtyAllService;
 
 
     @GetMapping(URL_REALTY_USER_PROFILE_ID)
@@ -27,7 +30,7 @@ public class UserController implements WebMwConst {
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
-            UserProfileDto dto = userService.findUserProfileById(userId);
+            UserProfileDto dto = realtyAllService.getUserService().findUserProfileById(userId);
             response.addData(dto);
             if (null == dto) {
                 response.addStatus(false);
@@ -81,7 +84,7 @@ public class UserController implements WebMwConst {
         long userId = 0;
         try {
             actionDto.setUserId(1);
-            userId = userService.saveUserProfile(user, actionDto);
+            userId = realtyAllService.getUserService().saveUserProfile(user, actionDto);
             response.addResponse(RESPONSE_USER_ID, userId);
         } catch (Exception e) {
             response.addStatus(false);

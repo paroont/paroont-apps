@@ -1,9 +1,7 @@
 package com.rsatech.core.shared.filter.common;
 
 
-import com.rsatech.core.shared.exception.common.CoreRuntimeException;
-
-public class CoreBaseFilter  implements CoreFilter {
+public class CoreBaseFilter implements CoreFilter {
     protected long userId;
     protected String loginId;
 

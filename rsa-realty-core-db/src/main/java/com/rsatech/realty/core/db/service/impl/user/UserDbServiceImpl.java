@@ -11,13 +11,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-@Component
+@Service
 public class UserDbServiceImpl extends RealtyDbServiceImpl implements UserDbService {
     private static final Logger logger = LoggerFactory.getLogger(UserDbServiceImpl.class);
 

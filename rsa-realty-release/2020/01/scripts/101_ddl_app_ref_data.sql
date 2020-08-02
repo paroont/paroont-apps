@@ -1,6 +1,6 @@
 
 
--- ============================    USER APP_REF_DATA ===========================
+-- ============================   APP_REF_DATA ===========================
 CREATE TABLE APP_REF_DATA(
 	DATA_ID	BIGINT NOT NULL AUTO_INCREMENT,
 	DATA_TYPE	VARCHAR (255) NOT NULL,
