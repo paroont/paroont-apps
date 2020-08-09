@@ -7,8 +7,6 @@ import static com.rsatech.core.db.constant.profile.CoreProfileDbConst.DB_COMMON_
 public interface UserProfileDbConst {
 
     // ====================   Column Constant   =======================
-    String DB_REALTY_USER_PROFILE_COLUMN_RERA_ID = "RERA_ID";
-
 
     String DB_REALTY_COMPANY_PROFILE_COLUMNS = DB_COMMON_COMPANY_PROFILE_COLUMNS + ", RERA_ID " ;
     String DB_REALTY_COMPANY_PROFILE_COLUMNS_PARAMS = DB_COMMON_COMPANY_PROFILE_COLUMNS_PARAMS + ", :RERA_ID " ;

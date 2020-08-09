@@ -7,7 +7,7 @@ import com.rsatech.realty.core.shared.dto.user.UserActionDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.rsatech.realty.core.db.constant.user.UserProfileDbConst.DB_REALTY_USER_PROFILE_COLUMN_RERA_ID;
+import static com.rsatech.realty.core.db.constant.common.RealtyDbCommonColumnConst.DB_REALTY_COMMON_COLUMN_RERA_ID;
 import static com.rsatech.realty.core.db.constant.user.UserProfileDbConst.DB_REALTY_USER_PROFILE_INSERT;
 
 public class UserProfileInsertQueryBuilder extends CompanyProfileBaseInsertQueryBuilder<UserProfileDo, CoreAuditDo, UserActionDto> {
@@ -21,7 +21,7 @@ public class UserProfileInsertQueryBuilder extends CompanyProfileBaseInsertQuery
     @Override
     protected void buildInsertQuery() {
         super.buildInsertQuery();
-        queryParams.addValue(DB_REALTY_USER_PROFILE_COLUMN_RERA_ID, data.getReraId());
+        queryParams.addValue(DB_REALTY_COMMON_COLUMN_RERA_ID, data.getReraId());
 
     }
 

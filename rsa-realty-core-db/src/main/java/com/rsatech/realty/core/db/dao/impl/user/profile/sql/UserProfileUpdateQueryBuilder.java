@@ -20,7 +20,7 @@ public class UserProfileUpdateQueryBuilder extends CompanyProfileBaseUpdateQuery
     protected void buildUpdateQuery() {
         super.buildUpdateQuery();
 
-        buildStringUpdateQuery(data.getReraId(), oldData.getReraId(), DB_REALTY_USER_PROFILE_COLUMN_RERA_ID);
+        buildStringUpdateQuery(data.getReraId(), oldData.getReraId(), DB_REALTY_COMMON_COLUMN_RERA_ID);
     }
 
 

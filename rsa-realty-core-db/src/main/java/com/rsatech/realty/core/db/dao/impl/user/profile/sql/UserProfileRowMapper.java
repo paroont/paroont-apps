@@ -6,7 +6,7 @@ import com.rsatech.realty.core.db.dao.entity.user.UserProfileDo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.rsatech.realty.core.db.constant.user.UserProfileDbConst.DB_REALTY_USER_PROFILE_COLUMN_RERA_ID;
+import static com.rsatech.realty.core.db.constant.common.RealtyDbCommonColumnConst.DB_REALTY_COMMON_COLUMN_RERA_ID;
 
 public class UserProfileRowMapper extends CompanyProfileBaseRowMapper<UserProfileDo> {
     @Override
@@ -18,6 +18,6 @@ public class UserProfileRowMapper extends CompanyProfileBaseRowMapper<UserProfil
     protected void mapData(UserProfileDo data, ResultSet rs, int rowNum) throws SQLException {
         super.mapData(data, rs, rowNum);
 
-        data.setReraId(rs.getString(DB_REALTY_USER_PROFILE_COLUMN_RERA_ID));
+        data.setReraId(rs.getString(DB_REALTY_COMMON_COLUMN_RERA_ID));
     }
 }

@@ -9,7 +9,7 @@ public enum RealtyRefDataTypeEnum {
 
     PROPERTY_TYPE("PROPERTY_TYPE", "Property Type"),//
     PROPERTY_TYPE_GROUP("PROPERTY_TYPE_GROUP", "Property Group Type"),//
-    PROPERTY_FURNISH_TYPE("PROPERTY_FURNISHING", "Property Furnish"),//
+    PROPERTY_FURNISH_TYPE("PROPERTY_FURNISH_TYPE", "Property Furnish"),//
     UAT("UAT", "UAT"),//
     PRE_PROD("PRE_PROD", "Pre Prod"),//
     PROD("PROD", "Prod");
