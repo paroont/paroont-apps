@@ -1,13 +1,20 @@
 package com.rsatech.realty.core.db.dao.impl.property;
 
+import com.rsatech.core.db.dao.common.DbCoreResponse;
 import com.rsatech.core.db.exception.common.RecordNotFoundException;
 import com.rsatech.realty.core.db.dao.dao.property.PostPropertyDao;
 import com.rsatech.realty.core.db.dao.entity.property.post.PostPropertyAuditDo;
 import com.rsatech.realty.core.db.dao.entity.property.post.PostPropertyDo;
+import com.rsatech.realty.core.db.dao.entity.user.UserProfileDo;
 import com.rsatech.realty.core.db.dao.impl.common.RealtyDaoImpl;
+import com.rsatech.realty.core.db.dao.impl.property.sql.post.PostPropertyInsertQueryBuilder;
 import com.rsatech.realty.core.db.dao.impl.property.sql.post.PostPropertyRowMapper;
 import com.rsatech.realty.core.db.dao.impl.property.sql.post.PostPropertySelectQueryBuilder;
+import com.rsatech.realty.core.db.dao.impl.property.sql.post.PostPropertyUpdateQueryBuilder;
+import com.rsatech.realty.core.db.dao.impl.user.profile.sql.UserProfileInsertQueryBuilder;
+import com.rsatech.realty.core.db.dao.impl.user.profile.sql.UserProfileUpdateQueryBuilder;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
+import com.rsatech.realty.core.shared.dto.user.UserActionDto;
 import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,10 +67,50 @@ public class PostPropertyDaoImpl extends RealtyDaoImpl<PostPropertyDo, Long, Pro
         return data;
     }
 
+
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Long save(PostPropertyDo data, PropertyActionDto action) {
-        throw new UnsupportedOperationException();
+        long propertyId = data.getPropertyId();
+        logger.info("Begin - save. PROPERTY_ID:{}", propertyId);
+        DbCoreResponse response = null;
+        int saveCount = 0;
+
+        if (propertyId > 0) {
+            logger.info("Updating Post Property for PROPERTY_ID:{}.", propertyId);
+            response = update(data, action);
+        } else {
+            logger.info("Creating new Post Property.");
+            response = insert(data, action);
+            propertyId = response.generatedId();
+        }
+        logger.info("End - save. PROPERTY_ID:{}", propertyId);
+        return propertyId;
+    }
+
+
+    private DbCoreResponse update(PostPropertyDo data, PropertyActionDto action) {
+        long propertyId = data.getPropertyId();
+        logger.info("Begin - update. PROPERTY_ID:{}", propertyId);
+        PostPropertyUpdateQueryBuilder queryBuilder = new PostPropertyUpdateQueryBuilder();
+        queryBuilder.setData(data);
+        queryBuilder.setOldData(fetchById(propertyId));
+        queryBuilder.setAction(action);
+        queryBuilder.build();
+        DbCoreResponse response = jdbcTemplateHelper.save(queryBuilder.takeSql(), queryBuilder.getQueryParams());
+        logger.info("End - update. PROPERTY_ID:{}, UPDATE_COUNT:{}", propertyId, response.dmlCount());
+        return response;
+    }
+
+    private DbCoreResponse insert(PostPropertyDo data, PropertyActionDto action) {
+        logger.info("Begin - insert.");
+        PostPropertyInsertQueryBuilder queryBuilder = new PostPropertyInsertQueryBuilder();
+        queryBuilder.setData(data);
+        queryBuilder.setAction(action);
+        queryBuilder.build();
+        DbCoreResponse response = jdbcTemplateHelper.insertAndGetKey(queryBuilder.takeSql(), queryBuilder.getQueryParams());
+        logger.info("End - insert. USER_ID:{}, INSERT_COUNT:{}", response.generatedId(), response.dmlCount());
+        return response;
     }
 
     @Override

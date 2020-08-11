@@ -54,14 +54,14 @@ public abstract class CoreSelectQueryBuilder<F extends CoreFilter> extends CoreB
 
 
     protected void buildNumberSelectQuery(long value, String colName) {
-        if (value > 0) {
+        if (value > -1) {
             query.append(DbQueryUtil.createAndEqualNamedParam(colName));
             queryParams.addValue(colName, value);
         }
     }
 
     protected void buildDecimalSelectQuery(double value, double oldValue, String colName) {
-        if (value > 0) {
+        if (value > -1) {
             query.append(DbQueryUtil.createAndEqualNamedParam(colName));
             queryParams.addValue(colName, value);
         }

@@ -4,6 +4,6 @@ import com.rsatech.core.shared.constant.common.CoreCommonConst;
 import com.rsatech.core.shared.constant.common.CoreConst;
 import com.rsatech.core.shared.constant.common.ResponseConst;
 
-public interface RealtyConst extends CoreConst, RealtyCommonConst {
+public interface RealtyConst extends CoreConst, RealtyCommonConst, RealtyResponseConst {
     // Don't add any constant in this file, it should be in the respective file.
 }

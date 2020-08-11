@@ -4,9 +4,11 @@ import com.rsatech.realty.core.shared.filter.common.RealtyBaseFilter;
 
 public class PropertyFilter extends RealtyBaseFilter {
 
-    protected long templateId = -1;
+    protected long templateId = -99;
 
-    protected long propertyId = -1;
+    protected long propertyId = -99;
+
+    protected long transactionTypeId = -99;
 
     public long getTemplateId() {
         return templateId;
@@ -22,5 +24,13 @@ public class PropertyFilter extends RealtyBaseFilter {
 
     public void setPropertyId(long propertyId) {
         this.propertyId = propertyId;
+    }
+
+    public long getTransactionTypeId() {
+        return transactionTypeId;
+    }
+
+    public void setTransactionTypeId(long transactionTypeId) {
+        this.transactionTypeId = transactionTypeId;
     }
 }

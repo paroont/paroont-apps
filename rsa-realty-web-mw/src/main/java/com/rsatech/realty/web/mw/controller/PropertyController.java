@@ -1,22 +1,16 @@
 package com.rsatech.realty.web.mw.controller;
 
-import com.rsatech.core.shared.dto.common.CoreResponse;
-import com.rsatech.core.shared.enumeration.rdm.AppRefDataTypeEnum;
+import com.rsatech.realty.core.shared.facade.property.RentPropertyFacade;
+import com.rsatech.realty.core.shared.facade.property.SellPropertyFacade;
+import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
 import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
-import com.rsatech.realty.core.shared.dto.user.UserActionDto;
-import com.rsatech.realty.core.shared.dto.user.UserProfileDto;
-import com.rsatech.realty.core.shared.enumeration.rdm.RealtyRefDataTypeEnum;
-import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
-import com.rsatech.realty.core.shared.service.common.RealtyAllService;
 import com.rsatech.realty.web.mw.constant.common.WebMwConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -25,45 +19,51 @@ public class PropertyController implements WebMwConst {
     private static final Logger logger = LoggerFactory.getLogger(PropertyController.class);
 
     @Autowired
-    RealtyAllService realtyAllService;
+    private RentPropertyFacade rentPropertyFacade;
+
+    @Autowired
+    private SellPropertyFacade sellPropertyFacade;
 
 
     @GetMapping(URL_REALTY_PROPERTY_RENT)
     public Map<String, Object> findAllRentProperties() {
-        logger.info("Begin - findAllRentProperties.");
-        CoreResponse response = new CoreResponse();
-        String msg = "";
-        try {
-            PropertyFilter filter = new PropertyFilter();
-            List<RentPropertyDto> dtos = realtyAllService.getPropertyService().findAllRentProperties(filter);
-            response.addData(dtos);
-        } catch (Exception e) {
-            response.addStatus(false);
-            msg = "Error occurred while searching rent properties.";
-            logger.error(msg + e.getMessage(), e);
-        }
-        response.addMessage(msg);
-        logger.info("End - findAllRentProperties.");
-        return response.getResMap();
+        return rentPropertyFacade.findAllRentProperties().getResMap();
     }
+
+    @PostMapping(URL_REALTY_PROPERTY_RENT)
+    public Map<String, Object> addRentProperty(@RequestBody RentPropertyDto dto) {
+        dto.setPropertyId(0);
+        return rentPropertyFacade.saveRentProperty(dto, createPropertyActionDto()).getResMap();
+    }
+
+    @PutMapping(URL_REALTY_PROPERTY_RENT_ID)
+    public Map<String, Object> updateRentProperty(@RequestBody RentPropertyDto dto, @PathVariable("propertyId") long propertyId) {
+        dto.setPropertyId(propertyId);
+        return rentPropertyFacade.saveRentProperty(dto, createPropertyActionDto()).getResMap();
+    }
+
 
     @GetMapping(URL_REALTY_PROPERTY_SELL)
     public Map<String, Object> findAllSellProperties() {
-        logger.info("Begin - findAllSellProperties.");
-        CoreResponse response = new CoreResponse();
-        String msg = "";
-        try {
-            PropertyFilter filter = new PropertyFilter();
-            List<SellPropertyDto> dtos = realtyAllService.getPropertyService().findAllSellProperties(filter);
-            response.addData(dtos);
-        } catch (Exception e) {
-            response.addStatus(false);
-            msg = "Error occurred while searching sell properties.";
-            logger.error(msg + e.getMessage(), e);
-        }
-        response.addMessage(msg);
-        logger.info("End - findAllSellProperties.");
-        return response.getResMap();
+        return sellPropertyFacade.findAllSellProperties().getResMap();
+    }
+
+    @PostMapping(URL_REALTY_PROPERTY_SELL)
+    public Map<String, Object> addSellProperty(@RequestBody SellPropertyDto dto) {
+        dto.setPropertyId(0);
+        return sellPropertyFacade.saveSellProperty(dto, createPropertyActionDto()).getResMap();
+    }
+
+    @PutMapping(URL_REALTY_PROPERTY_SELL_ID)
+    public Map<String, Object> updateSellProperty(@RequestBody SellPropertyDto dto, @PathVariable("propertyId") long propertyId) {
+        dto.setPropertyId(propertyId);
+        return sellPropertyFacade.saveSellProperty(dto, createPropertyActionDto()).getResMap();
+    }
+
+    private PropertyActionDto createPropertyActionDto() {
+        PropertyActionDto actionDto = new PropertyActionDto();
+        actionDto.setLoginId("rahulk");
+        return actionDto;
     }
 
 }

@@ -17,7 +17,8 @@ public abstract class PropertyBaseSelectQueryBuilder extends CoreSelectQueryBuil
 
     @Override
     protected void buildWhereQuery() {
-        //buildNumberSelectQuery(filter.getDataId(), DB_RDM_APP_REF_DATA_COLUMN_DATA_ID);
+        buildNumberSelectQuery(filter.getTemplateId(), DB_COMMON_COLUMN_TEMPLATE_ID);
+        buildNumberSelectQuery(filter.getPropertyId(), DB_REALTY_PROPERTY_COLUMN_PROPERTY_ID);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.rsatech.realty.core.shared.service.property;
 
+import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
 import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.template.BuildingTemplateDto;
@@ -22,4 +23,7 @@ public interface PropertyService extends RealtyService {
     public List<SellPropertyDto> findAllSellProperties(PropertyFilter filter);
 
     public SellPropertyDto findSellPropertyById(long id);
+    public long saveRentProperty(RentPropertyDto dto, PropertyActionDto action);
+
+    public long saveSellProperty(SellPropertyDto dto, PropertyActionDto action);
 }

@@ -16,7 +16,7 @@ public class BuildingTemplateSelectQueryBuilder extends PropertyBaseSelectQueryB
 
     @Override
     protected void buildSelectQuery() {
-        query.append(DB_REALTY_USER_PROFILE_SELECT);
+        query.append(DB_REALTY_BUILDING_TEMPLATE_SELECT);
     }
 
 

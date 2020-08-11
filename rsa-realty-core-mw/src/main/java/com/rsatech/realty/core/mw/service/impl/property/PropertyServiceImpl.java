@@ -3,6 +3,7 @@ package com.rsatech.realty.core.mw.service.impl.property;
 import com.rsatech.realty.core.db.service.service.property.PropertyDbService;
 import com.rsatech.realty.core.db.service.service.user.UserDbService;
 import com.rsatech.realty.core.mw.service.impl.common.RealtyServiceImpl;
+import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
 import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.template.BuildingTemplateDto;
@@ -51,6 +52,12 @@ public class PropertyServiceImpl extends RealtyServiceImpl implements PropertySe
         return propertyDbService.findSellPropertyById(id);
     }
 
+    public long saveRentProperty(RentPropertyDto dto, PropertyActionDto actionDto){
+        return propertyDbService.saveRentProperty(dto, actionDto);
+    }
 
+    public long saveSellProperty(SellPropertyDto dto, PropertyActionDto actionDto){
+        return propertyDbService.saveSellProperty(dto, actionDto);
+    }
 
 }
