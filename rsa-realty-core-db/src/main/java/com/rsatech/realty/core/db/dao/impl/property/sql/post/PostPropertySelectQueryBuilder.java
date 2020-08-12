@@ -14,6 +14,10 @@ public class PostPropertySelectQueryBuilder extends PropertyBaseSelectQueryBuild
     }
 
 
+    protected void buildWhereQuery() {
+        super.buildWhereQuery();
+        buildNumberSelectQuery(filter.getTransactionTypeId(), DB_REALTY_PROPERTY_COLUMN_TRANSACTION_TYPE_ID);
+    }
     @Override
     protected void buildSelectQuery() {
         query.append(DB_REALTY_POST_PROPERTY_SELECT);

@@ -1,10 +1,10 @@
 package com.rsatech.realty.web.mw.controller;
 
-import com.rsatech.realty.core.shared.facade.property.RentPropertyFacade;
-import com.rsatech.realty.core.shared.facade.property.SellPropertyFacade;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
 import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
+import com.rsatech.realty.core.shared.facade.property.RentPropertyFacade;
+import com.rsatech.realty.core.shared.facade.property.SellPropertyFacade;
 import com.rsatech.realty.web.mw.constant.common.WebMwConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +30,11 @@ public class PropertyController implements WebMwConst {
         return rentPropertyFacade.findAllRentProperties().getResMap();
     }
 
+    @GetMapping(URL_REALTY_PROPERTY_RENT_ID)
+    public Map<String, Object> findRentPropertyById(@PathVariable("propertyId") long propertyId) {
+        return rentPropertyFacade.findRentPropertyById(propertyId).getResMap();
+    }
+
     @PostMapping(URL_REALTY_PROPERTY_RENT)
     public Map<String, Object> addRentProperty(@RequestBody RentPropertyDto dto) {
         dto.setPropertyId(0);
@@ -46,6 +51,11 @@ public class PropertyController implements WebMwConst {
     @GetMapping(URL_REALTY_PROPERTY_SELL)
     public Map<String, Object> findAllSellProperties() {
         return sellPropertyFacade.findAllSellProperties().getResMap();
+    }
+
+    @GetMapping(URL_REALTY_PROPERTY_SELL_ID)
+    public Map<String, Object> findSellPropertyById(@PathVariable("propertyId") long propertyId) {
+        return sellPropertyFacade.findSellPropertyById(propertyId).getResMap();
     }
 
     @PostMapping(URL_REALTY_PROPERTY_SELL)

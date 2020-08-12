@@ -5,7 +5,7 @@ public class CoreBaseFilter implements CoreFilter {
     protected long userId;
     protected String loginId;
 
-    protected int statusId;
+    protected int statusId = -99;
 
     protected boolean pagination = true;
     protected int pageNo = 1;

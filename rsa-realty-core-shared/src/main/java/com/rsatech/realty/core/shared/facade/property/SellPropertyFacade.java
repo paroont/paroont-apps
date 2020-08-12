@@ -4,6 +4,7 @@ import com.rsatech.core.shared.dto.common.CoreResponse;
 import com.rsatech.realty.core.shared.constant.common.RealtyConst;
 import com.rsatech.realty.core.shared.constant.common.RealtyResponseConst;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
+import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
 import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
 import com.rsatech.realty.core.shared.service.property.PropertyService;
@@ -40,6 +41,29 @@ public class SellPropertyFacade implements RealtyConst {
         }
         response.addMessage(msg);
         logger.info("End - findAllSellProperties.");
+        return response;
+    }
+
+    public CoreResponse findSellPropertyById(long propertyId){
+        logger.info("Begin - findSellPropertyById. PROPERTY_ID:{}", propertyId);
+        CoreResponse response = new CoreResponse();
+        String msg = "";
+        try {
+            SellPropertyDto dto = propertyService.findSellPropertyById(propertyId);
+            response.addData(dto);
+            if(dto == null)
+            {
+                response.addStatus(false);
+                msg ="sell property doesn't exist for PROPERTY_ID:" + propertyId;
+            }
+
+        } catch (Exception e) {
+            response.addStatus(false);
+            msg = "Error occurred while searching sell property for PROPERTY_ID:" + propertyId;
+            logger.error(msg + e.getMessage(), e);
+        }
+        response.addMessage(msg);
+        logger.info("End - findSellPropertyById. PROPERTY_ID:{}", propertyId);
         return response;
     }
 

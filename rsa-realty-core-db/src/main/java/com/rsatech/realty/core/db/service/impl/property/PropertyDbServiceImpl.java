@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PropertyDbServiceImpl extends RealtyDbServiceImpl implements PropertyDbService {
@@ -55,7 +56,9 @@ public class PropertyDbServiceImpl extends RealtyDbServiceImpl implements Proper
 
     public RentPropertyDto findRentPropertyById(long id) {
         logger.info("Begin - findRentPropertyById. PROPERTY_ID:{}", id);
-        RentPropertyDto dto = PropertyObjectMapper.INSTANCE.toRentDto(postPropertyDao.findById(id));
+        PropertyFilter filter = new PropertyFilter();
+        filter.setPropertyId(id);
+        RentPropertyDto dto = findAllRentProperties(filter).stream().filter(Objects::nonNull).findFirst().orElse(null);
         logger.info("End - findRentPropertyById. PROPERTY_ID:{}", id);
         return dto;
     }
@@ -81,7 +84,9 @@ public class PropertyDbServiceImpl extends RealtyDbServiceImpl implements Proper
 
     public SellPropertyDto findSellPropertyById(long id) {
         logger.info("Begin - findSellPropertyById. PROPERTY_ID:{}", id);
-        SellPropertyDto dto = PropertyObjectMapper.INSTANCE.toSellDto(postPropertyDao.findById(id));
+        PropertyFilter filter = new PropertyFilter();
+        filter.setPropertyId(id);
+        SellPropertyDto dto = findAllSellProperties(filter).stream().filter(Objects::nonNull).findFirst().orElse(null);
         logger.info("End - findSellPropertyById. PROPERTY_ID:{}", id);
         return dto;
     }

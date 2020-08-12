@@ -1,12 +1,13 @@
 package com.rsatech.core.db.dao.impl.common.sql;
 
 import com.rsatech.core.db.dao.entity.common.CoreAuditDo;
+import com.rsatech.core.db.dao.entity.common.CoreBaseDo;
 import com.rsatech.core.db.dao.entity.common.CoreDo;
 import com.rsatech.core.shared.dto.common.CoreActionBaseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class CoreInsertQueryBuilder<D extends CoreDo, AD extends CoreAuditDo, AN extends CoreActionBaseDto> extends CoreDmlQueryBuilder<D, AD, AN> {
+public abstract class CoreInsertQueryBuilder<D extends CoreBaseDo, AD extends CoreAuditDo, AN extends CoreActionBaseDto> extends CoreDmlQueryBuilder<D, AD, AN> {
     private static final Logger logger = LoggerFactory.getLogger(CoreInsertQueryBuilder.class);
 
     protected D data;
@@ -32,6 +33,11 @@ public abstract class CoreInsertQueryBuilder<D extends CoreDo, AD extends CoreAu
 
     public void setData(D data) {
         this.data = data;
+    }
+
+    protected  void buildStatusInsertQuery() {
+        queryParams.addValue(DB_COMMON_COLUMN_STATUS_ID, data.getStatusId());
+        queryParams.addValue(DB_COMMON_COLUMN_STATUS_TITLE, data.getStatusTitle());
     }
 
 }

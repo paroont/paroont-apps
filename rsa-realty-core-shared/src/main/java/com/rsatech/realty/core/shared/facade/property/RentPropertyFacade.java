@@ -43,6 +43,29 @@ public class RentPropertyFacade implements RealtyConst {
         return response;
     }
 
+    public CoreResponse findRentPropertyById(long propertyId){
+        logger.info("Begin - findRentPropertyById. PROPERTY_ID:{}", propertyId);
+        CoreResponse response = new CoreResponse();
+        String msg = "";
+        try {
+            RentPropertyDto dto = propertyService.findRentPropertyById(propertyId);
+            response.addData(dto);
+            if(dto == null)
+            {
+                response.addStatus(false);
+                msg ="Rent property doesn't exist for PROPERTY_ID:" + propertyId;
+            }
+
+        } catch (Exception e) {
+            response.addStatus(false);
+            msg = "Error occurred while searching rent property for PROPERTY_ID:" + propertyId;
+            logger.error(msg + e.getMessage(), e);
+        }
+        response.addMessage(msg);
+        logger.info("End - findRentPropertyById. PROPERTY_ID:{}", propertyId);
+        return response;
+    }
+
     public CoreResponse saveRentProperty(RentPropertyDto dto, PropertyActionDto actionDto) {
         logger.info("Begin - saveRentProperty.");
         CoreResponse response = new CoreResponse();

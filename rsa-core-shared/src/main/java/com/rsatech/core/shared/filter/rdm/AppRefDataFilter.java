@@ -4,7 +4,7 @@ import com.rsatech.core.shared.filter.common.CoreBaseFilter;
 
 public class AppRefDataFilter extends CoreBaseFilter {
 
-    protected long dataId;
+    protected long dataId = -99;
 
     protected String appName;
     protected String moduleName;
