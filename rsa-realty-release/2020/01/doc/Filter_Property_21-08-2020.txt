@@ -1,0 +1,15 @@
+Budget
+BHK
+Area - SQ.FT [Preferrd for Buy/Sell]
+Available from 
+Possession Status [Preferrd for Buy/Sell]
+Preferred Tenants-Family [Preferrd for Rent]
+Sale Type [New/ ..]
+Floors [2/7]
+Facing [East/West]
+Bathroom
+Furnished/ Unfurnished
+Property Age
+Posted Since
+Localities
+
