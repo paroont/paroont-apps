@@ -2,8 +2,7 @@ package com.rsatech.realty.core.db.service.impl.property;
 
 import com.rsatech.realty.core.db.dao.entity.property.post.PostPropertyDo;
 import com.rsatech.realty.core.db.dao.entity.property.template.BuildingTemplateDo;
-import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
-import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
+import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.template.BuildingTemplateDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -23,20 +22,15 @@ public interface PropertyObjectMapper {
     List<BuildingTemplateDo> toTemplateDos(List<BuildingTemplateDto> dto);
 
 
-    RentPropertyDto toRentDto(PostPropertyDo data);
-
-    PostPropertyDo toRentDo(RentPropertyDto dto);
-
-    List<RentPropertyDto> toRentDtos(List<PostPropertyDo> data);
-
-    List<PostPropertyDo> toRentDos(List<RentPropertyDto> dto);
 
 
-    SellPropertyDto toSellDto(PostPropertyDo data);
+    PostPropertyDto toPostPropertyDto(PostPropertyDo data);
 
-    PostPropertyDo toSellDo(SellPropertyDto dto);
+    PostPropertyDo toPostPropertyDo(PostPropertyDto dto);
 
-    List<SellPropertyDto> toSellDtos(List<PostPropertyDo> data);
+    List<PostPropertyDto> toPostPropertyDtos(List<PostPropertyDo> data);
 
-    List<PostPropertyDo> toSellDos(List<SellPropertyDto> dto);
+    List<PostPropertyDo> toPostPropertyDos(List<PostPropertyDto> dto);
+
+
 }

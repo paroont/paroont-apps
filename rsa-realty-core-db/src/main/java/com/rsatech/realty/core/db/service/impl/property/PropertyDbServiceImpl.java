@@ -5,9 +5,8 @@ import com.rsatech.realty.core.db.dao.dao.property.PostPropertyDao;
 import com.rsatech.realty.core.db.dao.entity.property.post.PostPropertyDo;
 import com.rsatech.realty.core.db.service.impl.common.RealtyDbServiceImpl;
 import com.rsatech.realty.core.db.service.service.property.PropertyDbService;
+import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
-import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
-import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.template.BuildingTemplateDto;
 import com.rsatech.realty.core.shared.enumeration.property.PropertyTransactionTypeEnum;
 import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
@@ -45,59 +44,29 @@ public class PropertyDbServiceImpl extends RealtyDbServiceImpl implements Proper
         return dto;
     }
 
-
-    public List<RentPropertyDto> findAllRentProperties(PropertyFilter filter) {
-        logger.info("Begin - findAllRentProperties.");
-        filter.setTransactionTypeId(PropertyTransactionTypeEnum.RENT.getKey());
-        List<RentPropertyDto> dtos = PropertyObjectMapper.INSTANCE.toRentDtos(postPropertyDao.findAll(filter));
-        logger.info("End - findAllRentProperties.");
+    public List<PostPropertyDto> findAllPostProperties(PropertyFilter filter) {
+        logger.info("Begin - findAllPostProperties.");
+        List<PostPropertyDto> dtos = PropertyObjectMapper.INSTANCE.toPostPropertyDtos(postPropertyDao.findAll(filter));
+        logger.info("End - findAllPostProperties.");
         return dtos;
     }
 
-    public RentPropertyDto findRentPropertyById(long id) {
-        logger.info("Begin - findRentPropertyById. PROPERTY_ID:{}", id);
+    public PostPropertyDto findPostPropertyById(long id) {
+        logger.info("Begin - findPostPropertyById. PROPERTY_ID:{}", id);
         PropertyFilter filter = new PropertyFilter();
         filter.setPropertyId(id);
-        RentPropertyDto dto = findAllRentProperties(filter).stream().filter(Objects::nonNull).findFirst().orElse(null);
-        logger.info("End - findRentPropertyById. PROPERTY_ID:{}", id);
+        PostPropertyDto dto = findAllPostProperties(filter).stream().filter(Objects::nonNull).findFirst().orElse(null);
+        logger.info("End - findPostPropertyById. PROPERTY_ID:{}", id);
         return dto;
     }
 
 
-    public long saveRentProperty(RentPropertyDto dto, PropertyActionDto action) {
+    public long savePostProperty(PostPropertyDto dto, PropertyActionDto action) {
         Long propertyId = dto.getPropertyId();
-        logger.info("Begin - saveRentProperty. PROPERTY_ID:{}", propertyId);
-        PostPropertyDo data = PropertyObjectMapper.INSTANCE.toRentDo(dto);
-        data.setTransactionTypeId(PropertyTransactionTypeEnum.RENT.getKey());
+        logger.info("Begin - savePostProperty. PROPERTY_ID:{}", propertyId);
+        PostPropertyDo data = PropertyObjectMapper.INSTANCE.toPostPropertyDo(dto);
         propertyId = savePostPropertyDo(data, action);
-        logger.info("End - saveRentProperty. PROPERTY_ID:{}", propertyId);
-        return propertyId;
-    }
-
-    public List<SellPropertyDto> findAllSellProperties(PropertyFilter filter) {
-        logger.info("Begin - findAllSellProperties.");
-        filter.setTransactionTypeId(PropertyTransactionTypeEnum.SELL.getKey());
-        List<SellPropertyDto> dtos = PropertyObjectMapper.INSTANCE.toSellDtos(postPropertyDao.findAll(filter));
-        logger.info("End - findAllSellProperties.");
-        return dtos;
-    }
-
-    public SellPropertyDto findSellPropertyById(long id) {
-        logger.info("Begin - findSellPropertyById. PROPERTY_ID:{}", id);
-        PropertyFilter filter = new PropertyFilter();
-        filter.setPropertyId(id);
-        SellPropertyDto dto = findAllSellProperties(filter).stream().filter(Objects::nonNull).findFirst().orElse(null);
-        logger.info("End - findSellPropertyById. PROPERTY_ID:{}", id);
-        return dto;
-    }
-
-    public long saveSellProperty(SellPropertyDto dto, PropertyActionDto action) {
-        Long propertyId = dto.getPropertyId();
-        logger.info("Begin - saveSellProperty. PROPERTY_ID:{}", propertyId);
-        PostPropertyDo data = PropertyObjectMapper.INSTANCE.toSellDo(dto);
-        data.setTransactionTypeId(PropertyTransactionTypeEnum.SELL.getKey());
-        propertyId = savePostPropertyDo(data, action);
-        logger.info("End - saveSellProperty. PROPERTY_ID:{}", propertyId);
+        logger.info("End - savePostProperty. PROPERTY_ID:{}", propertyId);
         return propertyId;
     }
 

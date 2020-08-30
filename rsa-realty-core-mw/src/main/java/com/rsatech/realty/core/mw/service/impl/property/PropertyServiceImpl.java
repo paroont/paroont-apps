@@ -1,18 +1,12 @@
 package com.rsatech.realty.core.mw.service.impl.property;
 
 import com.rsatech.realty.core.db.service.service.property.PropertyDbService;
-import com.rsatech.realty.core.db.service.service.user.UserDbService;
 import com.rsatech.realty.core.mw.service.impl.common.RealtyServiceImpl;
+import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
-import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
-import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.template.BuildingTemplateDto;
-import com.rsatech.realty.core.shared.dto.user.UserActionDto;
-import com.rsatech.realty.core.shared.dto.user.UserProfileDto;
 import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
-import com.rsatech.realty.core.shared.filter.user.UserProfileFilter;
 import com.rsatech.realty.core.shared.service.property.PropertyService;
-import com.rsatech.realty.core.shared.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,32 +26,18 @@ public class PropertyServiceImpl extends RealtyServiceImpl implements PropertySe
         return propertyDbService.findBuildingTemplateById(id);
     }
 
-
-    public List<RentPropertyDto> findAllRentProperties(PropertyFilter filter){
-        return propertyDbService.findAllRentProperties(filter);
+    public List<PostPropertyDto> findAllPostProperties(PropertyFilter filter){
+        return propertyDbService.findAllPostProperties(filter);
     }
 
-    public RentPropertyDto findRentPropertyById(long id){
-        return propertyDbService.findRentPropertyById(id);
+    public PostPropertyDto findPostPropertyById(long id){
+        return propertyDbService.findPostPropertyById(id);
     }
 
 
-    public List<SellPropertyDto> findAllSellProperties(PropertyFilter filter)
-    {
-        return propertyDbService.findAllSellProperties(filter);
+    public long savePostProperty(PostPropertyDto dto, PropertyActionDto actionDto){
+        return propertyDbService.savePostProperty(dto, actionDto);
     }
 
-    public SellPropertyDto findSellPropertyById(long id)
-    {
-        return propertyDbService.findSellPropertyById(id);
-    }
-
-    public long saveRentProperty(RentPropertyDto dto, PropertyActionDto actionDto){
-        return propertyDbService.saveRentProperty(dto, actionDto);
-    }
-
-    public long saveSellProperty(SellPropertyDto dto, PropertyActionDto actionDto){
-        return propertyDbService.saveSellProperty(dto, actionDto);
-    }
 
 }

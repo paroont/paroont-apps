@@ -70,6 +70,16 @@ public class PostPropertyDto extends PropertyBaseDto {
     protected String weekendVisitingIds;
     protected String weekendVisitingTitles;
 
+    protected int heavyDeposit = -1;
+    protected float expectedDepositAmount = -1;
+    protected float expectedRentAmount = -1;
+
+    protected double expectedAmount = -1;
+
+
+    protected int allInclusiveAmount = -1;
+    protected int taxAndGovChargeIncluded = -1;
+
     public long getPropertyId() {
         return propertyId;
     }
@@ -432,5 +442,53 @@ public class PostPropertyDto extends PropertyBaseDto {
 
     public void setMaintenancePeriodTitle(String maintenancePeriodTitle) {
         this.maintenancePeriodTitle = maintenancePeriodTitle;
+    }
+
+    public int getHeavyDeposit() {
+        return heavyDeposit;
+    }
+
+    public void setHeavyDeposit(int heavyDeposit) {
+        this.heavyDeposit = heavyDeposit;
+    }
+
+    public float getExpectedDepositAmount() {
+        return expectedDepositAmount;
+    }
+
+    public void setExpectedDepositAmount(float expectedDepositAmount) {
+        this.expectedDepositAmount = expectedDepositAmount;
+    }
+
+    public float getExpectedRentAmount() {
+        return expectedRentAmount;
+    }
+
+    public void setExpectedRentAmount(float expectedRentAmount) {
+        this.expectedRentAmount = expectedRentAmount;
+    }
+
+    public double getExpectedAmount() {
+        return expectedAmount;
+    }
+
+    public void setExpectedAmount(double expectedAmount) {
+        this.expectedAmount = expectedAmount;
+    }
+
+    public int getAllInclusiveAmount() {
+        return allInclusiveAmount;
+    }
+
+    public void setAllInclusiveAmount(int allInclusiveAmount) {
+        this.allInclusiveAmount = allInclusiveAmount;
+    }
+
+    public int getTaxAndGovChargeIncluded() {
+        return taxAndGovChargeIncluded;
+    }
+
+    public void setTaxAndGovChargeIncluded(int taxAndGovChargeIncluded) {
+        this.taxAndGovChargeIncluded = taxAndGovChargeIncluded;
     }
 }

@@ -1,10 +1,8 @@
 package com.rsatech.realty.web.mw.controller;
 
+import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
-import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
-import com.rsatech.realty.core.shared.dto.property.sell.SellPropertyDto;
-import com.rsatech.realty.core.shared.facade.property.RentPropertyFacade;
-import com.rsatech.realty.core.shared.facade.property.SellPropertyFacade;
+import com.rsatech.realty.core.shared.facade.property.PropertyFacade;
 import com.rsatech.realty.web.mw.constant.common.WebMwConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,57 +16,37 @@ import java.util.Map;
 public class PropertyController implements WebMwConst {
     private static final Logger logger = LoggerFactory.getLogger(PropertyController.class);
 
+
+
     @Autowired
-    private RentPropertyFacade rentPropertyFacade;
-
-    @Autowired
-    private SellPropertyFacade sellPropertyFacade;
+    private PropertyFacade propertyFacade;
 
 
-    @GetMapping(URL_REALTY_PROPERTY_RENT)
-    public Map<String, Object> findAllRentProperties() {
-        return rentPropertyFacade.findAllRentProperties().getResMap();
+
+    @GetMapping(URL_REALTY_PROPERTY)
+    public Map<String, Object> findAllPostProperties() {
+        return propertyFacade.findAllPostProperties().getResMap();
     }
 
-    @GetMapping(URL_REALTY_PROPERTY_RENT_ID)
-    public Map<String, Object> findRentPropertyById(@PathVariable("propertyId") long propertyId) {
-        return rentPropertyFacade.findRentPropertyById(propertyId).getResMap();
+    @GetMapping(URL_REALTY_PROPERTY_ID)
+    public Map<String, Object> findPostPropertyById(@PathVariable("propertyId") long propertyId) {
+        return propertyFacade.findPostPropertyById(propertyId).getResMap();
     }
 
-    @PostMapping(URL_REALTY_PROPERTY_RENT)
-    public Map<String, Object> addRentProperty(@RequestBody RentPropertyDto dto) {
+    @PostMapping(URL_REALTY_PROPERTY)
+    public Map<String, Object> addPostProperty(@RequestBody PostPropertyDto dto) {
         dto.setPropertyId(0);
-        return rentPropertyFacade.saveRentProperty(dto, createPropertyActionDto()).getResMap();
+        return propertyFacade.savePostProperty(dto, createPropertyActionDto()).getResMap();
     }
 
-    @PutMapping(URL_REALTY_PROPERTY_RENT_ID)
-    public Map<String, Object> updateRentProperty(@RequestBody RentPropertyDto dto, @PathVariable("propertyId") long propertyId) {
+
+    @PutMapping(URL_REALTY_PROPERTY_ID)
+    public Map<String, Object> updatePostProperty(@RequestBody PostPropertyDto dto, @PathVariable("propertyId") long propertyId) {
         dto.setPropertyId(propertyId);
-        return rentPropertyFacade.saveRentProperty(dto, createPropertyActionDto()).getResMap();
+        return propertyFacade.savePostProperty(dto, createPropertyActionDto()).getResMap();
     }
 
 
-    @GetMapping(URL_REALTY_PROPERTY_SELL)
-    public Map<String, Object> findAllSellProperties() {
-        return sellPropertyFacade.findAllSellProperties().getResMap();
-    }
-
-    @GetMapping(URL_REALTY_PROPERTY_SELL_ID)
-    public Map<String, Object> findSellPropertyById(@PathVariable("propertyId") long propertyId) {
-        return sellPropertyFacade.findSellPropertyById(propertyId).getResMap();
-    }
-
-    @PostMapping(URL_REALTY_PROPERTY_SELL)
-    public Map<String, Object> addSellProperty(@RequestBody SellPropertyDto dto) {
-        dto.setPropertyId(0);
-        return sellPropertyFacade.saveSellProperty(dto, createPropertyActionDto()).getResMap();
-    }
-
-    @PutMapping(URL_REALTY_PROPERTY_SELL_ID)
-    public Map<String, Object> updateSellProperty(@RequestBody SellPropertyDto dto, @PathVariable("propertyId") long propertyId) {
-        dto.setPropertyId(propertyId);
-        return sellPropertyFacade.saveSellProperty(dto, createPropertyActionDto()).getResMap();
-    }
 
     private PropertyActionDto createPropertyActionDto() {
         PropertyActionDto actionDto = new PropertyActionDto();

@@ -4,13 +4,12 @@ public interface WebUrlConst {
 
     String URL_REALTY_API_DATA_PREFIX  ="/api/data/realty";
     String URL_REALTY_RDM_API_DATA_PREFIX  =URL_REALTY_API_DATA_PREFIX + "/rdm";
-    String URL_REALTY_PROPERTY_API_DATA_PREFIX  = URL_REALTY_API_DATA_PREFIX + "/property";
 
     String URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX  =URL_REALTY_RDM_API_DATA_PREFIX + "/property";
     String URL_REALTY_RDM_COMMON_API_DATA_PREFIX  =URL_REALTY_RDM_API_DATA_PREFIX + "/common";
 
 
-    // User PRofile
+    // User Profile
     String URL_REALTY_USER_PROFILE  = URL_REALTY_API_DATA_PREFIX + "/user/profiles";
     String URL_REALTY_USER_PROFILE_ID  = URL_REALTY_USER_PROFILE + "/{userId}";
 
@@ -26,12 +25,9 @@ public interface WebUrlConst {
 
     //Property
 
-    String URL_REALTY_PROPERTY_RENT  = URL_REALTY_PROPERTY_API_DATA_PREFIX + "/rents";
-    String URL_REALTY_PROPERTY_RENT_ID  = URL_REALTY_PROPERTY_RENT + "/{propertyId}";
 
-    String URL_REALTY_PROPERTY_SELL  = URL_REALTY_PROPERTY_API_DATA_PREFIX + "/sells";
-    String URL_REALTY_PROPERTY_SELL_ID  = URL_REALTY_PROPERTY_SELL + "/{propertyId}";
+    String URL_REALTY_PROPERTY  = URL_REALTY_API_DATA_PREFIX + "/properties";
+    String URL_REALTY_PROPERTY_ID  = URL_REALTY_PROPERTY + "/{propertyId}";
 
-    String URL_REALTY_PROPERTY_PG  = URL_REALTY_PROPERTY_API_DATA_PREFIX + "/pgs";
-    String URL_REALTY_PROPERTY_PG_ID  = URL_REALTY_PROPERTY_PG + "/{propertyId}";
+
 }

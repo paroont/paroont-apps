@@ -3,8 +3,8 @@ package com.rsatech.realty.core.shared.facade.property;
 import com.rsatech.core.shared.dto.common.CoreResponse;
 import com.rsatech.realty.core.shared.constant.common.RealtyConst;
 import com.rsatech.realty.core.shared.constant.common.RealtyResponseConst;
+import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
-import com.rsatech.realty.core.shared.dto.property.rent.RentPropertyDto;
 import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
 import com.rsatech.realty.core.shared.service.property.PropertyService;
 import org.slf4j.Logger;
@@ -18,69 +18,69 @@ import java.util.List;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class RentPropertyFacade implements RealtyConst {
+public class PropertyFacade implements RealtyConst {
 
-    private static final Logger logger = LoggerFactory.getLogger(RentPropertyFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(PropertyFacade.class);
 
     @Autowired
     private PropertyService propertyService;
 
-    public CoreResponse findAllRentProperties() {
-        logger.info("Begin - findAllRentProperties.");
+    public CoreResponse findAllPostProperties() {
+        logger.info("Begin - findAllProperties.");
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
             PropertyFilter filter = new PropertyFilter();
-            List<RentPropertyDto> dtos = propertyService.findAllRentProperties(filter);
+            List<PostPropertyDto> dtos = propertyService.findAllPostProperties(filter);
             response.addData(dtos);
         } catch (Exception e) {
             response.addStatus(false);
-            msg = "Error occurred while searching rent properties.";
+            msg = "Error occurred while searching properties.";
             logger.error(msg + e.getMessage(), e);
         }
         response.addMessage(msg);
-        logger.info("End - findAllRentProperties.");
+        logger.info("End - findAllPostProperties.");
         return response;
     }
 
-    public CoreResponse findRentPropertyById(long propertyId){
-        logger.info("Begin - findRentPropertyById. PROPERTY_ID:{}", propertyId);
+    public CoreResponse findPostPropertyById(long propertyId){
+        logger.info("Begin - findPostPropertyById. PROPERTY_ID:{}", propertyId);
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
-            RentPropertyDto dto = propertyService.findRentPropertyById(propertyId);
+            PostPropertyDto dto = propertyService.findPostPropertyById(propertyId);
             response.addData(dto);
             if(dto == null)
             {
                 response.addStatus(false);
-                msg ="Rent property doesn't exist for PROPERTY_ID:" + propertyId;
+                msg ="sell property doesn't exist for PROPERTY_ID:" + propertyId;
             }
 
         } catch (Exception e) {
             response.addStatus(false);
-            msg = "Error occurred while searching rent property for PROPERTY_ID:" + propertyId;
+            msg = "Error occurred while searching property for PROPERTY_ID:" + propertyId;
             logger.error(msg + e.getMessage(), e);
         }
         response.addMessage(msg);
-        logger.info("End - findRentPropertyById. PROPERTY_ID:{}", propertyId);
+        logger.info("End - findPostPropertyById. PROPERTY_ID:{}", propertyId);
         return response;
     }
 
-    public CoreResponse saveRentProperty(RentPropertyDto dto, PropertyActionDto actionDto) {
-        logger.info("Begin - saveRentProperty.");
+    public CoreResponse savePostProperty(PostPropertyDto dto, PropertyActionDto actionDto) {
+        logger.info("Begin - savePostProperty.");
         CoreResponse response = new CoreResponse();
         String msg = "";
         long propertyId = 0;
         try {
-            propertyId = propertyService.saveRentProperty(dto, actionDto);
+            propertyId = propertyService.savePostProperty(dto, actionDto);
             response.addResponse(RealtyResponseConst.RESPONSE_REALTY_PROPERTY_ID, propertyId);
         } catch (Exception e) {
             response.addStatus(false);
-            msg = "Error occurred while saving rent property.";
+            msg = "Error occurred while saving property.";
             logger.error(msg + e.getMessage(), e);
         }
         response.addMessage(msg);
-        logger.info("End - saveRentProperty. PROPERTY_ID:{}", propertyId);
+        logger.info("End - savePostProperty. PROPERTY_ID:{}", propertyId);
         return response;
     }
 }
