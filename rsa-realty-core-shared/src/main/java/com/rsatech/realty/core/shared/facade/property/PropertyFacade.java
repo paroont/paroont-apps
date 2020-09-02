@@ -25,12 +25,15 @@ public class PropertyFacade implements RealtyConst {
     @Autowired
     private PropertyService propertyService;
 
+
     public CoreResponse findAllPostProperties() {
+        return findAllPostProperties(new PropertyFilter());
+    }
+    public CoreResponse findAllPostProperties(PropertyFilter filter) {
         logger.info("Begin - findAllProperties.");
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
-            PropertyFilter filter = new PropertyFilter();
             List<PostPropertyDto> dtos = propertyService.findAllPostProperties(filter);
             response.addData(dtos);
         } catch (Exception e) {

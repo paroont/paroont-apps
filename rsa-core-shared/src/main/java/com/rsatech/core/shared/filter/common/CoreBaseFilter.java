@@ -2,7 +2,7 @@ package com.rsatech.core.shared.filter.common;
 
 
 public class CoreBaseFilter implements CoreFilter {
-    protected long userId;
+    protected long userId = -99;
     protected String loginId;
 
     protected int statusId = -99;

@@ -3,13 +3,16 @@ package com.rsatech.realty.web.mw.controller;
 import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.dto.property.common.PropertyActionDto;
 import com.rsatech.realty.core.shared.facade.property.PropertyFacade;
+import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
 import com.rsatech.realty.web.mw.constant.common.WebMwConst;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -24,12 +27,19 @@ public class PropertyController implements WebMwConst {
 
 
     @GetMapping(URL_REALTY_PROPERTY)
-    public Map<String, Object> findAllPostProperties() {
-        return propertyFacade.findAllPostProperties().getResMap();
+    public Map<String, Object> findAllPostProperties(@RequestParam Map<String,String> allParams) {
+
+        logger.info("findAllPostProperties:: allParams={}",allParams);
+        PropertyFilter filter = new PropertyFilter();
+        if(allParams.containsKey(URL_COMMON_PARAM_SEARCH_QUERY)){
+            filter.setSearchQuery(allParams.get(URL_COMMON_PARAM_SEARCH_QUERY));
+        }
+
+        return propertyFacade.findAllPostProperties(filter).getResMap();
     }
 
     @GetMapping(URL_REALTY_PROPERTY_ID)
-    public Map<String, Object> findPostPropertyById(@PathVariable("propertyId") long propertyId) {
+    public Map<String, Object> findPostPropertyById(@PathVariable(URL_REALTY_PROPERTY_PARAM_PROPERTY_ID) long propertyId) {
         return propertyFacade.findPostPropertyById(propertyId).getResMap();
     }
 
@@ -41,7 +51,7 @@ public class PropertyController implements WebMwConst {
 
 
     @PutMapping(URL_REALTY_PROPERTY_ID)
-    public Map<String, Object> updatePostProperty(@RequestBody PostPropertyDto dto, @PathVariable("propertyId") long propertyId) {
+    public Map<String, Object> updatePostProperty(@RequestBody PostPropertyDto dto, @PathVariable(URL_REALTY_PROPERTY_PARAM_PROPERTY_ID) long propertyId) {
         dto.setPropertyId(propertyId);
         return propertyFacade.savePostProperty(dto, createPropertyActionDto()).getResMap();
     }

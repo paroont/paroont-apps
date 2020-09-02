@@ -2,6 +2,7 @@ package com.rsatech.realty.web.mw.controller;
 
 import com.rsatech.core.shared.dto.common.CoreResponse;
 import com.rsatech.core.shared.enumeration.rdm.AppRefDataTypeEnum;
+import com.rsatech.core.shared.facade.rdm.AppRefDataFacade;
 import com.rsatech.realty.core.shared.enumeration.rdm.RealtyRefDataTypeEnum;
 import com.rsatech.realty.core.shared.service.common.RealtyAllService;
 import com.rsatech.realty.web.mw.constant.common.WebMwConst;
@@ -21,13 +22,21 @@ public class RefDataController implements WebMwConst {
 
     @Autowired
     RealtyAllService realtyAllService;
+    @Autowired
+    private AppRefDataFacade appRefDataFacade;
 
+    // All App ref data
+    @GetMapping(URL_REALTY_RDM_APP_REF_DATA)
+    public Map<String, Object> findAllAppRefData() {
+        return appRefDataFacade.findAllAppRefData().getResMap();
+    }
 
     // Common Ref Data
     @GetMapping(URL_REALTY_RDM_COMMON_CONTACT_TYPE)
     public Map<String, Object> findAllContactTypes() {
-       return findAppRefDataKeyValues(AppRefDataTypeEnum.CONTACT_TYPE);
+        return findAppRefDataKeyValues(AppRefDataTypeEnum.CONTACT_TYPE);
     }
+
     @GetMapping(URL_REALTY_RDM_COMMON_STATUS_TYPE)
     public Map<String, Object> findAllCommonStatus() {
         return findAppRefDataKeyValues(AppRefDataTypeEnum.COMMON_STATUS);
@@ -51,15 +60,13 @@ public class RefDataController implements WebMwConst {
     }
 
 
-
     public Map<String, Object> findAppRefDataKeyValues(AppRefDataTypeEnum refDataType) {
         logger.info("Begin - findAppRefDataKeyValues, Type:[{}]", refDataType.getKey());
         CoreResponse response = new CoreResponse();
         String msg = "";
-        Map<String,String> keyValues = new LinkedHashMap<>();
+        Map<String, String> keyValues = new LinkedHashMap<>();
         try {
-            switch (refDataType)
-            {
+            switch (refDataType) {
                 case COMMON_STATUS:
                     keyValues = realtyAllService.getAppRefDataService().findAllCommonStatus();
                     break;
@@ -88,10 +95,9 @@ public class RefDataController implements WebMwConst {
         logger.info("Begin - findRealtyRefDataKeyValues, Type:[{}]", refDataType.getKey());
         CoreResponse response = new CoreResponse();
         String msg = "";
-        Map<String,String> keyValues = new LinkedHashMap<>();
+        Map<String, String> keyValues = new LinkedHashMap<>();
         try {
-            switch (refDataType)
-            {
+            switch (refDataType) {
                 case PROPERTY_TYPE:
                     keyValues = realtyAllService.getRealtyRefDataService().findAllPropertyType();
                     break;
