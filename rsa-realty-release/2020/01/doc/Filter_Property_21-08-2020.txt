@@ -1,15 +1,21 @@
 Budget
-BHK
+BHK - M
 Area - SQ.FT [Preferrd for Buy/Sell]
 Available from 
-Possession Status [Preferrd for Buy/Sell]
-Preferred Tenants-Family [Preferrd for Rent]
-Sale Type [New/ ..]
-Floors [2/7]
-Facing [East/West]
-Bathroom
-Furnished/ Unfurnished
-Property Age
+Possession Status [Preferrd for Buy/Sell] - M
+Preferred Tenants-Family [Preferrd for Rent] - M
+Sale Type [New/ ..] - m
+Floors [2/7] -
+Facing [East/West] - m
+Bathroom - M
+Furnished/ Unfurnished - m
+Property Age - M
 Posted Since
-Localities
+Localities - M
+postedUserTypeIds - Owner, Agent, Builder - M
 
+
+budget
+
+
+un relavent data
