@@ -1,5 +1,7 @@
 package com.rsatech.realty.core.shared.dto.property.common;
 
+import java.sql.Timestamp;
+
 public class PostPropertyDto extends PropertyBaseDto {
 
 
@@ -79,6 +81,12 @@ public class PostPropertyDto extends PropertyBaseDto {
 
     protected int allInclusiveAmount = -1;
     protected int taxAndGovChargeIncluded = -1;
+
+    protected String postedBy;
+    protected Timestamp postedTs;
+    protected int postedUserTypeId;
+    protected String postedUserTypeTitle;
+    protected Timestamp dealTs;
 
     public long getPropertyId() {
         return propertyId;
@@ -490,5 +498,45 @@ public class PostPropertyDto extends PropertyBaseDto {
 
     public void setTaxAndGovChargeIncluded(int taxAndGovChargeIncluded) {
         this.taxAndGovChargeIncluded = taxAndGovChargeIncluded;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
+
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
+    }
+
+    public Timestamp getPostedTs() {
+        return postedTs;
+    }
+
+    public void setPostedTs(Timestamp postedTs) {
+        this.postedTs = postedTs;
+    }
+
+    public int getPostedUserTypeId() {
+        return postedUserTypeId;
+    }
+
+    public void setPostedUserTypeId(int postedUserTypeId) {
+        this.postedUserTypeId = postedUserTypeId;
+    }
+
+    public String getPostedUserTypeTitle() {
+        return postedUserTypeTitle;
+    }
+
+    public void setPostedUserTypeTitle(String postedUserTypeTitle) {
+        this.postedUserTypeTitle = postedUserTypeTitle;
+    }
+
+    public Timestamp getDealTs() {
+        return dealTs;
+    }
+
+    public void setDealTs(Timestamp dealTs) {
+        this.dealTs = dealTs;
     }
 }

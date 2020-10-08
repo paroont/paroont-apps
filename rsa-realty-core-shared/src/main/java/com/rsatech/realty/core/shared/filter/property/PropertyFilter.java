@@ -3,13 +3,15 @@ package com.rsatech.realty.core.shared.filter.property;
 import com.rsatech.realty.core.shared.filter.common.RealtyBaseFilter;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PropertyFilter extends RealtyBaseFilter {
 
     protected long templateId = -99;
 
     protected long propertyId = -99;
-    protected int propertyTypeId = -99;
+    protected List<Integer> propertyTypeIds = new ArrayList<>();
 
     protected long transactionTypeId = -99;
 
@@ -17,9 +19,8 @@ public class PropertyFilter extends RealtyBaseFilter {
 
     protected double minBudget = -99;
     protected double maxBudget = -99;
-
-    protected int configurationId = -99;
-    protected int availabilityId = -99;
+    protected List<Integer> configurationIds = new ArrayList<>();
+    protected List<Integer> availabilityIds = new ArrayList<>();
     protected Timestamp availabilityTs;
 
     protected String cityName;
@@ -35,18 +36,19 @@ public class PropertyFilter extends RealtyBaseFilter {
     protected int minFloorNo = -99;
     protected int maxFloorNo = -99;
     protected int floorId = -99;
-    protected int saleTypeId = -99;
+    protected List<Integer> saleTypeIds = new ArrayList<>();
 
-    protected int faceId = -99;
-    protected int furnishId = -99;
-    protected int postedUserTypeId = -99;
-    protected int totalBathrooms = -99;
+    protected List<Integer> faceIds = new ArrayList<>();
+    protected List<Integer> furnishIds = new ArrayList<>();
+    protected List<Integer> postedUserTypeIds = new ArrayList<>();
+    protected List<Integer> noOfBathrooms = new ArrayList<>();
 
-    protected int propertyAgeId = -99;
+    protected List<Integer> propertyAgeIds = new ArrayList<>();
+
+    protected List<Integer> tenantTypeIds = new ArrayList<>();
 
     protected Timestamp postedTs;
-    protected String localityIds;
-
+    protected List<String> localityIds = new ArrayList<>();
 
     public long getTemplateId() {
         return templateId;
@@ -64,20 +66,20 @@ public class PropertyFilter extends RealtyBaseFilter {
         this.propertyId = propertyId;
     }
 
+    public List<Integer> getPropertyTypeIds() {
+        return propertyTypeIds;
+    }
+
+    public void setPropertyTypeIds(List<Integer> propertyTypeIds) {
+        this.propertyTypeIds = propertyTypeIds;
+    }
+
     public long getTransactionTypeId() {
         return transactionTypeId;
     }
 
     public void setTransactionTypeId(long transactionTypeId) {
         this.transactionTypeId = transactionTypeId;
-    }
-
-    public int getPropertyTypeId() {
-        return propertyTypeId;
-    }
-
-    public void setPropertyTypeId(int propertyTypeId) {
-        this.propertyTypeId = propertyTypeId;
     }
 
     public String getSearchQuery() {
@@ -104,20 +106,20 @@ public class PropertyFilter extends RealtyBaseFilter {
         this.maxBudget = maxBudget;
     }
 
-    public int getConfigurationId() {
-        return configurationId;
+    public List<Integer> getConfigurationIds() {
+        return configurationIds;
     }
 
-    public void setConfigurationId(int configurationId) {
-        this.configurationId = configurationId;
+    public void setConfigurationIds(List<Integer> configurationIds) {
+        this.configurationIds = configurationIds;
     }
 
-    public int getAvailabilityId() {
-        return availabilityId;
+    public List<Integer> getAvailabilityIds() {
+        return availabilityIds;
     }
 
-    public void setAvailabilityId(int availabilityId) {
-        this.availabilityId = availabilityId;
+    public void setAvailabilityIds(List<Integer> availabilityIds) {
+        this.availabilityIds = availabilityIds;
     }
 
     public Timestamp getAvailabilityTs() {
@@ -216,52 +218,60 @@ public class PropertyFilter extends RealtyBaseFilter {
         this.floorId = floorId;
     }
 
-    public int getSaleTypeId() {
-        return saleTypeId;
+    public List<Integer> getSaleTypeIds() {
+        return saleTypeIds;
     }
 
-    public void setSaleTypeId(int saleTypeId) {
-        this.saleTypeId = saleTypeId;
+    public void setSaleTypeIds(List<Integer> saleTypeIds) {
+        this.saleTypeIds = saleTypeIds;
     }
 
-    public int getFaceId() {
-        return faceId;
+    public List<Integer> getFaceIds() {
+        return faceIds;
     }
 
-    public void setFaceId(int faceId) {
-        this.faceId = faceId;
+    public void setFaceIds(List<Integer> faceIds) {
+        this.faceIds = faceIds;
     }
 
-    public int getFurnishId() {
-        return furnishId;
+    public List<Integer> getFurnishIds() {
+        return furnishIds;
     }
 
-    public void setFurnishId(int furnishId) {
-        this.furnishId = furnishId;
+    public void setFurnishIds(List<Integer> furnishIds) {
+        this.furnishIds = furnishIds;
     }
 
-    public int getPostedUserTypeId() {
-        return postedUserTypeId;
+    public List<Integer> getPostedUserTypeIds() {
+        return postedUserTypeIds;
     }
 
-    public void setPostedUserTypeId(int postedUserTypeId) {
-        this.postedUserTypeId = postedUserTypeId;
+    public void setPostedUserTypeIds(List<Integer> postedUserTypeIds) {
+        this.postedUserTypeIds = postedUserTypeIds;
     }
 
-    public int getTotalBathrooms() {
-        return totalBathrooms;
+    public List<Integer> getNoOfBathrooms() {
+        return noOfBathrooms;
     }
 
-    public void setTotalBathrooms(int totalBathrooms) {
-        this.totalBathrooms = totalBathrooms;
+    public void setNoOfBathrooms(List<Integer> noOfBathrooms) {
+        this.noOfBathrooms = noOfBathrooms;
     }
 
-    public int getPropertyAgeId() {
-        return propertyAgeId;
+    public List<Integer> getPropertyAgeIds() {
+        return propertyAgeIds;
     }
 
-    public void setPropertyAgeId(int propertyAgeId) {
-        this.propertyAgeId = propertyAgeId;
+    public void setPropertyAgeIds(List<Integer> propertyAgeIds) {
+        this.propertyAgeIds = propertyAgeIds;
+    }
+
+    public List<Integer> getTenantTypeIds() {
+        return tenantTypeIds;
+    }
+
+    public void setTenantTypeIds(List<Integer> tenantTypeIds) {
+        this.tenantTypeIds = tenantTypeIds;
     }
 
     public Timestamp getPostedTs() {
@@ -272,11 +282,11 @@ public class PropertyFilter extends RealtyBaseFilter {
         this.postedTs = postedTs;
     }
 
-    public String getLocalityIds() {
+    public List<String> getLocalityIds() {
         return localityIds;
     }
 
-    public void setLocalityIds(String localityIds) {
+    public void setLocalityIds(List<String> localityIds) {
         this.localityIds = localityIds;
     }
 }

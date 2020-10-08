@@ -29,10 +29,8 @@ public interface WebUrlConst {
     String URL_COMMON_PARAM_MIN_BUDGET = "minBudget";
     String URL_COMMON_PARAM_MAX_BUDGET = "maxBudget";
     String URL_COMMON_PARAM_CONFIG_TYPE_ID = "configTypeId";
-    String URL_COMMON_PARAM_TRANSACTION_TYPE_ID = "txnTypeId";
+    String URL_COMMON_PARAM_TRANSACTION_TYPE_ID = "transactionTypeId";
 
-    String URL_COMMON_PARAM_AVAILABLE_FROM_DATE = "availFromDate";
-    String URL_COMMON_PARAM_AVAILABLE_TYPE_ID = "availTypeId";
     String URL_COMMON_PARAM_CITY_NAME = "cityName";
     String URL_COMMON_PARAM_AREA_NAME = "areaName";
 
@@ -40,6 +38,10 @@ public interface WebUrlConst {
 
     // Property Param
     String URL_REALTY_PROPERTY_PARAM_PROPERTY_ID = "propertyId";
+    String URL_REALTY_PROPERTY_PARAM_CONFIGURATION_ID = "configurationId";
+    String URL_REALTY_PROPERTY_PARAM_AVAILABILITY_ID = "availabilityId";
+    String URL_REALTY_PROPERTY_PARAM_AVAILABILITY_TS = "availabilityTs";
+
     String URL_REALTY_PROPERTY_PARAM_PROPERTY_TYPE_ID = "propertyTypeId";
     String URL_REALTY_PROPERTY_PARAM_MIN_AREA = "minArea";
     String URL_REALTY_PROPERTY_PARAM_MAX_AREA = "maxArea";
@@ -50,13 +52,13 @@ public interface WebUrlConst {
     String URL_REALTY_PROPERTY_PARAM_MAX_FLOOR_NO = "maxFloorNo";
     String URL_REALTY_PROPERTY_PARAM_FLOOR_ID = "floorId";
     String URL_REALTY_PROPERTY_PARAM_SALE_TYPE_ID = "saleTypeId";
-    String URL_REALTY_PROPERTY_PARAM_FACE_TYPE_ID = "faceTypeId";
+    String URL_REALTY_PROPERTY_PARAM_FACE_ID = "faceId";
     String URL_REALTY_PROPERTY_PARAM_FURNISH_ID = "furnishId";
 
     String URL_REALTY_PROPERTY_PARAM_POSTED_USER_TYPE_ID = "postedUserTypeId";
     String URL_REALTY_PROPERTY_PARAM_TOTAL_BATHROOMS = "totalBathrooms";
-    String URL_REALTY_PROPERTY_PARAM_AGE_TYPE_ID  = "ageTypeId";
-    String URL_REALTY_PROPERTY_PARAM_POSTED_FROM_DATE  = "postedFromDate";
+    String URL_REALTY_PROPERTY_PARAM_PROPERTY_AGE_ID  = "propertyAgeId";
+    String URL_REALTY_PROPERTY_PARAM_POSTED_TS  = "postedTs";
 
     String URL_REALTY_PROPERTY_PARAM_LOCALITY_IDS = "localityIds";
 

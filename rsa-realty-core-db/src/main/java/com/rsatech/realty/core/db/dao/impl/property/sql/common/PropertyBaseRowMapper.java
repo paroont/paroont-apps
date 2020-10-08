@@ -37,6 +37,7 @@ public abstract class PropertyBaseRowMapper<T extends PropertyBaseDo> extends Co
         data.setLocalityIds(rs.getString(DB_REALTY_PROPERTY_COLUMN_LOCALITY_IDS));
         data.setLocalityTitles(rs.getString(DB_REALTY_PROPERTY_COLUMN_LOCALITY_TITLES));
         data.setCityName(rs.getString(DB_COMMON_COLUMN_CITY_NAME));
+        data.setAreaName(rs.getString(DB_COMMON_COLUMN_AREA_NAME));
         data.setStateName(rs.getString(DB_COMMON_COLUMN_STATE_NAME));
         data.setLandmarkName(rs.getString(DB_COMMON_COLUMN_LANDMARK_NAME));
         data.setPinCode(rs.getString(DB_COMMON_COLUMN_PIN_CODE));

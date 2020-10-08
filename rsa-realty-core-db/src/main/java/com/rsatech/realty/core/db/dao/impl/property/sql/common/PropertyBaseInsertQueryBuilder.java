@@ -45,6 +45,7 @@ public abstract class PropertyBaseInsertQueryBuilder<D extends PropertyBaseDo, A
         queryParams.addValue(DB_COMMON_COLUMN_ADDRESS_LINE_1, data.getAddressLine1());
         queryParams.addValue(DB_COMMON_COLUMN_ADDRESS_LINE_2, data.getAddressLine2());
         queryParams.addValue(DB_COMMON_COLUMN_CITY_NAME, data.getCityName());
+        queryParams.addValue(DB_COMMON_COLUMN_AREA_NAME, data.getAreaName());
         queryParams.addValue(DB_COMMON_COLUMN_STATE_NAME, data.getStateName());
         queryParams.addValue(DB_COMMON_COLUMN_LANDMARK_NAME, data.getLandmarkName());
         queryParams.addValue(DB_COMMON_COLUMN_PIN_CODE, data.getPinCode());

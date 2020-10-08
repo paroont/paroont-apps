@@ -35,6 +35,7 @@ public class PropertyBaseDo extends RealtyBaseDo {
     protected String addressLine1;
     protected String addressLine2;
     protected String cityName;
+    protected String areaName;
     protected String stateName;
     protected String landmarkName;
     protected String pinCode;
@@ -488,5 +489,13 @@ public class PropertyBaseDo extends RealtyBaseDo {
 
     public void setPetFriendly(int petFriendly) {
         this.petFriendly = petFriendly;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
     }
 }

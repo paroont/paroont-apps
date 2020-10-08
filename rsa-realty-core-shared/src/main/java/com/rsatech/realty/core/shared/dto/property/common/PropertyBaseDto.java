@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 
 public class PropertyBaseDto extends RealtyBaseDto {
 
+
+
     protected long templateId;
     protected String projectName;
 
@@ -34,6 +36,7 @@ public class PropertyBaseDto extends RealtyBaseDto {
     protected String addressLine1;
     protected String addressLine2;
     protected String cityName;
+    protected String areaName;
     protected String stateName;
     protected String landmarkName;
     protected String pinCode;
@@ -483,5 +486,13 @@ public class PropertyBaseDto extends RealtyBaseDto {
 
     public void setPetFriendly(int petFriendly) {
         this.petFriendly = petFriendly;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
     }
 }

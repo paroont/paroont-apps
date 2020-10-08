@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class CoreBaseDto  implements CoreDto{
     protected int statusId;
+    protected String statusTitle;
 
     protected String createdBy;
     protected Timestamp createdTs;
@@ -49,5 +50,13 @@ public class CoreBaseDto  implements CoreDto{
 
     public void setUpdatedTs(Timestamp updatedTs) {
         this.updatedTs = updatedTs;
+    }
+
+    public String getStatusTitle() {
+        return statusTitle;
+    }
+
+    public void setStatusTitle(String statusTitle) {
+        this.statusTitle = statusTitle;
     }
 }

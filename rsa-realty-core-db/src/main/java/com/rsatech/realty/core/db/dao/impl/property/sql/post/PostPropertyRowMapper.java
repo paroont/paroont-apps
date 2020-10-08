@@ -87,5 +87,12 @@ public class PostPropertyRowMapper extends PropertyBaseRowMapper<PostPropertyDo>
         data.setTaxAndGovChargeIncluded(rs.getInt(DB_REALTY_PROPERTY_COLUMN_TAX_AND_GOV_CHARGE_INCLUDED));
 
 
+        data.setPostedBy(rs.getString(DB_REALTY_PROPERTY_COLUMN_POSTED_BY));
+        data.setPostedTs(rs.getTimestamp(DB_REALTY_PROPERTY_COLUMN_POSTED_TS));
+
+        data.setPostedUserTypeId(rs.getInt(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_ID));
+        data.setPostedUserTypeTitle(rs.getString(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_TITLE));
+        data.setDealTs(rs.getTimestamp(DB_REALTY_PROPERTY_COLUMN_DEAL_TS));
+
     }
 }
