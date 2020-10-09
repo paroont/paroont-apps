@@ -17,6 +17,8 @@ public class PropertyServiceImpl extends RealtyServiceImpl implements PropertySe
 
     @Autowired
    private PropertyDbService propertyDbService;
+    @Autowired
+    private  PropertyCacheServiceHelper cacheHelper;
 
     public List<BuildingTemplateDto> findAllBuildingTemplates(PropertyFilter filter){
         return propertyDbService.findAllBuildingTemplates(filter);
@@ -40,4 +42,7 @@ public class PropertyServiceImpl extends RealtyServiceImpl implements PropertySe
     }
 
 
+    public List<PostPropertyDto> findAllPostPropertiesFromCache(PropertyFilter filter){
+        return cacheHelper.findAllPostProperties(filter);
+    }
 }

@@ -3,6 +3,7 @@ package com.rsatech.realty.web.shared.constant.url;
 public interface WebUrlConst {
 
     String URL_REALTY_API_DATA_PREFIX  ="/api/data/realty";
+    String URL_REALTY_API_CACHE_DATA_PREFIX  ="/api/data-swift/realty";
     String URL_REALTY_RDM_API_DATA_PREFIX  =URL_REALTY_API_DATA_PREFIX + "/rdm";
 
     String URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX  =URL_REALTY_RDM_API_DATA_PREFIX + "/property";
@@ -67,6 +68,9 @@ public interface WebUrlConst {
 
     String URL_REALTY_PROPERTY  = URL_REALTY_API_DATA_PREFIX + "/properties";
     String URL_REALTY_PROPERTY_ID  = URL_REALTY_PROPERTY + "/{"+URL_REALTY_PROPERTY_PARAM_PROPERTY_ID+"}";
+
+    String URL_REALTY_CACHE_PROPERTY  = URL_REALTY_API_CACHE_DATA_PREFIX + "/properties";
+    String URL_REALTY_CACHE_PROPERTY_ID  = URL_REALTY_CACHE_PROPERTY + "/{"+URL_REALTY_PROPERTY_PARAM_PROPERTY_ID+"}";
 
 
 

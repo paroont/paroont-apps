@@ -20,4 +20,7 @@ public interface PropertyService extends RealtyService {
 
     public long savePostProperty(PostPropertyDto dto, PropertyActionDto action);
 
+// From Cache
+    public List<PostPropertyDto> findAllPostPropertiesFromCache(PropertyFilter filter);
+
 }
