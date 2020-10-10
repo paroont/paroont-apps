@@ -11,6 +11,19 @@
 
     <artifactId>rsa-realty-core-mw</artifactId>
 <dependencies>
+
+    <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>elasticsearch-rest-high-level-client</artifactId>
+        <version>${org.elasticsearch.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${com.fasterxml.jackson.version}</version>
+    </dependency>
+
     <!-- RSA Project Dependencies -->
     <!-- RSA DB -->
     <dependency>

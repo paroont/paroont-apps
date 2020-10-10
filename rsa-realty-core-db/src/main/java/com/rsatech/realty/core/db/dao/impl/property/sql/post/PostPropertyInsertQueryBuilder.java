@@ -82,6 +82,21 @@ public class PostPropertyInsertQueryBuilder extends PropertyBaseInsertQueryBuild
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_EXPECTED_AMOUNT, data.getExpectedAmount());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_ALL_INCLUSIVE_PRICE, data.getAllInclusiveAmount());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_TAX_AND_GOV_CHARGE_INCLUDED, data.getTaxAndGovChargeIncluded());
+
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_BY, data.getPostedBy());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_BY_NAME, data.getPostedByName());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_TS, data.getPostedTs());
+
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_ID, data.getPostedUserTypeId());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_TITLE, data.getPostedUserTypeTitle());
+
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_DEAL_TS, data.getDealTs());
+
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_TENANT_TYPE_ID, data.getTenantTypeId());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_TENANT_TYPE_TITLE, data.getTenantTypeTitle());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_SALE_TYPE_ID, data.getSaleTypeId());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_SALE_TYPE_TITLE, data.getSaleTypeTitle());
+
     }
 
 

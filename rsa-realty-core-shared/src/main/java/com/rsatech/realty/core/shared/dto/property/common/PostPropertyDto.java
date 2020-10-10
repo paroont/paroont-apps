@@ -83,10 +83,17 @@ public class PostPropertyDto extends PropertyBaseDto {
     protected int taxAndGovChargeIncluded = -1;
 
     protected String postedBy;
+    protected String postedByName;
     protected Timestamp postedTs;
     protected int postedUserTypeId;
     protected String postedUserTypeTitle;
     protected Timestamp dealTs;
+
+    protected int tenantTypeId;
+    protected String tenantTypeTitle;
+
+    protected int saleTypeId;
+    protected String saleTypeTitle;
 
     public long getPropertyId() {
         return propertyId;
@@ -508,6 +515,14 @@ public class PostPropertyDto extends PropertyBaseDto {
         this.postedBy = postedBy;
     }
 
+    public String getPostedByName() {
+        return postedByName;
+    }
+
+    public void setPostedByName(String postedByName) {
+        this.postedByName = postedByName;
+    }
+
     public Timestamp getPostedTs() {
         return postedTs;
     }
@@ -538,5 +553,37 @@ public class PostPropertyDto extends PropertyBaseDto {
 
     public void setDealTs(Timestamp dealTs) {
         this.dealTs = dealTs;
+    }
+
+    public int getTenantTypeId() {
+        return tenantTypeId;
+    }
+
+    public void setTenantTypeId(int tenantTypeId) {
+        this.tenantTypeId = tenantTypeId;
+    }
+
+    public String getTenantTypeTitle() {
+        return tenantTypeTitle;
+    }
+
+    public void setTenantTypeTitle(String tenantTypeTitle) {
+        this.tenantTypeTitle = tenantTypeTitle;
+    }
+
+    public int getSaleTypeId() {
+        return saleTypeId;
+    }
+
+    public void setSaleTypeId(int saleTypeId) {
+        this.saleTypeId = saleTypeId;
+    }
+
+    public String getSaleTypeTitle() {
+        return saleTypeTitle;
+    }
+
+    public void setSaleTypeTitle(String saleTypeTitle) {
+        this.saleTypeTitle = saleTypeTitle;
     }
 }

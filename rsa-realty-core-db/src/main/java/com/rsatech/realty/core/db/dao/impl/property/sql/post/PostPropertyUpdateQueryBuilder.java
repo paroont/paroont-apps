@@ -92,11 +92,18 @@ public class PostPropertyUpdateQueryBuilder extends PropertyBaseUpdateQueryBuild
         buildNumberUpdateQuery(data.getTaxAndGovChargeIncluded(), oldData.getTaxAndGovChargeIncluded(), DB_REALTY_PROPERTY_COLUMN_TAX_AND_GOV_CHARGE_INCLUDED);
 
         buildStringUpdateQuery(data.getPostedBy(), oldData.getPostedBy(), DB_REALTY_PROPERTY_COLUMN_POSTED_BY);
+        buildStringUpdateQuery(data.getPostedByName(), oldData.getPostedByName(), DB_REALTY_PROPERTY_COLUMN_POSTED_BY_NAME);
         buildTimestampUpdateQuery(data.getPostedTs(), oldData.getPostedTs(), DB_REALTY_PROPERTY_COLUMN_POSTED_TS);
 
         buildNumberUpdateQuery(data.getPostedUserTypeId(), oldData.getPostedUserTypeId(), DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_ID);
         buildStringUpdateQuery(data.getPostedUserTypeTitle(), oldData.getPostedUserTypeTitle(), DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_TITLE);
         buildTimestampUpdateQuery(data.getDealTs(), oldData.getDealTs(), DB_REALTY_PROPERTY_COLUMN_DEAL_TS);
+
+        buildNumberUpdateQuery(data.getTenantTypeId(), oldData.getTenantTypeId(), DB_REALTY_PROPERTY_COLUMN_TENANT_TYPE_ID);
+        buildStringUpdateQuery(data.getTenantTypeTitle(), oldData.getTenantTypeTitle(), DB_REALTY_PROPERTY_COLUMN_TENANT_TYPE_TITLE);
+
+        buildNumberUpdateQuery(data.getSaleTypeId(), oldData.getSaleTypeId(), DB_REALTY_PROPERTY_COLUMN_SALE_TYPE_ID);
+        buildStringUpdateQuery(data.getSaleTypeTitle(), oldData.getSaleTypeTitle(), DB_REALTY_PROPERTY_COLUMN_SALE_TYPE_TITLE);
     }
 
     @Override

@@ -88,11 +88,18 @@ public class PostPropertyRowMapper extends PropertyBaseRowMapper<PostPropertyDo>
 
 
         data.setPostedBy(rs.getString(DB_REALTY_PROPERTY_COLUMN_POSTED_BY));
+        data.setPostedByName(rs.getString(DB_REALTY_PROPERTY_COLUMN_POSTED_BY_NAME));
         data.setPostedTs(rs.getTimestamp(DB_REALTY_PROPERTY_COLUMN_POSTED_TS));
 
         data.setPostedUserTypeId(rs.getInt(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_ID));
         data.setPostedUserTypeTitle(rs.getString(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_TITLE));
         data.setDealTs(rs.getTimestamp(DB_REALTY_PROPERTY_COLUMN_DEAL_TS));
+
+        data.setTenantTypeId(rs.getInt(DB_REALTY_PROPERTY_COLUMN_TENANT_TYPE_ID));
+        data.setTenantTypeTitle(rs.getString(DB_REALTY_PROPERTY_COLUMN_TENANT_TYPE_TITLE));
+
+        data.setSaleTypeId(rs.getInt(DB_REALTY_PROPERTY_COLUMN_SALE_TYPE_ID));
+        data.setSaleTypeTitle(rs.getString(DB_REALTY_PROPERTY_COLUMN_SALE_TYPE_TITLE));
 
     }
 }
