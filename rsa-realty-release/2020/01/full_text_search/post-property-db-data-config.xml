@@ -1,0 +1,154 @@
+<dataConfig>
+    <dataSource driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/realty?serverTimezone=UTC"
+                user="root" password="HomeApp_0"/>
+    <document>
+        <entity name="postProperty"
+                query="SELECT PROPERTY_ID, TEMPLATE_ID, PROJECT_NAME, PROPERTY_TYPE_ID, PROPERTY_TYPE_TITLE, PROPERTY_TYPE_GROUP_ID, PROPERTY_TYPE_GROUP_TITLE, BUILDING_NAME, BUILDER_NAME, BUILDER_WEB_URL, TRANSACTION_TYPE_ID, TRANSACTION_TYPE_TITLE, CONFIGURATION_ID, CONFIGURATION_TITLE, ADDRESS_LINE_1, ADDRESS_LINE_2, LOCALITY_IDS, LOCALITY_TITLES, CITY_NAME, AREA_NAME, STATE_NAME, LANDMARK_NAME, PIN_CODE, COUNTRY_NAME, AVAILABILITY_ID, AVAILABILITY_TITLE, AVAILABILITY_TS, PROPERTY_AGE_ID, PROPERTY_AGE_TITLE, PROPERTY_DESCRIPTION, TOTAL_BEDROOMS, TOTAL_MASTER_BEDROOMS, TOTAL_BATHROOMS, TOTAL_BALCONIES, SUPER_BUILT_UP_AREA, SUPER_BUILT_UP_AREA_UNIT_ID, SUPER_BUILT_UP_AREA_UNIT_TITLE, BUILT_UP_AREA, BUILT_UP_AREA_UNIT_ID, BUILT_UP_AREA_UNIT_TITLE, CARPET_AREA, CARPET_AREA_UNIT_ID, CARPET_AREA_UNIT_TITLE, FURNISH_TYPE_ID, FURNISH_TYPE_TITLE, FLOOR_ID, FLOOR_NO, TOTAL_FLOORS, TOTAL_FLATS_FLOOR, TOTAL_COVERED_PARKING, TOTAL_OPEN_PARKING, TOTAL_BUILDING_COVERED_PARKING, TOTAL_BUILDING_OPEN_PARKING, TOTAL_BUILDING_VISITOR_PARKING, FACE_ID, FACE_TITLE, OVERLOOK_IDS, OVERLOOK_TITLES, FLOOR_TYPE_IDS, FLOOR_TYPE_TITLES, MODULAR_KITCHEN, POOJA_ROOM, STUDY_ROOM, SERVANT_ROOM, OTHERS_ROOM, AMOUNT_NEGOTIABLE, MAINTENANCE_AMOUNT, MAINTENANCE_PERIOD_ID, MAINTENANCE_PERIOD_TITLE, HEAVY_DEPOSIT, EXPECTED_DEPOSIT_AMOUNT, EXPECTED_RENTAL_AMOUNT, EXPECTED_AMOUNT, ALL_INCLUSIVE_PRICE, TAX_AND_GOV_CHARGE_INCLUDED, NOTES, TOTAL_BROKER, WEEKDAYS_VISIT_TIME_IDS, WEEKDAYS_VISIT_TIME_TITLES, WEEKEND_VISIT_TIME_IDS, WEEKEND_VISIT_TIME_TITLES, EARTHQUAKE_RESISTANT, GAS_PIPELINE, CLUB_HOUSE, GYM, KIDS_PLAY_AREA, WATER_HARVESTING, SWIMMING_POOL, COMMON_AREA_POWER_BACKUP, FLAT_POWER_BACKUP, SENIOR_CITIZEN_AREA, GATED_SOCIETY, WATER_SUPPLY, LANDSCAPE_LAWN, BANQUET_HALL, JOGGERS_TRACK, CCTV, FIRE_ALARM, PET_FRIENDLY, TOTAL_SERVICE_LIFT, TOTAL_LIFT, OC_TS, RERA_ID, STATUS_ID, STATUS_TITLE, CREATED_BY, CREATED_TS, UPDATED_BY, POSTED_BY, POSTED_TS, POSTED_USER_TYPE_ID, POSTED_USER_TYPE_TITLE, UPDATED_TS, DEAL_TS FROM POST_PROPERTY"
+                deltaQuery="SELECT PROPERTY_ID, TEMPLATE_ID, PROJECT_NAME, PROPERTY_TYPE_ID, PROPERTY_TYPE_TITLE, PROPERTY_TYPE_GROUP_ID, PROPERTY_TYPE_GROUP_TITLE, BUILDING_NAME, BUILDER_NAME, BUILDER_WEB_URL, TRANSACTION_TYPE_ID, TRANSACTION_TYPE_TITLE, CONFIGURATION_ID, CONFIGURATION_TITLE, ADDRESS_LINE_1, ADDRESS_LINE_2, LOCALITY_IDS, LOCALITY_TITLES, CITY_NAME, AREA_NAME, STATE_NAME, LANDMARK_NAME, PIN_CODE, COUNTRY_NAME, AVAILABILITY_ID, AVAILABILITY_TITLE, AVAILABILITY_TS, PROPERTY_AGE_ID, PROPERTY_AGE_TITLE, PROPERTY_DESCRIPTION, TOTAL_BEDROOMS, TOTAL_MASTER_BEDROOMS, TOTAL_BATHROOMS, TOTAL_BALCONIES, SUPER_BUILT_UP_AREA, SUPER_BUILT_UP_AREA_UNIT_ID, SUPER_BUILT_UP_AREA_UNIT_TITLE, BUILT_UP_AREA, BUILT_UP_AREA_UNIT_ID, BUILT_UP_AREA_UNIT_TITLE, CARPET_AREA, CARPET_AREA_UNIT_ID, CARPET_AREA_UNIT_TITLE, FURNISH_TYPE_ID, FURNISH_TYPE_TITLE, FLOOR_ID, FLOOR_NO, TOTAL_FLOORS, TOTAL_FLATS_FLOOR, TOTAL_COVERED_PARKING, TOTAL_OPEN_PARKING, TOTAL_BUILDING_COVERED_PARKING, TOTAL_BUILDING_OPEN_PARKING, TOTAL_BUILDING_VISITOR_PARKING, FACE_ID, FACE_TITLE, OVERLOOK_IDS, OVERLOOK_TITLES, FLOOR_TYPE_IDS, FLOOR_TYPE_TITLES, MODULAR_KITCHEN, POOJA_ROOM, STUDY_ROOM, SERVANT_ROOM, OTHERS_ROOM, AMOUNT_NEGOTIABLE, MAINTENANCE_AMOUNT, MAINTENANCE_PERIOD_ID, MAINTENANCE_PERIOD_TITLE, HEAVY_DEPOSIT, EXPECTED_DEPOSIT_AMOUNT, EXPECTED_RENTAL_AMOUNT, EXPECTED_AMOUNT, ALL_INCLUSIVE_PRICE, TAX_AND_GOV_CHARGE_INCLUDED, NOTES, TOTAL_BROKER, WEEKDAYS_VISIT_TIME_IDS, WEEKDAYS_VISIT_TIME_TITLES, WEEKEND_VISIT_TIME_IDS, WEEKEND_VISIT_TIME_TITLES, EARTHQUAKE_RESISTANT, GAS_PIPELINE, CLUB_HOUSE, GYM, KIDS_PLAY_AREA, WATER_HARVESTING, SWIMMING_POOL, COMMON_AREA_POWER_BACKUP, FLAT_POWER_BACKUP, SENIOR_CITIZEN_AREA, GATED_SOCIETY, WATER_SUPPLY, LANDSCAPE_LAWN, BANQUET_HALL, JOGGERS_TRACK, CCTV, FIRE_ALARM, PET_FRIENDLY, TOTAL_SERVICE_LIFT, TOTAL_LIFT, OC_TS, RERA_ID, STATUS_ID, STATUS_TITLE, CREATED_BY, CREATED_TS, UPDATED_BY, POSTED_BY, POSTED_TS, POSTED_USER_TYPE_ID, POSTED_USER_TYPE_TITLE, UPDATED_TS, DEAL_TS FROM POST_PROPERTY WHERE UPDATED_TS > '${dataimporter.last_index_time}'">
+
+            <field column="PROPERTY_ID" name="propertyId"/>
+            <field column="TEMPLATE_ID" name="templateId"/>
+            <field column="PROJECT_NAME" name="projectName"/>
+
+            <field column="PROPERTY_TYPE_ID" name="propertyTypeId"/>
+            <field column="PROPERTY_TYPE_TITLE" name="propertyTypeTitle"/>
+            <field column="PROPERTY_TYPE_GROUP_ID" name="propertyTypeGroupId"/>
+            <field column="PROPERTY_TYPE_GROUP_TITLE" name="propertyTypeGroupTitle"/>
+
+            <field column="BUILDING_NAME" name="buildingName"/>
+            <field column="BUILDER_NAME" name="builderName"/>
+            <field column="BUILDER_WEB_URL" name="builderWebUrl"/>
+
+            <field column="TRANSACTION_TYPE_ID" name="transactionTypeId"/>
+            <field column="TRANSACTION_TYPE_TITLE" name="transactionTypeTitle"/>
+            <field column="CONFIGURATION_ID" name="configurationId"/>
+            <field column="CONFIGURATION_TITLE" name="configurationTitle"/>
+
+            <field column="ADDRESS_LINE_1" name="addressLine1"/>
+            <field column="ADDRESS_LINE_2" name="addressLine2"/>
+            <field column="CITY_NAME" name="cityName"/>
+            <field column="AREA_NAME" name="areaName"/>
+            <field column="STATE_NAME" name="stateName"/>
+            <field column="LANDMARK_NAME" name="landmarkName"/>
+            <field column="PIN_CODE" name="pinCode"/>
+            <field column="COUNTRY_NAME" name="countryName"/>
+            <field column="LOCALITY_IDS" name="localityIds"/>
+            <field column="LOCALITY_TITLES" name="localityTitles"/>
+
+            <field column="AVAILABILITY_ID" name="availabilityId"/>
+            <field column="AVAILABILITY_TITLE" name="availabilityTitle"/>
+            <field column="AVAILABILITY_TS" name="availabilityTs"/>
+
+            <field column="PROPERTY_AGE_ID" name="propertyAgeId"/>
+            <field column="PROPERTY_AGE_TITLE" name="propertyAgeTitle"/>
+            <field column="PROPERTY_DESCRIPTION" name="propertyDescription"/>
+
+            <field column="TOTAL_BEDROOMS" name="totalBedrooms"/>
+            <field column="TOTAL_MASTER_BEDROOMS" name="totalMasterBedrooms"/>
+            <field column="TOTAL_BATHROOMS" name="totalBathrooms"/>
+            <field column="TOTAL_BALCONIES" name="totalBalconies"/>
+
+            <field column="SUPER_BUILT_UP_AREA" name="superBuiltUpArea"/>
+            <field column="SUPER_BUILT_UP_AREA_UNIT_ID" name="superBuiltUpAreaUnitId"/>
+            <field column="SUPER_BUILT_UP_AREA_UNIT_TITLE" name="superBuiltUpAreaUnitTitle"/>
+
+            <field column="BUILT_UP_AREA" name="builtUpArea"/>
+            <field column="BUILT_UP_AREA_UNIT_ID" name="builtUpAreaUnitId"/>
+            <field column="BUILT_UP_AREA_UNIT_TITLE" name="builtUpAreaUnitTitle"/>
+
+            <field column="CARPET_AREA" name="carpetArea"/>
+            <field column="CARPET_AREA_UNIT_ID" name="carpetAreaUnitId"/>
+            <field column="CARPET_AREA_UNIT_TITLE" name="carpetAreaUnitTitle"/>
+
+            <field column="FURNISH_TYPE_ID" name="furnishId"/>
+            <field column="FURNISH_TYPE_TITLE" name="furnishTitle"/>
+
+            <field column="FLOOR_ID" name="floorId"/>
+            <field column="FLOOR_NO" name="floorNo"/>
+            <field column="TOTAL_FLOORS" name="totalFloors"/>
+            <field column="TOTAL_FLATS_FLOOR" name="totalFlatsFloor"/>
+
+            <field column="TOTAL_COVERED_PARKING" name="totalCoveredParking"/>
+            <field column="TOTAL_OPEN_PARKING" name="totalOpenParking"/>
+
+            <field column="TOTAL_BUILDING_COVERED_PARKING" name="totalBuildingCoveredParking"/>
+            <field column="TOTAL_BUILDING_OPEN_PARKING" name="totalBuildingOpenParking"/>
+            <field column="TOTAL_BUILDING_VISITOR_PARKING" name="totalBuildingVisitorParking"/>
+
+            <field column="FACE_ID" name="faceId"/>
+            <field column="FACE_TITLE" name="faceTitle"/>
+
+            <field column="OVERLOOK_IDS" name="overlookIds"/>
+            <field column="OVERLOOK_TITLES" name="overlookTitles"/>
+
+            <field column="FLOOR_TYPE_IDS" name="floorTypeIds"/>
+            <field column="FLOOR_TYPE_TITLES" name="floorTypeTitles"/>
+
+            <field column="MODULAR_KITCHEN" name="modularKitchen"/>
+            <field column="POOJA_ROOM" name="poojaRoom"/>
+            <field column="STUDY_ROOM" name="studyRoom"/>
+            <field column="SERVANT_ROOM" name="servantRoom"/>
+            <field column="OTHERS_ROOM" name="othersRoom"/>
+
+            <field column="AMOUNT_NEGOTIABLE" name="amountNegotiable"/>
+            <field column="MAINTENANCE_AMOUNT" name="maintenanceAmount"/>
+            <field column="MAINTENANCE_PERIOD_ID" name="maintenancePeriodId"/>
+            <field column="MAINTENANCE_PERIOD_TITLE" name="maintenancePeriodTitle"/>
+            <field column="HEAVY_DEPOSIT" name="heavyDeposit"/>
+            <field column="EXPECTED_DEPOSIT_AMOUNT" name="expectedDepositAmount"/>
+            <field column="EXPECTED_RENTAL_AMOUNT" name="expectedRentAmount"/>
+            <field column="EXPECTED_AMOUNT" name="expectedAmount"/>
+            <field column="ALL_INCLUSIVE_PRICE" name="allInclusiveAmount"/>
+            <field column="TAX_AND_GOV_CHARGE_INCLUDED" name="taxAndGovChargeIncluded"/>
+
+            <field column="NOTES" name="notes"/>
+            <field column="TOTAL_BROKER" name="totalBrokers"/>
+
+            <field column="WEEKDAYS_VISIT_TIME_IDS" name="weekdaysVisitingIds"/>
+            <field column="WEEKDAYS_VISIT_TIME_TITLES" name="weekdaysVisitingTitles"/>
+            <field column="WEEKEND_VISIT_TIME_IDS" name="weekendVisitingIds"/>
+            <field column="WEEKEND_VISIT_TIME_TITLES" name="weekendVisitingTitles"/>
+
+            <field column="EARTHQUAKE_RESISTANT" name="earthquakeResistant"/>
+            <field column="GAS_PIPELINE" name="gasPipeline"/>
+            <field column="CLUB_HOUSE" name="clubHouse"/>
+            <field column="GYM" name="gym"/>
+            <field column="KIDS_PLAY_AREA" name="kidsPlayArea"/>
+            <field column="WATER_HARVESTING" name="waterHarvesting"/>
+            <field column="SWIMMING_POOL" name="swimmingPool"/>
+            <field column="COMMON_AREA_POWER_BACKUP" name="commonAreaPowerBackup"/>
+            <field column="FLAT_POWER_BACKUP" name="flatPowerBackup"/>
+            <field column="SENIOR_CITIZEN_AREA" name="seniorCitizenArea"/>
+            <field column="GATED_SOCIETY" name="gatedSociety"/>
+            <field column="WATER_SUPPLY" name="waterSupply"/>
+            <field column="LANDSCAPE_LAWN" name="landscapeLawn"/>
+            <field column="BANQUET_HALL" name="banquetHall"/>
+            <field column="JOGGERS_TRACK" name="joggersTrack"/>
+            <field column="CCTV" name="cctv"/>
+            <field column="FIRE_ALARM" name="fireAlarm"/>
+            <field column="PET_FRIENDLY" name="petFriendly"/>
+            <field column="TOTAL_SERVICE_LIFT" name="totalServiceLift"/>
+            <field column="TOTAL_LIFT" name="totalLift"/>
+
+            <field column="OC_TS" name="ocTs"/>
+            <field column="RERA_ID" name="reraId"/>
+
+            <field column="STATUS_ID" name="statusId"/>
+            <field column="STATUS_TITLE" name="statusTitle"/>
+
+            <field column="CREATED_BY" name="createdBy"/>
+            <field column="CREATED_TS" name="createdTs"/>
+
+            <field column="UPDATED_BY" name="updatedBy"/>
+            <field column="UPDATED_TS" name="updatedTs"/>
+
+            <field column="POSTED_BY" name="postedBy"/>
+            <field column="POSTED_TS" name="postedTs"/>
+            <field column="POSTED_USER_TYPE_ID" name="postedUserTypeId"/>
+            <field column="POSTED_USER_TYPE_TITLE" name="postedUserTypeTitle"/>
+
+            <field column="DEAL_TS" name="dealTs"/>
+        </entity>
+    </document>
+</dataConfig>
+

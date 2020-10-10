@@ -71,4 +71,11 @@ public class PropertyController implements WebMwConst {
         return propertyCacheFacade.findAllPostProperties(filter).getResMap();
     }
 
+    @GetMapping(URL_REALTY_CACHE_PROPERTY_SYNC)
+    public Map<String, Object> syncAllPostPropertiesForCache() {
+        PropertyFilter filter = new PropertyFilter();
+        filter.setPropertyId(186);
+        return propertyCacheFacade.syncAllPostProperties(filter).getResMap();
+    }
+
 }

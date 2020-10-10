@@ -3,6 +3,7 @@ package com.rsatech.realty.core.shared.facade.property;
 import com.rsatech.core.shared.dto.common.CoreResponse;
 import com.rsatech.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.rsatech.realty.core.shared.filter.property.PropertyFilter;
+import com.rsatech.realty.core.shared.service.property.PropertyCacheService;
 import com.rsatech.realty.core.shared.service.property.PropertyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,14 +21,14 @@ public class PropertyCacheFacade {
     private static final Logger logger = LoggerFactory.getLogger(PropertyCacheFacade.class);
 
     @Autowired
-    private PropertyService propertyService;
+    private PropertyCacheService propertyCacheService;
 
     public CoreResponse findAllPostProperties(PropertyFilter filter) {
         logger.info("Begin - findAllProperties. - Cache");
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
-            List<PostPropertyDto> dtos = propertyService.findAllPostPropertiesFromCache(filter);
+            List<PostPropertyDto> dtos = propertyCacheService.findAllPostProperties(filter);
             response.addData(dtos);
         } catch (Exception e) {
             response.addStatus(false);
@@ -36,6 +37,23 @@ public class PropertyCacheFacade {
         }
         response.addMessage(msg);
         logger.info("End - findAllPostProperties. - Cache");
+        return response;
+    }
+
+    public CoreResponse syncAllPostProperties(PropertyFilter filter) {
+        logger.info("Begin - syncAllPostProperties. - Cache");
+        CoreResponse response = new CoreResponse();
+        String msg = "";
+        try {
+             propertyCacheService.syncAllPostProperties(filter);
+
+        } catch (Exception e) {
+            response.addStatus(false);
+            msg = "Error occurred while syncing properties for cache.";
+            logger.error(msg + e.getMessage(), e);
+        }
+        response.addMessage(msg);
+        logger.info("End - syncAllPostProperties. - Cache");
         return response;
     }
 }

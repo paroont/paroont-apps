@@ -12,11 +12,22 @@
     <artifactId>rsa-realty-core-mw</artifactId>
 <dependencies>
 
+
+
     <dependency>
         <groupId>org.elasticsearch.client</groupId>
         <artifactId>elasticsearch-rest-high-level-client</artifactId>
-        <version>${org.elasticsearch.version}</version>
+        <version>7.9.2</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+
+            </exclusion>
+        </exclusions>
     </dependency>
+
+
 
     <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>

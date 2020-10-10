@@ -8,17 +8,9 @@ import com.rsatech.realty.core.shared.service.common.RealtyService;
 
 import java.util.List;
 
-public interface PropertyService extends RealtyService {
-    public List<BuildingTemplateDto> findAllBuildingTemplates(PropertyFilter filter);
-
-    public BuildingTemplateDto findBuildingTemplateById(long id);
-
+public interface PropertyCacheService extends RealtyService {
 
     public List<PostPropertyDto> findAllPostProperties(PropertyFilter filter);
-
-    public PostPropertyDto findPostPropertyById(long id);
-
-    public long savePostProperty(PostPropertyDto dto, PropertyActionDto action);
-
+    public void syncAllPostProperties(PropertyFilter filter);
 
 }

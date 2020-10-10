@@ -40,9 +40,4 @@ public class PropertyServiceImpl extends RealtyServiceImpl implements PropertySe
     public long savePostProperty(PostPropertyDto dto, PropertyActionDto actionDto){
         return propertyDbService.savePostProperty(dto, actionDto);
     }
-
-
-    public List<PostPropertyDto> findAllPostPropertiesFromCache(PropertyFilter filter){
-        return cacheHelper.findAllPostProperties(filter);
-    }
 }

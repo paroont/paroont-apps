@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Post_Property Fields -->
+<schema name="default-config" version="1.6">
+<field name="propertyId" type="plong" indexed="true" stored="true"/>
+<field name="templateId" type="plong" indexed="true" stored="true"/>
+<field name="projectName" type="string" indexed="true" stored="true"/>
+
+<field name="propertyTypeId" type="pint" indexed="true" stored="true"/>
+<field name="propertyTypeTitle" type="string" indexed="true" stored="true"/>
+<field name="propertyTypeGroupId" type="pint" indexed="true" stored="true"/>
+<field name="propertyTypeGroupTitle" type="string" indexed="true" stored="true"/>
+
+<field name="buildingName" type="string" indexed="true" stored="true"/>
+<field name="builderName" type="string" indexed="true" stored="true"/>
+<field name="builderWebUrl" type="string" indexed="true" stored="true"/>
+
+<field name="transactionTypeId" type="pint" indexed="true" stored="true"/>
+<field name="transactionTypeTitle" type="string" indexed="true" stored="true"/>
+<field name="configurationId" type="pint" indexed="true" stored="true"/>
+<field name="configurationTitle" type="string" indexed="true" stored="true"/>
+
+<field name="addressLine1" type="string" indexed="true" stored="true"/>
+<field name="addressLine2" type="string" indexed="true" stored="true"/>
+<field name="cityName" type="string" indexed="true" stored="true"/>
+<field name="areaName" type="string" indexed="true" stored="true"/>
+<field name="stateName" type="string" indexed="true" stored="true"/>
+<field name="landmarkName" type="string" indexed="true" stored="true"/>
+<field name="pinCode" type="string" indexed="true" stored="true"/>
+<field name="countryName" type="string" indexed="true" stored="true"/>
+<field name="localityIds" type="string" indexed="true" stored="true"/>
+<field name="localityTitles" type="string" indexed="true" stored="true"/>
+
+<field name="availabilityId" type="pint" indexed="true" stored="true"/>
+<field name="availabilityTitle" type="string" indexed="true" stored="true"/>
+<field name="availabilityTs" type="string" indexed="true" stored="true"/>
+
+<field name="propertyAgeId" type="pint" indexed="true" stored="true"/>
+<field name="propertyAgeTitle" type="string" indexed="true" stored="true"/>
+<field name="propertyDescription" type="string" indexed="true" stored="true"/>
+
+<field name="totalBedrooms" type="pint" indexed="true" stored="true"/>
+<field name="totalMasterBedrooms" type="pint" indexed="true" stored="true"/>
+<field name="totalBathrooms" type="pint" indexed="true" stored="true"/>
+<field name="totalBalconies" type="pint" indexed="true" stored="true"/>
+
+<field name="superBuiltUpArea" type="pfloat" indexed="true" stored="true"/>
+<field name="superBuiltUpAreaUnitId" type="pint" indexed="true" stored="true"/>
+<field name="superBuiltUpAreaUnitTitle" type="string" indexed="true" stored="true"/>
+
+<field name="builtUpArea" type="pfloat" indexed="true" stored="true"/>
+<field name="builtUpAreaUnitId" type="pint" indexed="true" stored="true"/>
+<field name="builtUpAreaUnitTitle" type="string" indexed="true" stored="true"/>
+
+<field name="carpetArea" type="pfloat" indexed="true" stored="true"/>
+<field name="carpetAreaUnitId" type="pint" indexed="true" stored="true"/>
+<field name="carpetAreaUnitTitle" type="string" indexed="true" stored="true"/>
+
+<field name="furnishId" type="pint" indexed="true" stored="true"/>
+<field name="furnishTitle" type="string" indexed="true" stored="true"/>
+
+<field name="floorId" type="pint" indexed="true" stored="true"/>
+<field name="floorNo" type="string" indexed="true" stored="true"/>
+<field name="totalFloors" type="pint" indexed="true" stored="true"/>
+<field name="totalFlatsFloor" type="pint" indexed="true" stored="true"/>
+
+<field name="totalCoveredParking" type="pint" indexed="true" stored="true"/>
+<field name="totalOpenParking" type="pint" indexed="true" stored="true"/>
+
+<field name="totalBuildingCoveredParking" type="pint" indexed="true" stored="true"/>
+<field name="totalBuildingOpenParking" type="pint" indexed="true" stored="true"/>
+<field name="totalBuildingVisitorParking" type="pint" indexed="true" stored="true"/>
+
+<field name="faceId" type="pint" indexed="true" stored="true"/>
+<field name="faceTitle" type="string" indexed="true" stored="true"/>
+
+<field name="overlookIds" type="string" indexed="true" stored="true"/>
+<field name="overlookTitles" type="string" indexed="true" stored="true"/>
+
+<field name="floorTypeIds" type="string" indexed="true" stored="true"/>
+<field name="floorTypeTitles" type="string" indexed="true" stored="true"/>
+
+<field name="modularKitchen" type="pint" indexed="true" stored="true"/>
+<field name="poojaRoom" type="pint" indexed="true" stored="true"/>
+<field name="studyRoom" type="pint" indexed="true" stored="true"/>
+<field name="servantRoom" type="pint" indexed="true" stored="true"/>
+<field name="othersRoom" type="pint" indexed="true" stored="true"/>
+
+<field name="amountNegotiable" type="pint" indexed="true" stored="true"/>
+<field name="maintenanceAmount" type="pfloat" indexed="true" stored="true"/>
+<field name="maintenancePeriodId" type="pint" indexed="true" stored="true"/>
+
+
+<field name="maintenancePeriodTitle" type="string" indexed="true" stored="true"/>
+<field name="heavyDeposit" type="pint" indexed="true" stored="true"/>
+<field name="expectedDepositAmount" type="pfloat" indexed="true" stored="true"/>
+<field name="expectedRentAmount" type="pfloat" indexed="true" stored="true"/>
+
+        <!-- find for double -->
+<field name="expectedAmount" type="pfloat" indexed="true" stored="true"/>
+<field name="allInclusiveAmount" type="pint" indexed="true" stored="true"/>
+<field name="taxAndGovChargeIncluded" type="pint" indexed="true" stored="true"/>
+
+<field name="notes" type="string" indexed="true" stored="true"/>
+<field name="totalBrokers" type="pint" indexed="true" stored="true"/>
+
+<field name="weekdaysVisitingIds" type="string" indexed="true" stored="true"/>
+<field name="weekdaysVisitingTitles" type="string" indexed="true" stored="true"/>
+<field name="weekendVisitingIds" type="string" indexed="true" stored="true"/>
+<field name="weekendVisitingTitles" type="string" indexed="true" stored="true"/>
+
+
+<field name="earthquakeResistant" type="pint" indexed="true" stored="true"/>
+<field name="gasPipeline" type="pint" indexed="true" stored="true"/>
+<field name="clubHouse" type="pint" indexed="true" stored="true"/>
+<field name="gym" type="pint" indexed="true" stored="true"/>
+<field name="kidsPlayArea" type="pint" indexed="true" stored="true"/>
+<field name="waterHarvesting" type="pint" indexed="true" stored="true"/>
+<field name="swimmingPool" type="pint" indexed="true" stored="true"/>
+<field name="commonAreaPowerBackup" type="pint" indexed="true" stored="true"/>
+<field name="flatPowerBackup" type="pint" indexed="true" stored="true"/>
+<field name="seniorCitizenArea" type="pint" indexed="true" stored="true"/>
+<field name="gatedSociety" type="pint" indexed="true" stored="true"/>
+<field name="waterSupply" type="pint" indexed="true" stored="true"/>
+<field name="landscapeLawn" type="pint" indexed="true" stored="true"/>
+<field name="banquetHall" type="pint" indexed="true" stored="true"/>
+<field name="joggersTrack" type="pint" indexed="true" stored="true"/>
+<field name="cctv" type="pint" indexed="true" stored="true"/>
+<field name="fireAlarm" type="pint" indexed="true" stored="true"/>
+<field name="petFriendly" type="pint" indexed="true" stored="true"/>
+
+<field name="totalServiceLift" type="pint" indexed="true" stored="true"/>
+<field name="totalLift" type="pint" indexed="true" stored="true"/>
+
+        <!-- date and time -->
+<field name="ocTs" type="string" indexed="true" stored="true"/>
+<field name="reraId" type="string" indexed="true" stored="true"/>
+
+<field name="statusId" type="pint" indexed="true" stored="true"/>
+<field name="statusTitle" type="string" indexed="true" stored="true"/>
+
+<field name="createdBy" type="string" indexed="true" stored="true"/>
+<field name="createdTs" type="string" indexed="true" stored="true"/>
+
+<field name="updatedBy" type="string" indexed="true" stored="true"/>
+<field name="updatedTs" type="string" indexed="true" stored="true"/>
+
+<field name="postedBy" type="string" indexed="true" stored="true"/>
+<field name="postedTs" type="string" indexed="true" stored="true"/>
+<field name="postedUserTypeId" type="pint" indexed="true" stored="true"/>
+<field name="postedUserTypeTitle" type="string" indexed="true" stored="true"/>
+
+        <!-- date and time -->
+<field name="dealTs" type="string" indexed="true" stored="true"/>
+
+
+</schema>

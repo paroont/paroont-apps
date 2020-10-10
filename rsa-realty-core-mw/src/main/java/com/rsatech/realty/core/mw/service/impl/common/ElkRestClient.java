@@ -10,26 +10,27 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 @Component
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class ElkRestClient {
 
     private static final Logger logger = LoggerFactory.getLogger(PropertyCacheServiceHelper.class);
-    private RestHighLevelClient client;
 
 
-    public RestHighLevelClient getClient() {
-        return client;
-    }
-
-    @PostConstruct
-    public void init() {
-         client = new RestHighLevelClient(
+    public RestHighLevelClient makeClient() {
+        return new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("localhost", 9200, "http"),
                         new HttpHost("localhost", 9201, "http")));
-        logger.info("created rest client.");
+    }
+
+    public void closeClient(RestHighLevelClient client) {
+        if (null != client) {
+            try {
+                client.close();
+            } catch (Exception e) {
+                logger.error("Error while closing client: Msg: {}", e.getMessage(), e);
+            }
+        }
     }
 }

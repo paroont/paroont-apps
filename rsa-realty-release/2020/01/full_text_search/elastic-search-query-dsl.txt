@@ -1,0 +1,130 @@
+GET /test-properties/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET /test-properties/_search
+{
+   "query":{
+      "multi_match": {
+         "query": "sai",
+         "fields": [ "buildingName", "builderName" ,"cityName"
+         ,"localityTitles", "configurationTitle", "furnishTitle", "transactionTypeTitle"],
+         "fuzziness": 6
+      }
+   }
+}
+
+
+GET /test-properties/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "multi_match": {
+            "query": "Rent",
+            "fields": [
+              "buildingName",
+              "builderName",
+              "cityName",
+              "localityTitles",
+              "configurationTitle",
+              "furnishTitle",
+              "transactionTypeTitle"
+            ]
+          }
+        },
+        {
+          "range": {
+            "expectedAmount": {
+              "gte": 20000
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+GET /test-properties-3/_search
+{
+  "_source": [
+    "buildingName", "cityName"],
+ "suggest": {
+   "text": "bhoo",
+
+   "buildingSuggest": {
+    "completion" :{
+      "field": "buildingNameSuggest",
+     "skip_duplicates": true,
+     "fuzzy":{
+         "fuzziness": 6
+       }
+    }
+   },
+    "citySuggest": {
+     "completion" :{
+      "field": "cityNameSuggest",
+      "skip_duplicates": true,
+     "fuzzy":{
+         "fuzziness": 6
+       }
+    }
+   }
+ }
+}
+
+
+
+DELETE /test-properties/_doc/AD1y3XQBTV3jI-S8FJqT
+
+POST /test-properties/_doc/1
+{"propertyId": 1,
+ "buildingName" : "Sapphire",
+"builderName" : "Sai Provisio",
+"cityName" : "Roadpali",
+ "localityTitles" : "Kharghar and Beyond",
+"configurationTitle" : "2 BHK",
+"furnishTitle" : "Furnished",
+ "transactionTypeTitle" : "Buy",
+"expectedAmount" : 8000000.0
+}
+
+POST /test-properties/_doc/2
+{"propertyId": 2,
+ "buildingName" : "Capital City",
+"builderName" : "Adhiraj",
+"cityName" : "Kharghar",
+ "localityTitles" : "Kharghar and Beyond",
+"configurationTitle" : "2 BHK",
+"furnishTitle" : "Furnished",
+"transactionTypeTitle" : "Buy",
+"expectedAmount" : 7000000.0
+}
+
+POST /test-properties/_doc/3
+{"propertyId": 3,
+ "buildingName" : "Bhoomi Heights",
+"builderName" : "Gajra",
+"cityName" : "Kharghar",
+ "localityTitles" : "Kharghar and Beyond",
+"configurationTitle" : "1 BHK",
+"furnishTitle" : "Semi Furnished",
+"transactionTypeTitle" : "Rent",
+"expectedAmount" : 20000.0
+}
+
+// boost field.. - increase importance of field.
+GET /_search
+{
+  "query": {
+    "multi_match" : {
+      "query" : "this is a test",
+      "fields" : [ "subject^3", "message" ]
+    }
+  }
+}
