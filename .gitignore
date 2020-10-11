@@ -1,9 +1,9 @@
 /.idea/
-/rsa-core-shared/target/
-/rsa-core-db/target/
-/rsa-core-mw/target/
-/rsa-realty-core-db/target/
-/rsa-realty-core-mw/target/
-/rsa-realty-core-shared/target/
-/rsa-realty-web-mw/target/
-/rsa-realty-web-shared/target/
+/paroont-core-shared/target/
+/paroont-core-db/target/
+/paroont-core-mw/target/
+/paroont-realty-core-db/target/
+/paroont-realty-core-mw/target/
+/paroont-realty-core-shared/target/
+/paroont-realty-web-mw/target/
+/paroont-realty-web-shared/target/
