@@ -1,4 +1,4 @@
-package om.rsatech.core.db.test.user;
+package com.paroont.core.db.test.user;
 
 import com.paroont.core.db.dao.entity.user.UserProfileBaseDo;
 import com.paroont.core.db.dao.impl.user.profile.sql.UserDeleteQueryBuilder;
