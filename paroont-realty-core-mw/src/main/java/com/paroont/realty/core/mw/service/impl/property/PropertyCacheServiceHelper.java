@@ -9,6 +9,7 @@ import com.paroont.realty.core.mw.service.impl.common.ElkRestClient;
 import com.paroont.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.paroont.realty.core.shared.exception.property.PropertySearchException;
 import com.paroont.realty.core.shared.filter.property.PropertyFilter;
+import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.bulk.BulkItemResponse;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -18,6 +19,8 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
@@ -29,6 +32,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +43,7 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
 
     private static final Logger logger = LoggerFactory.getLogger(PropertyCacheServiceHelper.class);
 
+    private List<String> fullTextFields = new ArrayList<>();
     @Autowired
     private ElkRestClient elkRestClient;
 
@@ -51,10 +56,22 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             ObjectMapper objMapper = new ObjectMapper();
             client = elkRestClient.makeClient();
             objMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-            SearchRequest req = new SearchRequest(ELK_INDEX_POST_PROPERTY);
+
+            SearchRequest req = new SearchRequest(ELK_POST_PROPERTY_INDEX);
             SearchSourceBuilder srcBuilder = new SearchSourceBuilder();
-            srcBuilder.query(QueryBuilders.matchAllQuery());
+            BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+
+            String fullTextQuery = filter.getSearchQuery();
+            if (StringUtils.isNotBlank(fullTextQuery)) {
+                fullTextQuery = fullTextQuery.trim().toLowerCase();
+                logger.info("Full_Text_Query: [{}]", fullTextQuery);
+                MultiMatchQueryBuilder multiMatchQuery = QueryBuilders.multiMatchQuery(fullTextQuery, fullTextFields.toArray(new String[0]));
+                boolQuery.should(multiMatchQuery.fuzziness("6"));
+            }
+            boolQuery.filter(QueryBuilders.termQuery("statusId", 1));
+            srcBuilder.query(boolQuery);
             req.source(srcBuilder);
+            logger.info("Search_Request: [{}]", req.toString());
             SearchResponse res = client.search(req, RequestOptions.DEFAULT);
             SearchHits hits = res.getHits();
             for (SearchHit hit : hits) {
@@ -64,8 +81,7 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             msg = "Error occurred while searching properties from ELK. " + e.getMessage();
             logger.error(msg, e);
             throw new PropertySearchException(msg, e);
-        }
-        finally {
+        } finally {
             elkRestClient.closeClient(client);
         }
         logger.info("End - findAllPostProperties - ELK.");
@@ -84,7 +100,7 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             Optional.ofNullable(dtos).orElse(new ArrayList<>()).forEach(dto -> {
                 try {
                     String json = objMapper.writeValueAsString(dto);
-                    bulkReq.add(new IndexRequest(ELK_INDEX_POST_PROPERTY).id(String.valueOf(dto.getPropertyId())).source(json, XContentType.JSON));
+                    bulkReq.add(new IndexRequest(ELK_POST_PROPERTY_INDEX).id(String.valueOf(dto.getPropertyId())).source(json, XContentType.JSON));
                 } catch (JsonProcessingException e) {
                     String errorMsg = String.format("Error while create bulk sync request for property_Id: [%s], Error_Msg: [%s]", dto.getPropertyId(), e.getMessage());
                     logger.error(errorMsg, e);
@@ -114,10 +130,40 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             msg = "Error occurred while syncing properties to ELK. " + e.getMessage();
             logger.error(msg, e);
             throw new PropertySearchException(msg, e);
-        }
-        finally {
+        } finally {
             elkRestClient.closeClient(client);
         }
         logger.info("End - syncAllPostProperties - ELK.");
+    }
+
+    @PostConstruct
+    private void buildFullTextFields() {
+
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_PROJECT_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_PROPERTY_TYPE_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_PROPERTY_TYPE_GROUP_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_BUILDING_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_BUILDER_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_TRANSACTION_TYPE_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_CONFIGURATION_TITLE);
+
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_ADDRESS_LINE_1);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_ADDRESS_LINE_2);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_LOCALITY_TITLES);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_CITY_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_AREA_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_STATE_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_LANDMARK_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_PIN_CODE);
+
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_AVAILABILITY_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_PROPERTY_AGE_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_FURNISH_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_RERA_ID);
+
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_POSTED_BY_NAME);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_POSTED_USER_TYPE_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_TENANT_TYPE_TITLE);
+        fullTextFields.add(ELK_POST_PROPERTY_FIELD_SALE_TYPE_TITLE);
     }
 }
