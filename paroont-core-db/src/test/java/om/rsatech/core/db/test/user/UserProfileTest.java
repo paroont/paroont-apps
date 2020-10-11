@@ -1,12 +1,12 @@
 package om.rsatech.core.db.test.user;
 
-import com.rsatech.core.db.dao.entity.user.UserProfileBaseDo;
-import com.rsatech.core.db.dao.impl.user.profile.sql.UserDeleteQueryBuilder;
-import com.rsatech.core.db.dao.impl.user.profile.sql.UserInsertQueryBuilder;
-import com.rsatech.core.db.dao.impl.user.profile.sql.UserSelectQueryBuilder;
-import com.rsatech.core.db.dao.impl.user.profile.sql.UserUpdateQueryBuilder;
-import com.rsatech.core.shared.dto.common.CoreActionBaseDto;
-import com.rsatech.core.shared.filter.user.BaseProfileFilter;
+import com.paroont.core.db.dao.entity.user.UserProfileBaseDo;
+import com.paroont.core.db.dao.impl.user.profile.sql.UserDeleteQueryBuilder;
+import com.paroont.core.db.dao.impl.user.profile.sql.UserInsertQueryBuilder;
+import com.paroont.core.db.dao.impl.user.profile.sql.UserSelectQueryBuilder;
+import com.paroont.core.db.dao.impl.user.profile.sql.UserUpdateQueryBuilder;
+import com.paroont.core.shared.dto.common.CoreActionBaseDto;
+import com.paroont.core.shared.filter.user.BaseProfileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

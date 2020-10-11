@@ -1,0 +1,79 @@
+package com.paroont.realty.web.shared.constant.url;
+
+public interface WebUrlConst {
+
+    String URL_REALTY_API_DATA_PREFIX  ="/api/data/realty";
+    String URL_REALTY_API_CACHE_DATA_PREFIX  ="/api/data-swift/realty";
+    String URL_REALTY_RDM_API_DATA_PREFIX  =URL_REALTY_API_DATA_PREFIX + "/rdm";
+
+    String URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX  =URL_REALTY_RDM_API_DATA_PREFIX + "/property";
+    String URL_REALTY_RDM_COMMON_API_DATA_PREFIX  =URL_REALTY_RDM_API_DATA_PREFIX + "/common";
+
+
+    // User Profile
+    String URL_REALTY_USER_PROFILE  = URL_REALTY_API_DATA_PREFIX + "/user/profiles";
+    String URL_REALTY_USER_PROFILE_ID  = URL_REALTY_USER_PROFILE + "/{userId}";
+
+    //RDM Common
+    String URL_REALTY_RDM_APP_REF_DATA  = URL_REALTY_RDM_API_DATA_PREFIX + "/app-ref-data";
+    String URL_REALTY_RDM_COMMON_CONTACT_TYPE  = URL_REALTY_RDM_COMMON_API_DATA_PREFIX + "/contact-types";
+    String URL_REALTY_RDM_COMMON_STATUS_TYPE  = URL_REALTY_RDM_COMMON_API_DATA_PREFIX + "/status-types";
+
+    //RDM Property
+    String URL_REALTY_RDM_PROPERTY_TYPE  = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/types";
+    String URL_REALTY_RDM_PROPERTY_TYPE_GROUP  = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/type-groups";
+    String URL_REALTY_RDM_PROPERTY_FURNISH_TYPE = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/furnish-types";
+
+// Common Param
+
+    String URL_COMMON_PARAM_SEARCH_QUERY = "searchQuery";
+    String URL_COMMON_PARAM_MIN_BUDGET = "minBudget";
+    String URL_COMMON_PARAM_MAX_BUDGET = "maxBudget";
+    String URL_COMMON_PARAM_CONFIG_TYPE_ID = "configTypeId";
+    String URL_COMMON_PARAM_TRANSACTION_TYPE_ID = "transactionTypeId";
+
+    String URL_COMMON_PARAM_CITY_NAME = "cityName";
+    String URL_COMMON_PARAM_AREA_NAME = "areaName";
+
+    String URL_COMMON_PARAM_PIN_CODE = "pinCode";
+
+    // Property Param
+    String URL_REALTY_PROPERTY_PARAM_PROPERTY_ID = "propertyId";
+    String URL_REALTY_PROPERTY_PARAM_CONFIGURATION_ID = "configurationId";
+    String URL_REALTY_PROPERTY_PARAM_AVAILABILITY_ID = "availabilityId";
+    String URL_REALTY_PROPERTY_PARAM_AVAILABILITY_TS = "availabilityTs";
+
+    String URL_REALTY_PROPERTY_PARAM_PROPERTY_TYPE_ID = "propertyTypeId";
+    String URL_REALTY_PROPERTY_PARAM_MIN_AREA = "minArea";
+    String URL_REALTY_PROPERTY_PARAM_MAX_AREA = "maxArea";
+    String URL_REALTY_PROPERTY_PARAM_AREA_TYPE_ID  = "areaTypeId";
+    String URL_REALTY_PROPERTY_PARAM_AREA_UNIT_ID = "areaUnitId";
+    String URL_REALTY_PROPERTY_PARAM_TENANT_TYPE_ID = "tenantTypeId";
+    String URL_REALTY_PROPERTY_PARAM_MIN_FLOOR_NO = "minFloorNo";
+    String URL_REALTY_PROPERTY_PARAM_MAX_FLOOR_NO = "maxFloorNo";
+    String URL_REALTY_PROPERTY_PARAM_FLOOR_ID = "floorId";
+    String URL_REALTY_PROPERTY_PARAM_SALE_TYPE_ID = "saleTypeId";
+    String URL_REALTY_PROPERTY_PARAM_FACE_ID = "faceId";
+    String URL_REALTY_PROPERTY_PARAM_FURNISH_ID = "furnishId";
+
+    String URL_REALTY_PROPERTY_PARAM_POSTED_USER_TYPE_ID = "postedUserTypeId";
+    String URL_REALTY_PROPERTY_PARAM_TOTAL_BATHROOMS = "totalBathrooms";
+    String URL_REALTY_PROPERTY_PARAM_PROPERTY_AGE_ID  = "propertyAgeId";
+    String URL_REALTY_PROPERTY_PARAM_POSTED_TS  = "postedTs";
+
+    String URL_REALTY_PROPERTY_PARAM_LOCALITY_IDS = "localityIds";
+
+
+    //Property
+
+    String URL_REALTY_PROPERTY  = URL_REALTY_API_DATA_PREFIX + "/properties";
+    String URL_REALTY_PROPERTY_ID  = URL_REALTY_PROPERTY + "/{"+URL_REALTY_PROPERTY_PARAM_PROPERTY_ID+"}";
+
+    String URL_REALTY_CACHE_PROPERTY  = URL_REALTY_API_CACHE_DATA_PREFIX + "/properties";
+    String URL_REALTY_CACHE_PROPERTY_ID  = URL_REALTY_CACHE_PROPERTY + "/{"+URL_REALTY_PROPERTY_PARAM_PROPERTY_ID+"}";
+    String URL_REALTY_CACHE_PROPERTY_SYNC  = URL_REALTY_API_CACHE_DATA_PREFIX + "/properties-sync";
+
+
+
+
+}
