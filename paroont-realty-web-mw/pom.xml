@@ -3,12 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>rsa-app</artifactId>
-        <groupId>com.rsatech</groupId>
+        <artifactId>paroont-apps</artifactId>
+        <groupId>com.paroont</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rsa-realty-web-mw</artifactId>
+    <artifactId>paroont-realty-web-mw</artifactId>
 <packaging>war</packaging>
 <dependencies>
     <dependency>
@@ -17,48 +17,48 @@
     </dependency>
 
 
-    <!-- RSA Project Dependencies -->
-    <!-- RSA DB -->
+    <!-- Paroont Project Dependencies -->
+    <!-- Paroont DB -->
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-core-db</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-core-db</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
 
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-realty-core-db</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-realty-core-db</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
 
     <!-- RSA Shared -->
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-core-shared</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-core-shared</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-realty-core-shared</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-realty-core-shared</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-realty-web-shared</artifactId>
-        <version>${rsa.app.version}</version>
-    </dependency>
-
-    <!-- RSA MW -->
-    <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-core-mw</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-realty-web-shared</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
 
+    <!-- Paroont MW -->
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-realty-core-mw</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-core-mw</artifactId>
+        <version>${paroont.apps.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-realty-core-mw</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
 
 

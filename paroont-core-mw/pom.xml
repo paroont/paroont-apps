@@ -3,25 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>rsa-app</artifactId>
-        <groupId>com.rsatech</groupId>
+        <artifactId>paroont-apps</artifactId>
+        <groupId>com.paroont</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rsa-core-mw</artifactId>
+    <artifactId>paroont-core-mw</artifactId>
 
 <dependencies>
-    <!-- RSA Project Dependencies -->
+    <!-- Paroont Project Dependencies -->
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-core-db</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-core-db</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
     <dependency>
-        <groupId>com.rsatech</groupId>
-        <artifactId>rsa-core-shared</artifactId>
-        <version>${rsa.app.version}</version>
+        <groupId>com.paroont</groupId>
+        <artifactId>paroont-core-shared</artifactId>
+        <version>${paroont.apps.version}</version>
     </dependency>
 </dependencies>
 

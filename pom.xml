@@ -4,22 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.rsatech</groupId>
-    <artifactId>rsa-app</artifactId>
+    <groupId>com.paroont</groupId>
+    <artifactId>paroont-apps</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>rsa-core-shared</module>
-        <module>rsa-core-mw</module>
-        <module>rsa-core-db</module>
-        <module>rsa-realty-core-shared</module>
-        <module>rsa-realty-core-mw</module>
-        <module>rsa-realty-core-db</module>
-        <module>rsa-realty-web-mw</module>
-        <module>rsa-realty-web-shared</module>
+        <module>paroont-core-shared</module>
+        <module>paroont-core-mw</module>
+        <module>paroont-core-db</module>
+        <module>paroont-realty-core-shared</module>
+        <module>paroont-realty-core-mw</module>
+        <module>paroont-realty-core-db</module>
+        <module>paroont-realty-web-mw</module>
+        <module>paroont-realty-web-shared</module>
     </modules>
     <properties>
-        <rsa.app.version>1.0</rsa.app.version>
+        <paroont.apps.version>1.0</paroont.apps.version>
         <java.version>1.8</java.version>
         <org.springframework.boot.version>2.2.8.RELEASE</org.springframework.boot.version>
         <org.springframework.version>5.2.7.RELEASE</org.springframework.version>
