@@ -1,3 +1,4 @@
+*.iml
 /.idea/
 /paroont-core-shared/target/
 /paroont-core-db/target/
