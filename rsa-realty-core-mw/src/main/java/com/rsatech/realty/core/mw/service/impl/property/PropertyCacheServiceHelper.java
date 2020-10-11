@@ -79,59 +79,8 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
         return dtos;
     }
 
+
     public void syncAllPostProperties(List<PostPropertyDto> dtos) {
-        logger.info("Begin - syncAllPostProperties - ELK.");
-        String msg = "";
-        final RestHighLevelClient client;
-        try {
-            ObjectMapper objMapper = new ObjectMapper();
-            client = elkRestClient.makeClient();
-           // BulkRequest bulkReq = new BulkRequest();
-            Optional.ofNullable(dtos).orElse(new ArrayList<>()).forEach(dto -> {
-                try {
-                    String json = objMapper.writeValueAsString(dto);
-                    String jsonString = "{" +
-                            "\"user\":\"kimchy\"," +
-                            "\"postDate\":\"2013-01-30\"," +
-                            "\"message\":\"trying out Elasticsearch\"" +
-                            "}";
-
-                    logger.info("json: [{}]", json);
-                    IndexRequest request = new IndexRequest("rk-test-99").id("9")
-                            .source(jsonString, XContentType.JSON);
-                    //request.routing("routing");
-                    //request.timeout(TimeValue.timeValueSeconds(1));
-                    //request.timeout("1s");
-                    //request.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL);
-                    //request.setRefreshPolicy("wait_for");
-                    //request.version(2);
-                    //request.versionType(VersionType.EXTERNAL);
-                    //request.opType(DocWriteRequest.OpType.INDEX);
-                    //request.setRefreshPolicy(WriteRequest.RefreshPolicy.IMMEDIATE);
-                    //request.opType("create");
-                    //request.setPipeline("pipeline");
-
-                    IndexResponse res = client.index(request, RequestOptions.DEFAULT);
-                    logger.info(res.getResult().name());
-                }  catch (Exception e) {
-                   String errorMsg = String.format("Error while create bulk sync request for property_Id: [%s], Error_Msg: [%s]", dto.getPropertyId(), e.getMessage());
-                    logger.error(errorMsg, e);
-                    throw new PropertySearchException(e);
-                }
-            });
-
-        } catch (Exception e) {
-            msg = "Error occurred while syncing properties to ELK. " + e.getMessage();
-            logger.error(msg, e);
-            throw new PropertySearchException(msg, e);
-        }
-        finally {
-            //elkRestClient.closeClient(client);
-        }
-        logger.info("End - syncAllPostProperties - ELK.");
-    }
-
-    public void syncAllPostProperties_backup(List<PostPropertyDto> dtos) {
         logger.info("Begin - syncAllPostProperties - ELK.");
         String msg = "";
         RestHighLevelClient client = null;
@@ -142,7 +91,7 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             Optional.ofNullable(dtos).orElse(new ArrayList<>()).forEach(dto -> {
                 try {
                     String json = objMapper.writeValueAsString(dto);
-                    bulkReq.add(new IndexRequest(ELK_INDEX_POST_PROPERTY).id(String.valueOf(dto.getPropertyId())).source(json, XContentType.JSON).opType(DocWriteRequest.OpType.CREATE));
+                    bulkReq.add(new IndexRequest(ELK_INDEX_POST_PROPERTY).id(String.valueOf(dto.getPropertyId())).source(json, XContentType.JSON));
                 } catch (JsonProcessingException e) {
                     String errorMsg = String.format("Error while create bulk sync request for property_Id: [%s], Error_Msg: [%s]", dto.getPropertyId(), e.getMessage());
                     logger.error(errorMsg, e);
@@ -152,6 +101,7 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             if (bulkReq.requests().isEmpty()) {
                 logger.info("Bulk request is empty - ELK.");
             } else {
+                // bulkReq.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL);
                 BulkResponse bulkRes = client.bulk(bulkReq, RequestOptions.DEFAULT);
                 List<String> failedMsgs = new ArrayList<>();
                 if (bulkRes.hasFailures()) {
