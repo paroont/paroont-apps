@@ -1,5 +1,6 @@
 package com.paroont.realty.core.shared.facade.property;
 
+import com.paroont.core.shared.dto.common.CorePaginationDto;
 import com.paroont.core.shared.dto.common.CoreResponse;
 import com.paroont.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.paroont.realty.core.shared.filter.property.PropertyFilter;
@@ -27,8 +28,9 @@ public class PropertyCacheFacade {
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
-            List<PostPropertyDto> dtos = propertyCacheService.findAllPostProperties(filter);
-            response.addData(dtos);
+            CorePaginationDto<PostPropertyDto> resDto = propertyCacheService.findAllPostProperties(filter);
+            response.updateTotalRecords(resDto.getTotalRecords());
+            response.addData(resDto.getData());
         } catch (Exception e) {
             response.addStatus(false);
             msg = "Error occurred while searching properties from cache.";

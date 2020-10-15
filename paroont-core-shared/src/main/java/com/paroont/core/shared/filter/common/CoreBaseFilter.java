@@ -8,8 +8,8 @@ public class CoreBaseFilter implements CoreFilter {
     protected int statusId = -99;
 
     protected boolean pagination = true;
-    protected int pageNo = 1;
-    protected int pageSize = 25;
+    protected int pageNo = 0;
+    protected int pageSize = 20;
 
 
     public int getPageNo() {

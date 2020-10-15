@@ -1,5 +1,6 @@
 package com.paroont.realty.core.mw.service.impl.property;
 
+import com.paroont.core.shared.dto.common.CorePaginationDto;
 import com.paroont.realty.core.mw.service.impl.common.RealtyServiceImpl;
 import com.paroont.realty.core.shared.dto.property.common.PostPropertyDto;
 import com.paroont.realty.core.shared.filter.property.PropertyFilter;
@@ -20,7 +21,7 @@ public class PropertyCacheServiceImpl extends RealtyServiceImpl implements Prope
     private PropertyCacheServiceHelper cacheServiceHelper;
 
 
-    public List<PostPropertyDto> findAllPostProperties(PropertyFilter filter) {
+    public CorePaginationDto<PostPropertyDto> findAllPostProperties(PropertyFilter filter) {
         return cacheServiceHelper.findAllPostProperties(filter);
     }
 

@@ -2,6 +2,7 @@ package com.paroont.core.shared.dto.common;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class CoreResponse implements CoreDto {
 
@@ -50,5 +51,13 @@ public class CoreResponse implements CoreDto {
 
     public void setResMap(Map<String, Object> resMap) {
         this.resMap = resMap;
+    }
+
+    public Long takeTotalRecords() {
+        return (Long) Optional.ofNullable(response(RESPONSE_TOTAL_RECORDS)).orElse(0L);
+    }
+
+    public void updateTotalRecords(long totalRecords) {
+        addResponse(RESPONSE_TOTAL_RECORDS, totalRecords);
     }
 }

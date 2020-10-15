@@ -4,6 +4,7 @@ package com.paroont.realty.core.mw.service.impl.property;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.paroont.core.shared.dto.common.CorePaginationDto;
 import com.paroont.realty.core.mw.constant.common.RealtyMwConstant;
 import com.paroont.realty.core.mw.service.impl.common.ElkRestClient;
 import com.paroont.realty.core.shared.dto.property.common.PostPropertyDto;
@@ -47,9 +48,11 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
     @Autowired
     private ElkRestClient elkRestClient;
 
-    public List<PostPropertyDto> findAllPostProperties(PropertyFilter filter) {
+    public CorePaginationDto<PostPropertyDto> findAllPostProperties(PropertyFilter filter) {
         logger.info("Begin - findAllPostProperties - ELK.");
         String msg = "";
+        CorePaginationDto<PostPropertyDto> resultDto = new CorePaginationDto<>();
+
         List<PostPropertyDto> dtos = new ArrayList<>();
         RestHighLevelClient client = null;
         try {
@@ -60,6 +63,8 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             SearchRequest req = new SearchRequest(ELK_POST_PROPERTY_INDEX);
             SearchSourceBuilder srcBuilder = new SearchSourceBuilder();
             BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+            srcBuilder.from(filter.getPageNo()*filter.getPageSize());
+            srcBuilder.size(filter.getPageSize());
 
             String fullTextQuery = filter.getSearchQuery();
             if (StringUtils.isNotBlank(fullTextQuery)) {
@@ -74,6 +79,8 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             logger.info("Search_Request: [{}]", req.toString());
             SearchResponse res = client.search(req, RequestOptions.DEFAULT);
             SearchHits hits = res.getHits();
+            resultDto.setTotalRecords(hits.getTotalHits().value);
+            logger.info("Total_No_Of_Result: [{}]", resultDto.getTotalRecords());
             for (SearchHit hit : hits) {
                 dtos.add(objMapper.readValue(hit.getSourceAsString(), PostPropertyDto.class));
             }
@@ -85,7 +92,8 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             elkRestClient.closeClient(client);
         }
         logger.info("End - findAllPostProperties - ELK.");
-        return dtos;
+        resultDto.setData(dtos);
+        return resultDto;
     }
 
 
