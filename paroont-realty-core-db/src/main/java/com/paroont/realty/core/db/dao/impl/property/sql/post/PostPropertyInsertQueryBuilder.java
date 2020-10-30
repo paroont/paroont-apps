@@ -78,7 +78,6 @@ public class PostPropertyInsertQueryBuilder extends PropertyBaseInsertQueryBuild
 
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_HEAVY_DEPOSIT, data.getHeavyDeposit());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_EXPECTED_DEPOSIT_AMOUNT, data.getExpectedDepositAmount());
-        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_EXPECTED_RENTAL_AMOUNT, data.getExpectedRentAmount());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_EXPECTED_AMOUNT, data.getExpectedAmount());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_ALL_INCLUSIVE_PRICE, data.getAllInclusiveAmount());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_TAX_AND_GOV_CHARGE_INCLUDED, data.getTaxAndGovChargeIncluded());

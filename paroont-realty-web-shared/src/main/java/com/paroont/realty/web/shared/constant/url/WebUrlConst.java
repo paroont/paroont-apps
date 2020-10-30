@@ -27,6 +27,8 @@ public interface WebUrlConst {
 // Common Param
 
     String URL_COMMON_PARAM_SEARCH_QUERY = "searchQuery";
+    String URL_COMMON_PARAM_PAGE_NO = "pageNo";
+    String URL_COMMON_PARAM_PAGE_SIZE  = "pageSize";
     String URL_COMMON_PARAM_MIN_BUDGET = "minBudget";
     String URL_COMMON_PARAM_MAX_BUDGET = "maxBudget";
     String URL_COMMON_PARAM_CONFIG_TYPE_ID = "configTypeId";

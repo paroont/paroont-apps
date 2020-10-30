@@ -74,8 +74,6 @@ public class PostPropertyDto extends PropertyBaseDto {
 
     protected int heavyDeposit = -1;
     protected float expectedDepositAmount = -1;
-    protected float expectedRentAmount = -1;
-
     protected double expectedAmount = -1;
 
 
@@ -473,14 +471,6 @@ public class PostPropertyDto extends PropertyBaseDto {
 
     public void setExpectedDepositAmount(float expectedDepositAmount) {
         this.expectedDepositAmount = expectedDepositAmount;
-    }
-
-    public float getExpectedRentAmount() {
-        return expectedRentAmount;
-    }
-
-    public void setExpectedRentAmount(float expectedRentAmount) {
-        this.expectedRentAmount = expectedRentAmount;
     }
 
     public double getExpectedAmount() {

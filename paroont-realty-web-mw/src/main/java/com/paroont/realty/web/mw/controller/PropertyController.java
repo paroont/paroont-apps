@@ -68,6 +68,12 @@ public class PropertyController implements WebMwConst {
         if (allParams.containsKey(URL_COMMON_PARAM_SEARCH_QUERY)) {
             filter.setSearchQuery(allParams.get(URL_COMMON_PARAM_SEARCH_QUERY));
         }
+        if (allParams.containsKey(URL_COMMON_PARAM_PAGE_NO)) {
+            filter.setPageNo(Integer.parseInt(allParams.get(URL_COMMON_PARAM_PAGE_NO)));
+        }
+        if (allParams.containsKey(URL_COMMON_PARAM_PAGE_SIZE)) {
+            filter.setPageSize(Integer.parseInt(allParams.get(URL_COMMON_PARAM_PAGE_SIZE)));
+        }
         return propertyCacheFacade.findAllPostProperties(filter).getResMap();
     }
 

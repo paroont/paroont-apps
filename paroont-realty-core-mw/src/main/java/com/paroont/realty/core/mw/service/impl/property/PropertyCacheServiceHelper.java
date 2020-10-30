@@ -79,8 +79,8 @@ public class PropertyCacheServiceHelper implements RealtyMwConstant {
             logger.info("Search_Request: [{}]", req.toString());
             SearchResponse res = client.search(req, RequestOptions.DEFAULT);
             SearchHits hits = res.getHits();
-            resultDto.setTotalRecords(hits.getTotalHits().value);
-            logger.info("Total_No_Of_Result: [{}]", resultDto.getTotalRecords());
+            resultDto.setTotalRecords(hits.getTotalHits());
+            logger.info("Total_No_Of_Result: [{}], No_Of_Result: [{}]", resultDto.getTotalRecords(), hits.getHits().length);
             for (SearchHit hit : hits) {
                 dtos.add(objMapper.readValue(hit.getSourceAsString(), PostPropertyDto.class));
             }

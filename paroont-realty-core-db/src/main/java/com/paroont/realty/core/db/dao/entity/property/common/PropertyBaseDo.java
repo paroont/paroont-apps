@@ -33,9 +33,13 @@ public class PropertyBaseDo extends RealtyBaseDo {
 
     protected String addressLine1;
     protected String addressLine2;
+    protected String cityId;
     protected String cityName;
+    protected String areaId;
     protected String areaName;
+    protected String stateId;
     protected String stateName;
+    protected String landmarkId;
     protected String landmarkName;
     protected String pinCode;
     protected String countryName;
@@ -496,5 +500,37 @@ public class PropertyBaseDo extends RealtyBaseDo {
 
     public void setAreaName(String areaName) {
         this.areaName = areaName;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
+    }
+
+    public String getLandmarkId() {
+        return landmarkId;
+    }
+
+    public void setLandmarkId(String landmarkId) {
+        this.landmarkId = landmarkId;
     }
 }

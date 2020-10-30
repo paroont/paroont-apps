@@ -47,9 +47,13 @@ public abstract class PropertyBaseUpdateQueryBuilder<D extends PropertyBaseDo, A
 
         buildStringUpdateQuery(data.getAddressLine1(), oldData.getAddressLine1(), DB_COMMON_COLUMN_ADDRESS_LINE_1);
         buildStringUpdateQuery(data.getAddressLine2(), oldData.getAddressLine2(), DB_COMMON_COLUMN_ADDRESS_LINE_2);
+        buildStringUpdateQuery(data.getCityId(), oldData.getCityId(), DB_COMMON_COLUMN_CITY_ID);
         buildStringUpdateQuery(data.getCityName(), oldData.getCityName(), DB_COMMON_COLUMN_CITY_NAME);
+        buildStringUpdateQuery(data.getAreaId(), oldData.getAreaId(), DB_COMMON_COLUMN_AREA_ID);
         buildStringUpdateQuery(data.getAreaName(), oldData.getAreaName(), DB_COMMON_COLUMN_AREA_NAME);
+        buildStringUpdateQuery(data.getStateId(), oldData.getStateId(), DB_COMMON_COLUMN_STATE_ID);
         buildStringUpdateQuery(data.getStateName(), oldData.getStateName(), DB_COMMON_COLUMN_STATE_NAME);
+        buildStringUpdateQuery(data.getLandmarkId(), oldData.getLandmarkId(), DB_COMMON_COLUMN_LANDMARK_ID);
         buildStringUpdateQuery(data.getLandmarkName(), oldData.getLandmarkName(), DB_COMMON_COLUMN_LANDMARK_NAME);
         buildStringUpdateQuery(data.getPinCode(), oldData.getPinCode(), DB_COMMON_COLUMN_PIN_CODE);
         buildStringUpdateQuery(data.getCountryName(), oldData.getCountryName(), DB_COMMON_COLUMN_COUNTRY_NAME);

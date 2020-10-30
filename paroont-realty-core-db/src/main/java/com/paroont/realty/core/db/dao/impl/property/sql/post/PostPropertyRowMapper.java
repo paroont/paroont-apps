@@ -82,7 +82,6 @@ public class PostPropertyRowMapper extends PropertyBaseRowMapper<PostPropertyDo>
         data.setExpectedDepositAmount(rs.getFloat(PropertyDbConstant.DB_REALTY_PROPERTY_COLUMN_EXPECTED_DEPOSIT_AMOUNT));
 
 
-        data.setExpectedRentAmount(rs.getFloat(PropertyDbConstant.DB_REALTY_PROPERTY_COLUMN_EXPECTED_RENTAL_AMOUNT));
         data.setExpectedAmount(rs.getDouble(PropertyDbConstant.DB_REALTY_PROPERTY_COLUMN_EXPECTED_AMOUNT));
         data.setAllInclusiveAmount(rs.getInt(PropertyDbConstant.DB_REALTY_PROPERTY_COLUMN_ALL_INCLUSIVE_PRICE));
         data.setTaxAndGovChargeIncluded(rs.getInt(PropertyDbConstant.DB_REALTY_PROPERTY_COLUMN_TAX_AND_GOV_CHARGE_INCLUDED));

@@ -86,7 +86,6 @@ public class PostPropertyUpdateQueryBuilder extends PropertyBaseUpdateQueryBuild
         buildNumberUpdateQuery(data.getHeavyDeposit(), oldData.getHeavyDeposit(), DB_REALTY_PROPERTY_COLUMN_HEAVY_DEPOSIT);
         buildDecimalUpdateQuery(data.getExpectedDepositAmount(), oldData.getExpectedDepositAmount(), DB_REALTY_PROPERTY_COLUMN_EXPECTED_DEPOSIT_AMOUNT);
 
-        buildDecimalUpdateQuery(data.getExpectedRentAmount(), oldData.getExpectedRentAmount(), DB_REALTY_PROPERTY_COLUMN_EXPECTED_RENTAL_AMOUNT);
         buildDecimalUpdateQuery(data.getExpectedAmount(), oldData.getExpectedAmount(), DB_REALTY_PROPERTY_COLUMN_EXPECTED_AMOUNT);
         buildNumberUpdateQuery(data.getAllInclusiveAmount(), oldData.getAllInclusiveAmount(), DB_REALTY_PROPERTY_COLUMN_ALL_INCLUSIVE_PRICE);
         buildNumberUpdateQuery(data.getTaxAndGovChargeIncluded(), oldData.getTaxAndGovChargeIncluded(), DB_REALTY_PROPERTY_COLUMN_TAX_AND_GOV_CHARGE_INCLUDED);
