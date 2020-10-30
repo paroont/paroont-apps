@@ -43,12 +43,12 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
 
     @Override
     public UserProfileDo findById(Long id) {
-        logger.info("Begin - findById. USER_ID:{}", id);
-        long userId = Optional.ofNullable(id).orElse(0L);
+        logger.info("Begin - findById. USER_PROFILE_ID:{}", id);
+        long profileId = Optional.ofNullable(id).orElse(0L);
         UserProfileFilter filter = new UserProfileFilter();
-        filter.setUserId(userId);
+        filter.setUserProfileId(profileId);
         UserProfileDo data = findAll(filter).stream().filter(Objects::nonNull).findFirst().orElse(null);
-        logger.info("End - findById. USER_ID:{}", id);
+        logger.info("End - findById. USER_PROFILE_ID:{}", id);
         return data;
     }
 
@@ -66,7 +66,7 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Long save(UserProfileDo data, UserActionDto action) {
-        long userId = data.getUserId();
+        long userId = data.getUserProfileId();
         logger.info("Begin - save. USER_ID:{}", userId);
         DbCoreResponse response = null;
         int saveCount = 0;
@@ -85,7 +85,7 @@ public class UserProfileDaoImpl extends RealtyDaoImpl<UserProfileDo, Long, UserP
 
 
     private DbCoreResponse update(UserProfileDo data, UserActionDto action) {
-        long userId = data.getUserId();
+        long userId = data.getUserProfileId();
         logger.info("Begin - update. USER_ID:{}", userId);
         UserProfileUpdateQueryBuilder queryBuilder = new UserProfileUpdateQueryBuilder();
         queryBuilder.setData(data);

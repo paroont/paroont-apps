@@ -1,5 +1,6 @@
 package com.paroont.core.db.dao.impl.user.profile.sql.common;
 
+import com.paroont.core.db.constant.common.CoreDbCommonColumnConst;
 import com.paroont.core.db.constant.common.CoreDbConst;
 import com.paroont.core.db.dao.impl.common.sql.CoreSelectQueryBuilder;
 import com.paroont.core.db.dao.impl.common.sql.DbQueryUtil;
@@ -20,11 +21,16 @@ public abstract class UserProfileBaseSelectQueryBuilder<F extends BaseProfileFil
 
     @Override
     protected void buildWhereQuery() {
-        if (filter.getUserId() > 0) {
+        if (filter.getUserProfileId() > 0) {
+            query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_PROFILE_ID));
+            queryParams.addValue(DB_COMMON_COLUMN_PROFILE_ID, filter.getUserProfileId());
+        }
+
+
+        if (StringUtils.isNotBlank(filter.getUserId()) ) {
             query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_USER_ID));
             queryParams.addValue(DB_COMMON_COLUMN_USER_ID, filter.getUserId());
         }
-
 
         if (filter.getStatusId() > 0) {
             query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_STATUS_ID));

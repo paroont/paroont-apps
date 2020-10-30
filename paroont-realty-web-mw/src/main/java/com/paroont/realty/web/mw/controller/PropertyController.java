@@ -56,7 +56,7 @@ public class PropertyController implements WebMwConst {
 
     private PropertyActionDto createPropertyActionDto() {
         PropertyActionDto actionDto = new PropertyActionDto();
-        actionDto.setLoginId("rahulk");
+        actionDto.setUserId("rahulk");
         return actionDto;
     }
 

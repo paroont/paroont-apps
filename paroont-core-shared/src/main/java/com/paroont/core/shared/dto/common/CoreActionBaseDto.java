@@ -3,9 +3,7 @@ package com.paroont.core.shared.dto.common;
 import java.sql.Timestamp;
 
 public class CoreActionBaseDto implements CoreActionDto {
-    protected long userId;
-    protected String loginId;
-
+    protected String userId;
     protected int actionId;
     protected String actionTitle;
     protected Timestamp actionTs;
@@ -15,20 +13,12 @@ public class CoreActionBaseDto implements CoreActionDto {
 
     protected String comments;
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public String getLoginId() {
-        return loginId;
-    }
-
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
     }
 
     public int getActionId() {

@@ -5,6 +5,7 @@ public interface CoreDbCommonColumnConst {
     // Add Only Common DB Column Const, Pattern: DB_COMMON_COLUMN_[COLUMN_NAME].
 
     String DB_COMMON_COLUMN_USER_ID = "USER_ID";
+    String DB_COMMON_COLUMN_PROFILE_ID = "PROFILE_ID";
     String DB_COMMON_COLUMN_LOGIN_ID = "LOGIN_ID";
     String DB_COMMON_COLUMN_USER_NAME = "USER_NAME";
 

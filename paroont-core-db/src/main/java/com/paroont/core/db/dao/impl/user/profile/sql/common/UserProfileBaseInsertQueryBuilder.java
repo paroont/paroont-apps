@@ -22,6 +22,7 @@ public class UserProfileBaseInsertQueryBuilder<D extends UserProfileBaseDo, AD e
     @Override
     protected void buildInsertQuery() {
         buildInsertClause();
+        queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_USER_ID, data.getUserId());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_FIRST_NAME, data.getFirstName());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_LAST_NAME, data.getLastName());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_MOBILE_NO, data.getMobileNo());
@@ -52,8 +53,11 @@ public class UserProfileBaseInsertQueryBuilder<D extends UserProfileBaseDo, AD e
 
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_ADDRESS_LINE_1, data.getAddressLine1());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_ADDRESS_LINE_2, data.getAddressLine2());
+        queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_CITY_ID, data.getCityId());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_CITY_NAME, data.getCityName());
+        queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_STATE_ID, data.getStateId());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_STATE_NAME, data.getStateName());
+        queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_LANDMARK_ID, data.getLandmarkId());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_LANDMARK_NAME, data.getLandmarkName());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_PIN_CODE, data.getPinCode());
         queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_COUNTRY_NAME, data.getCountryName());

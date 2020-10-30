@@ -22,7 +22,12 @@ public class UserSelectQueryBuilder extends CoreSelectQueryBuilder<BaseProfileFi
 
     @Override
     protected void buildWhereQuery() {
-        if (filter.getUserId() > 0) {
+        if (filter.getUserProfileId() > 0) {
+            query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_PROFILE_ID));
+            queryParams.addValue(DB_COMMON_COLUMN_PROFILE_ID, filter.getUserProfileId());
+        }
+
+        if (StringUtils.isNotBlank(filter.getUserId())) {
             query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_USER_ID));
             queryParams.addValue(DB_COMMON_COLUMN_USER_ID, filter.getUserId());
         }

@@ -20,13 +20,13 @@ public abstract class CoreDmlQueryBuilder<D extends CoreDo, AD extends CoreAudit
     protected List<AD> audits = new ArrayList<>();
 
     protected void addUpdatedByParams() {
-        queryParams.addValue(DB_COMMON_COLUMN_UPDATED_BY, action.getLoginId());
+        queryParams.addValue(DB_COMMON_COLUMN_UPDATED_BY, action.getUserId());
         queryParams.addValue(DB_COMMON_COLUMN_UPDATED_TS, action.getActionTs(), Types.TIMESTAMP);
     }
 
 
     protected void addCreatedByParams() {
-        queryParams.addValue(DB_COMMON_COLUMN_CREATED_BY, action.getLoginId());
+        queryParams.addValue(DB_COMMON_COLUMN_CREATED_BY, action.getUserId());
         queryParams.addValue(DB_COMMON_COLUMN_CREATED_TS, action.getActionTs(), Types.TIMESTAMP);
     }
     public  void logAuditSqlAndParams(){

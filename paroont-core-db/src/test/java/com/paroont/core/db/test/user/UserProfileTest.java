@@ -17,16 +17,16 @@ public class UserProfileTest {
     private static final Logger logger = LoggerFactory.getLogger(UserProfileTest.class);
     public static void main(String[] args) {
         UserProfileTest obj = new UserProfileTest();
-        //obj.testSelect();
+        obj.testSelect();
         //obj.testUpdate();
        // obj.testDelete();
-        obj.testAdd();
+        //obj.testAdd();
     }
 
     public void testSelect()
     {
         BaseProfileFilter filter = new BaseProfileFilter();
-        filter.setUserId(66);
+        filter.setUserProfileId(1);
         filter.setLoginId("9819440106");
         UserSelectQueryBuilder queryBuilder = new UserSelectQueryBuilder();
         queryBuilder.setFilter(filter);
@@ -37,20 +37,20 @@ public class UserProfileTest {
     public void testUpdate()
     {
         BaseProfileFilter filter = new BaseProfileFilter();
-        filter.setUserId(66);
+        filter.setUserProfileId(66);
         filter.setLoginId("9819440106");
 
         UserProfileBaseDo data = new UserProfileBaseDo();
-        data.setUserId(66);
+        data.setUserProfileId(66);
         data.setFirstName("TEst");
 
         UserProfileBaseDo oldData = new UserProfileBaseDo();
-        oldData.setUserId(66);
+        oldData.setUserProfileId(66);
         oldData.setFirstName("TEstr");
 
         CoreActionBaseDto actionDto = new CoreActionBaseDto();
         actionDto.setActionId(1);
-        actionDto.setUserId(88);
+        actionDto.setUserId("88");
         actionDto.setActionTs(new Timestamp(new Date().getTime()));
 
 
@@ -69,13 +69,13 @@ public class UserProfileTest {
 
 
         UserProfileBaseDo data = new UserProfileBaseDo();
-        data.setUserId(66);
+        data.setUserProfileId(66);
         data.setFirstName("TEst");
 
 
         CoreActionBaseDto actionDto = new CoreActionBaseDto();
         actionDto.setActionId(1);
-        actionDto.setUserId(88);
+        actionDto.setUserId("88");
         actionDto.setActionTs(new Timestamp(new Date().getTime()));
 
 
@@ -92,13 +92,13 @@ public class UserProfileTest {
 
 
         UserProfileBaseDo data = new UserProfileBaseDo();
-        data.setUserId(66);
+        data.setUserProfileId(66);
         data.setFirstName("TEst");
 
 
         CoreActionBaseDto actionDto = new CoreActionBaseDto();
         actionDto.setActionId(1);
-        actionDto.setUserId(88);
+        actionDto.setUserId("88");
         actionDto.setActionTs(new Timestamp(new Date().getTime()));
 
 

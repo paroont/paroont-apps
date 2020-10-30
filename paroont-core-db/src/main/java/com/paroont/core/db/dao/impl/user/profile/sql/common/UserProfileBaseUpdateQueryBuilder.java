@@ -23,6 +23,7 @@ public abstract class UserProfileBaseUpdateQueryBuilder<D extends UserProfileBas
     protected void buildUpdateQuery() {
         buildUpdateClause();
 
+        buildStringUpdateQuery(data.getUserId(), oldData.getUserId(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_USER_ID);
         buildStringUpdateQuery(data.getFirstName(), oldData.getFirstName(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_FIRST_NAME);
         buildStringUpdateQuery(data.getLastName(), oldData.getLastName(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_LAST_NAME);
 
@@ -57,8 +58,11 @@ public abstract class UserProfileBaseUpdateQueryBuilder<D extends UserProfileBas
 
         buildStringUpdateQuery(data.getAddressLine1(), oldData.getAddressLine1(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_ADDRESS_LINE_1);
         buildStringUpdateQuery(data.getAddressLine2(), oldData.getAddressLine2(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_ADDRESS_LINE_2);
+        buildStringUpdateQuery(data.getCityId(), oldData.getCityId(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_CITY_ID);
         buildStringUpdateQuery(data.getCityName(), oldData.getCityName(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_CITY_NAME);
+        buildStringUpdateQuery(data.getStateId(), oldData.getStateId(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_STATE_ID);
         buildStringUpdateQuery(data.getStateName(), oldData.getStateName(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_STATE_NAME);
+        buildStringUpdateQuery(data.getLandmarkId(), oldData.getLandmarkId(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_LANDMARK_ID);
         buildStringUpdateQuery(data.getLandmarkName(), oldData.getLandmarkName(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_LANDMARK_NAME);
         buildStringUpdateQuery(data.getPinCode(), oldData.getPinCode(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_PIN_CODE);
         buildStringUpdateQuery(data.getCountryName(), oldData.getCountryName(), CoreDbCommonColumnConst.DB_COMMON_COLUMN_COUNTRY_NAME);
@@ -79,9 +83,9 @@ public abstract class UserProfileBaseUpdateQueryBuilder<D extends UserProfileBas
     @Override
     protected void buildWhereQuery() {
         includeWhereClause();
-        if (data.getUserId() > 0) {
-            query.append(DbQueryUtil.createAndEqualNamedParam(CoreDbCommonColumnConst.DB_COMMON_COLUMN_USER_ID));
-            queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_USER_ID, data.getUserId());
+        if (data.getUserProfileId() > 0) {
+            query.append(DbQueryUtil.createAndEqualNamedParam(CoreDbCommonColumnConst.DB_COMMON_COLUMN_PROFILE_ID));
+            queryParams.addValue(CoreDbCommonColumnConst.DB_COMMON_COLUMN_PROFILE_ID, data.getUserProfileId());
         } else {
             includeNotMatchingClause();
         }

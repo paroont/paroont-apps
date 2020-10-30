@@ -32,7 +32,7 @@ public class PostPropertyInsertQueryBuilder extends PropertyBaseInsertQueryBuild
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_TOTAL_BALCONIES, data.getTotalBalconies());
 
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_SUPER_BUILT_UP_AREA, data.getSuperBuiltUpArea());
-        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_SUPER_BUILT_UP_AREA_UNIT_ID, data.getBuiltUpAreaUnitId());
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_SUPER_BUILT_UP_AREA_UNIT_ID, data.getSuperBuiltUpAreaUnitId());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_SUPER_BUILT_UP_AREA_UNIT_TITLE, data.getSuperBuiltUpAreaUnitTitle());
 
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_BUILT_UP_AREA, data.getBuiltUpArea());
@@ -84,7 +84,8 @@ public class PostPropertyInsertQueryBuilder extends PropertyBaseInsertQueryBuild
 
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_BY, data.getPostedBy());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_BY_NAME, data.getPostedByName());
-        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_TS, data.getPostedTs());
+        //set PostedTs to action timestamp if PostedTs isnull.
+        queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_TS, null != data.getPostedTs() ? data.getPostedTs() : action.getActionTs());
 
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_ID, data.getPostedUserTypeId());
         queryParams.addValue(DB_REALTY_PROPERTY_COLUMN_POSTED_USER_TYPE_TITLE, data.getPostedUserTypeTitle());

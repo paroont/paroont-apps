@@ -12,7 +12,9 @@ public abstract class UserProfileBaseRowMapper<T extends UserProfileBaseDo> exte
 
 
     protected void mapData(T data, ResultSet rs, int rowNum) throws SQLException {
-        data.setUserId(rs.getLong(CoreDbCommonColumnConst.DB_COMMON_COLUMN_USER_ID));
+        data.setUserProfileId(rs.getLong(CoreDbCommonColumnConst.DB_COMMON_COLUMN_PROFILE_ID));
+        data.setUserId(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_USER_ID));
+
         data.setFirstName(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_FIRST_NAME));
         data.setLastName(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_LAST_NAME));
 
@@ -44,8 +46,11 @@ public abstract class UserProfileBaseRowMapper<T extends UserProfileBaseDo> exte
 
         data.setAddressLine1(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_ADDRESS_LINE_1));
         data.setAddressLine2(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_ADDRESS_LINE_2));
+        data.setCityId(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_CITY_ID));
         data.setCityName(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_CITY_NAME));
+        data.setStateId(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_STATE_ID));
         data.setStateName(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_STATE_NAME));
+        data.setLandmarkId(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_LANDMARK_ID));
         data.setLandmarkName(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_LANDMARK_NAME));
         data.setPinCode(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_PIN_CODE));
         data.setCountryName(rs.getString(CoreDbCommonColumnConst.DB_COMMON_COLUMN_COUNTRY_NAME));

@@ -5,8 +5,8 @@ import com.paroont.core.db.dao.entity.common.CoreBaseDo;
 import java.sql.Timestamp;
 
 public class UserProfileBaseDo extends CoreBaseDo {
-    protected long userId;
-
+    protected long userProfileId;
+    protected String userId;
     protected String firstName;
     protected String lastName;
     protected String mobileNo;
@@ -38,8 +38,11 @@ public class UserProfileBaseDo extends CoreBaseDo {
 
     protected String addressLine1;
     protected String addressLine2;
+    protected String cityId;
     protected String cityName;
+    protected String stateId;
     protected String stateName;
+    protected String landmarkId;
     protected String landmarkName;
     protected String pinCode;
     protected String countryName;
@@ -51,15 +54,21 @@ public class UserProfileBaseDo extends CoreBaseDo {
     protected String incomeRangeTitle;
 
 
+    public long getUserProfileId() {
+        return userProfileId;
+    }
 
-    public long getUserId() {
+    public void setUserProfileId(long userProfileId) {
+        this.userProfileId = userProfileId;
+    }
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -307,5 +316,29 @@ public class UserProfileBaseDo extends CoreBaseDo {
 
     public void setIncomeRangeTitle(String incomeRangeTitle) {
         this.incomeRangeTitle = incomeRangeTitle;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
+    }
+
+    public String getLandmarkId() {
+        return landmarkId;
+    }
+
+    public void setLandmarkId(String landmarkId) {
+        this.landmarkId = landmarkId;
     }
 }

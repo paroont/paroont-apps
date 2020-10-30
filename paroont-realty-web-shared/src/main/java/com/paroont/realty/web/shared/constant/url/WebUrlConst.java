@@ -2,6 +2,8 @@ package com.paroont.realty.web.shared.constant.url;
 
 public interface WebUrlConst {
 
+
+    // BASE_URL
     String URL_REALTY_API_DATA_PREFIX  ="/api/data/realty";
     String URL_REALTY_API_CACHE_DATA_PREFIX  ="/api/data-swift/realty";
     String URL_REALTY_RDM_API_DATA_PREFIX  =URL_REALTY_API_DATA_PREFIX + "/rdm";
@@ -10,22 +12,9 @@ public interface WebUrlConst {
     String URL_REALTY_RDM_COMMON_API_DATA_PREFIX  =URL_REALTY_RDM_API_DATA_PREFIX + "/common";
 
 
-    // User Profile
-    String URL_REALTY_USER_PROFILE  = URL_REALTY_API_DATA_PREFIX + "/user/profiles";
-    String URL_REALTY_USER_PROFILE_ID  = URL_REALTY_USER_PROFILE + "/{userId}";
+    // Common Param
 
-    //RDM Common
-    String URL_REALTY_RDM_APP_REF_DATA  = URL_REALTY_RDM_API_DATA_PREFIX + "/app-ref-data";
-    String URL_REALTY_RDM_COMMON_CONTACT_TYPE  = URL_REALTY_RDM_COMMON_API_DATA_PREFIX + "/contact-types";
-    String URL_REALTY_RDM_COMMON_STATUS_TYPE  = URL_REALTY_RDM_COMMON_API_DATA_PREFIX + "/status-types";
-
-    //RDM Property
-    String URL_REALTY_RDM_PROPERTY_TYPE  = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/types";
-    String URL_REALTY_RDM_PROPERTY_TYPE_GROUP  = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/type-groups";
-    String URL_REALTY_RDM_PROPERTY_FURNISH_TYPE = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/furnish-types";
-
-// Common Param
-
+    String URL_COMMON_PARAM_USER_PROFILE_ID  = "userProfileId";
     String URL_COMMON_PARAM_SEARCH_QUERY = "searchQuery";
     String URL_COMMON_PARAM_PAGE_NO = "pageNo";
     String URL_COMMON_PARAM_PAGE_SIZE  = "pageSize";
@@ -64,6 +53,21 @@ public interface WebUrlConst {
     String URL_REALTY_PROPERTY_PARAM_POSTED_TS  = "postedTs";
 
     String URL_REALTY_PROPERTY_PARAM_LOCALITY_IDS = "localityIds";
+
+
+    // User Profile
+    String URL_REALTY_USER_PROFILE  = URL_REALTY_API_DATA_PREFIX + "/user/profiles";
+    String URL_REALTY_USER_PROFILE_ID  = URL_REALTY_USER_PROFILE + "/{"+URL_COMMON_PARAM_USER_PROFILE_ID + "}";
+
+    //RDM Common
+    String URL_REALTY_RDM_APP_REF_DATA  = URL_REALTY_RDM_API_DATA_PREFIX + "/app-ref-data";
+    String URL_REALTY_RDM_COMMON_CONTACT_TYPE  = URL_REALTY_RDM_COMMON_API_DATA_PREFIX + "/contact-types";
+    String URL_REALTY_RDM_COMMON_STATUS_TYPE  = URL_REALTY_RDM_COMMON_API_DATA_PREFIX + "/status-types";
+
+    //RDM Property
+    String URL_REALTY_RDM_PROPERTY_TYPE  = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/types";
+    String URL_REALTY_RDM_PROPERTY_TYPE_GROUP  = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/type-groups";
+    String URL_REALTY_RDM_PROPERTY_FURNISH_TYPE = URL_REALTY_RDM_PROPERTY_API_DATA_PREFIX + "/furnish-types";
 
 
     //Property

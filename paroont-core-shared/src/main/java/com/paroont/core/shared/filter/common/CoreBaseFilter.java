@@ -2,7 +2,8 @@ package com.paroont.core.shared.filter.common;
 
 
 public class CoreBaseFilter implements CoreFilter {
-    protected long userId = -99;
+    protected String userId;
+    protected long userProfileId = -99;
     protected String loginId;
 
     protected int statusId = -99;
@@ -28,12 +29,20 @@ public class CoreBaseFilter implements CoreFilter {
         this.pageSize = pageSize;
     }
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public long getUserProfileId() {
+        return userProfileId;
+    }
+
+    public void setUserProfileId(long userProfileId) {
+        this.userProfileId = userProfileId;
     }
 
     public String getLoginId() {

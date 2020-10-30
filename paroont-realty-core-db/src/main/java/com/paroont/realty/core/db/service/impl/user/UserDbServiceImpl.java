@@ -32,20 +32,20 @@ public class UserDbServiceImpl extends RealtyDbServiceImpl implements UserDbServ
     }
 
     public UserProfileDto findUserProfileById(long id) {
-        logger.info("Begin - findUserProfileById. USER_ID:{}", id);
+        logger.info("Begin - findUserProfileById. USER_PROFILE_ID:{}", id);
         UserProfileDto dto = UserProfileMapper.INSTANCE.toDto(userProfileDao.findById(id));
-        logger.info("End - findUserProfileById. USER_ID:{}", id);
+        logger.info("End - findUserProfileById. USER_PROFILE_ID:{}", id);
         return dto;
     }
 
 
     public long saveUserProfile(UserProfileDto dto, UserActionDto action) {
-        Long userId = dto.getUserId();
-        logger.info("Begin - saveUserProfile. USER_ID:{}", userId);
+        Long userId = dto.getUserProfileId();
+        logger.info("Begin - saveUserProfile. USER_PROFILE_ID:{}", userId);
         UserProfileDo userDo = UserProfileMapper.INSTANCE.toDo(dto);
         action.setActionTs(new Timestamp(new Date().getTime()));
         userId = userProfileDao.save(userDo, action);
-        logger.info("End - saveUserProfile. USER_ID:{}", userId);
+        logger.info("End - saveUserProfile. USER_PROFILE_ID:{}", userId);
         return userId;
     }
 

@@ -30,9 +30,9 @@ public class UserProfileDeleteQueryBuilder extends CoreDeleteQueryBuilder<UserPr
     @Override
     protected void buildWhereQuery() {
         includeWhereClause();
-        if (data.getUserId() > 0) {
-            query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_USER_ID));
-            queryParams.addValue(DB_COMMON_COLUMN_USER_ID, data.getUserId());
+        if (data.getUserProfileId() > 0) {
+            query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_PROFILE_ID));
+            queryParams.addValue(DB_COMMON_COLUMN_PROFILE_ID, data.getUserProfileId());
         }else {
             includeNotMatchingClause();
         }

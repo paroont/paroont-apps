@@ -5,5 +5,6 @@ public interface ResponseConst {
     String RESPONSE_MESSAGE = "message";
     String RESPONSE_DATA = "data";
     String RESPONSE_USER_ID = "userId";
+    String RESPONSE_USER_PROFILE_ID = "userProfileId";
     String RESPONSE_TOTAL_RECORDS = "totalRecords";
 }
