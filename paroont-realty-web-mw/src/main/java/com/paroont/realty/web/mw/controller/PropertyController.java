@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Map;
 
 
@@ -32,6 +33,10 @@ public class PropertyController implements WebMwConst {
             filter.setSearchQuery(allParams.get(URL_COMMON_PARAM_SEARCH_QUERY));
         }
 
+        if (allParams.containsKey(URL_REALTY_PROPERTY_PARAM_POSTED_BY_IDS)) {
+            filter.setPostedByIds(Arrays.asList(allParams.get(URL_REALTY_PROPERTY_PARAM_POSTED_BY_IDS).trim().split(",")));
+        }
+
         return propertyFacade.findAllPostProperties(filter).getResMap();
     }
 
@@ -41,22 +46,22 @@ public class PropertyController implements WebMwConst {
     }
 
     @PostMapping(URL_REALTY_PROPERTY)
-    public Map<String, Object> addPostProperty(@RequestBody PostPropertyDto dto) {
+    public Map<String, Object> addPostProperty(@RequestBody PostPropertyDto dto,  @RequestHeader(value = URL_COMMON_PARAM_HEADER_PAROONT_UID, defaultValue = "0") String uid) {
         dto.setPropertyId(0);
-        return propertyFacade.savePostProperty(dto, createPropertyActionDto()).getResMap();
+        return propertyFacade.savePostProperty(dto, createPropertyActionDto(uid)).getResMap();
     }
 
 
     @PutMapping(URL_REALTY_PROPERTY_ID)
-    public Map<String, Object> updatePostProperty(@RequestBody PostPropertyDto dto, @PathVariable(URL_REALTY_PROPERTY_PARAM_PROPERTY_ID) long propertyId) {
+    public Map<String, Object> updatePostProperty(@RequestBody PostPropertyDto dto, @PathVariable(URL_REALTY_PROPERTY_PARAM_PROPERTY_ID) long propertyId, @RequestHeader(value = URL_COMMON_PARAM_HEADER_PAROONT_UID, defaultValue = "0") String uid) {
         dto.setPropertyId(propertyId);
-        return propertyFacade.savePostProperty(dto, createPropertyActionDto()).getResMap();
+        return propertyFacade.savePostProperty(dto, createPropertyActionDto(uid)).getResMap();
     }
 
 
-    private PropertyActionDto createPropertyActionDto() {
+    private PropertyActionDto createPropertyActionDto(String userId) {
         PropertyActionDto actionDto = new PropertyActionDto();
-        actionDto.setUserId("rahulk");
+        actionDto.setUserId(userId);
         return actionDto;
     }
 

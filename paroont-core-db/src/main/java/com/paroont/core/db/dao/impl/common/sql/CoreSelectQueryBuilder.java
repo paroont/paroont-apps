@@ -5,6 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public abstract class CoreSelectQueryBuilder<F extends CoreFilter> extends CoreBaseQueryBuilder {
     private static final Logger logger = LoggerFactory.getLogger(CoreSelectQueryBuilder.class);
 
@@ -44,6 +46,14 @@ public abstract class CoreSelectQueryBuilder<F extends CoreFilter> extends CoreB
         if (StringUtils.isNotBlank(value)) {
             query.append(DbQueryUtil.createAndEqualNamedParam(colName));
             queryParams.addValue(colName, value);
+        }
+    }
+
+
+    protected void buildStringSelectInQuery(List<String> values, String colName) {
+        if (null != values && !values.isEmpty()) {
+            query.append(DbQueryUtil.createAndInNamedParam(colName));
+            queryParams.addValue(colName, values);
         }
     }
 

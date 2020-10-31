@@ -85,8 +85,7 @@ public class UserController implements WebMwConst {
         String msg = "";
         long userProfileId = 0;
         try {
-            updateUserId( user);
-            actionDto.setUserId(user.getUserId());
+            actionDto.setUserId(String.valueOf(user.getUserProfileId()));
             userProfileId = realtyAllService.getUserService().saveUserProfile(user, actionDto);
             response.addResponse(RESPONSE_USER_PROFILE_ID, userProfileId);
         } catch (Exception e) {
@@ -99,7 +98,5 @@ public class UserController implements WebMwConst {
         return response;
     }
 
-    private void updateUserId(UserProfileDto user){
-            user.setUserId(Optional.ofNullable(user.getMobileCountryCode()).orElse("") + Optional.ofNullable(user.getMobileNo()).orElse(""));
-    }
+
 }

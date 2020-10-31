@@ -40,6 +40,7 @@ public class PropertyFilter extends RealtyBaseFilter {
 
     protected List<Integer> faceIds = new ArrayList<>();
     protected List<Integer> furnishIds = new ArrayList<>();
+    protected List<String> postedByIds = new ArrayList<>();
     protected List<Integer> postedUserTypeIds = new ArrayList<>();
     protected List<Integer> noOfBathrooms = new ArrayList<>();
 
@@ -288,5 +289,13 @@ public class PropertyFilter extends RealtyBaseFilter {
 
     public void setLocalityIds(List<String> localityIds) {
         this.localityIds = localityIds;
+    }
+
+    public List<String> getPostedByIds() {
+        return postedByIds;
+    }
+
+    public void setPostedByIds(List<String> postedByIds) {
+        this.postedByIds = postedByIds;
     }
 }

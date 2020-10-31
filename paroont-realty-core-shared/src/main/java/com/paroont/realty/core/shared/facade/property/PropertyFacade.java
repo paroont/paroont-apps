@@ -1,5 +1,6 @@
 package com.paroont.realty.core.shared.facade.property;
 
+import com.paroont.core.shared.dto.common.CorePaginationDto;
 import com.paroont.core.shared.dto.common.CoreResponse;
 import com.paroont.realty.core.shared.constant.common.RealtyResponseConst;
 import com.paroont.realty.core.shared.constant.common.RealtyConst;
@@ -34,8 +35,11 @@ public class PropertyFacade implements RealtyConst {
         CoreResponse response = new CoreResponse();
         String msg = "";
         try {
-            List<PostPropertyDto> dtos = propertyService.findAllPostProperties(filter);
-            response.addData(dtos);
+            CorePaginationDto<PostPropertyDto> paginationDto = new CorePaginationDto<>();
+            paginationDto.setData(propertyService.findAllPostProperties(filter));
+            paginationDto.setTotalRecords(paginationDto.getData().size());
+            response.updateTotalRecords(paginationDto.getTotalRecords());
+            response.addData(paginationDto.getData());
         } catch (Exception e) {
             response.addStatus(false);
             msg = "Error occurred while searching properties.";

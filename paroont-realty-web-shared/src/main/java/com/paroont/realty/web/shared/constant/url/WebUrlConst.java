@@ -14,10 +14,12 @@ public interface WebUrlConst {
 
     // Common Param
 
+    String URL_COMMON_PARAM_HEADER_PAROONT_UID  = "paroont-uid";
     String URL_COMMON_PARAM_USER_PROFILE_ID  = "userProfileId";
     String URL_COMMON_PARAM_SEARCH_QUERY = "searchQuery";
     String URL_COMMON_PARAM_PAGE_NO = "pageNo";
     String URL_COMMON_PARAM_PAGE_SIZE  = "pageSize";
+    String URL_COMMON_PARAM_USER_ID = "userId";
     String URL_COMMON_PARAM_MIN_BUDGET = "minBudget";
     String URL_COMMON_PARAM_MAX_BUDGET = "maxBudget";
     String URL_COMMON_PARAM_CONFIG_TYPE_ID = "configTypeId";
@@ -48,6 +50,7 @@ public interface WebUrlConst {
     String URL_REALTY_PROPERTY_PARAM_FURNISH_ID = "furnishId";
 
     String URL_REALTY_PROPERTY_PARAM_POSTED_USER_TYPE_ID = "postedUserTypeId";
+    String URL_REALTY_PROPERTY_PARAM_POSTED_BY_IDS = "postedByIds";
     String URL_REALTY_PROPERTY_PARAM_TOTAL_BATHROOMS = "totalBathrooms";
     String URL_REALTY_PROPERTY_PARAM_PROPERTY_AGE_ID  = "propertyAgeId";
     String URL_REALTY_PROPERTY_PARAM_POSTED_TS  = "postedTs";
