@@ -42,9 +42,12 @@ public abstract class UserProfileBaseSelectQueryBuilder<F extends BaseProfileFil
             queryParams.addValue(DB_COMMON_USER_PROFILE_COLUMN_PROFILE_TYPE_ID, filter.getProfileTypeId());
         }
 
-        if (StringUtils.isNotBlank(filter.getMobileNo()) && StringUtils.isNotBlank(filter.getMobileCountryCode()) ) {
+        if (StringUtils.isNotBlank(filter.getMobileNo()) ) {
             query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_MOBILE_NO));
             queryParams.addValue(DB_COMMON_COLUMN_MOBILE_NO, filter.getMobileNo());
+        }
+
+        if ( StringUtils.isNotBlank(filter.getMobileCountryCode()) ) {
             query.append(DbQueryUtil.createAndEqualNamedParam(DB_COMMON_COLUMN_MOBILE_COUNTRY_CODE));
             queryParams.addValue(DB_COMMON_COLUMN_MOBILE_COUNTRY_CODE, filter.getMobileCountryCode());
         }

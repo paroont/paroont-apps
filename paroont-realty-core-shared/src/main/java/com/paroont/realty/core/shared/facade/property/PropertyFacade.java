@@ -81,6 +81,7 @@ public class PropertyFacade implements RealtyConst {
         try {
             propertyId = propertyService.savePostProperty(dto, actionDto);
             response.addResponse(RealtyResponseConst.RESPONSE_REALTY_PROPERTY_ID, propertyId);
+            msg = "Property saved.";
         } catch (Exception e) {
             response.addStatus(false);
             msg = "Error occurred while saving property.";

@@ -30,6 +30,9 @@ public interface WebUrlConst {
 
     String URL_COMMON_PARAM_PIN_CODE = "pinCode";
 
+    String URL_COMMON_PARAM_MOBILE_NO = "mobileNo";
+    String URL_COMMON_PARAM_MOBILE_COUNTRY_CODE = "mobileCountryCode";
+
     // Property Param
     String URL_REALTY_PROPERTY_PARAM_PROPERTY_ID = "propertyId";
     String URL_REALTY_PROPERTY_PARAM_CONFIGURATION_ID = "configurationId";
@@ -56,6 +59,9 @@ public interface WebUrlConst {
     String URL_REALTY_PROPERTY_PARAM_POSTED_TS  = "postedTs";
 
     String URL_REALTY_PROPERTY_PARAM_LOCALITY_IDS = "localityIds";
+
+
+
 
 
     // User Profile

@@ -1,9 +1,9 @@
 package com.paroont.realty.web.mw.controller;
 
-import com.paroont.core.shared.dto.common.CoreResponse;
 import com.paroont.realty.core.shared.dto.user.UserActionDto;
 import com.paroont.realty.core.shared.dto.user.UserProfileDto;
-import com.paroont.realty.core.shared.service.common.RealtyAllService;
+import com.paroont.realty.core.shared.facade.user.UserProfileFacade;
+import com.paroont.realty.core.shared.filter.user.UserProfileFilter;
 import com.paroont.realty.web.mw.constant.common.WebMwConst;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -12,91 +12,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Optional;
 
 
 @RestController
 public class UserController implements WebMwConst {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-
-
     @Autowired
-    RealtyAllService realtyAllService;
+    private UserProfileFacade userProfileFacade;
 
+
+    @GetMapping(URL_REALTY_USER_PROFILE)
+    public Map<String, Object> findAllUserProfiles(@RequestParam Map<String, String> allParams) {
+        logger.info("findAllUserProfiles:: allParams={}", allParams);
+        UserProfileFilter filter = new UserProfileFilter();
+        String userProfileId = allParams.getOrDefault(URL_COMMON_PARAM_USER_PROFILE_ID, "-99");
+        if (allParams.containsKey(URL_COMMON_PARAM_MOBILE_NO)) {
+            filter.setMobileNo(allParams.get(URL_COMMON_PARAM_MOBILE_NO));
+        }
+        if (allParams.containsKey(URL_COMMON_PARAM_MOBILE_COUNTRY_CODE)) {
+            filter.setMobileCountryCode(allParams.get(URL_COMMON_PARAM_MOBILE_COUNTRY_CODE));
+        }
+
+        if (StringUtils.isNotBlank(userProfileId)) {
+            filter.setUserProfileId(Long.parseLong(userProfileId));
+        }
+        return userProfileFacade.findAllUserProfiles(filter).getResMap();
+    }
 
     @GetMapping(URL_REALTY_USER_PROFILE_ID)
     public Map<String, Object> findUserProfileById(@PathVariable(URL_COMMON_PARAM_USER_PROFILE_ID) long userProfileId) {
-        logger.info("Begin - findUserProfileById. USER_PROFILE_ID:{}", userProfileId);
-        CoreResponse response = new CoreResponse();
-        String msg = "";
-        try {
-            UserProfileDto dto = realtyAllService.getUserService().findUserProfileById(userProfileId);
-            response.addData(dto);
-            if (null == dto) {
-                response.addStatus(false);
-                msg = "Invalid User!!!";
-            }
-        } catch (Exception e) {
-            response.addStatus(false);
-            msg = "Error occurred while getting profile details.";
-            logger.error(msg + e.getMessage(), e);
-        }
-        response.addMessage(msg);
-        logger.info("End - findUserProfileById. USER_PROFILE_ID:{}", userProfileId);
-        return response.getResMap();
+        return userProfileFacade.findUserProfileById(userProfileId).getResMap();
     }
 
-    @PostMapping(URL_REALTY_USER_PROFILE)
-    public Map<String, Object> addUserProfile(@RequestBody UserProfileDto user) {
-        user.setUserProfileId(0L);
-        return saveUserProfile(user).getResMap();
 
+    @PostMapping(URL_REALTY_USER_PROFILE)
+    public Map<String, Object> addUserProfile(@RequestBody UserProfileDto dto, @RequestHeader(value = URL_COMMON_PARAM_HEADER_PAROONT_UID, defaultValue = "0") String uid) {
+        dto.setUserProfileId(0);
+        return userProfileFacade.saveUserProfile(dto, createUserActionDto(uid)).getResMap();
     }
 
     @PutMapping(URL_REALTY_USER_PROFILE_ID)
-    public Map<String, Object> updateUserProfile(@RequestBody UserProfileDto user, @PathVariable(URL_COMMON_PARAM_USER_PROFILE_ID) long userProfileId) {
-        logger.info("Begin - updateUserProfile.");
-        CoreResponse response = new CoreResponse();
-        String msg = "";
-        try {
-            if (user.getUserProfileId() != userProfileId) {
-                response.addStatus(false);
-                msg = "Invalid User Request!!!";
-                response.addMessage(msg);
-                logger.error(msg);
-            } else {
-                response = saveUserProfile(user);
-            }
-        } catch (Exception e) {
-            response.addStatus(false);
-            msg = "Error occurred while updating profile.";
-            response.addMessage(msg);
-            logger.error(msg + e.getMessage(), e);
-        }
-        logger.info("End - updateUserProfile. USER_PROFILE_ID:{}", userProfileId);
-        return response.getResMap();
+    public Map<String, Object> updateUserProfile(@RequestBody UserProfileDto dto, @PathVariable(URL_COMMON_PARAM_USER_PROFILE_ID) long userProfileId, @RequestHeader(value = URL_COMMON_PARAM_HEADER_PAROONT_UID, defaultValue = "0") String uid) {
+        dto.setUserProfileId(userProfileId);
+        return userProfileFacade.saveUserProfile(dto, createUserActionDto(uid)).getResMap();
     }
 
-    private CoreResponse saveUserProfile(UserProfileDto user) {
-        logger.info("Begin - saveUserProfile.");
-        CoreResponse response = new CoreResponse();
+    private UserActionDto createUserActionDto(String userId) {
         UserActionDto actionDto = new UserActionDto();
-        String msg = "";
-        long userProfileId = 0;
-        try {
-            actionDto.setUserId(String.valueOf(user.getUserProfileId()));
-            userProfileId = realtyAllService.getUserService().saveUserProfile(user, actionDto);
-            response.addResponse(RESPONSE_USER_PROFILE_ID, userProfileId);
-        } catch (Exception e) {
-            response.addStatus(false);
-            msg = "Error occurred while saving profile.";
-            logger.error(msg + e.getMessage(), e);
-        }
-        response.addMessage(msg);
-        logger.info("End - saveUserProfile. USER_PROFILE_ID:{}", userProfileId);
-        return response;
+        actionDto.setUserId(userId);
+        return actionDto;
     }
-
-
 }
